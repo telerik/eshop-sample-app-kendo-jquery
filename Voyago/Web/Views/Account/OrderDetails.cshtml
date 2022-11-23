@@ -1,0 +1,60 @@
+﻿<div class="content-container">
+    <div class="header-contacts">
+        <h1>Orders By ID</h1>
+        
+    </div>
+
+    @{   
+        var orderNumber = ViewData["OrderNumber"];
+    }
+
+    <button id="inv" onclick="location.href='/Account/Invoice?orderNumber=' + @orderNumber">Get Invoice</button>
+
+    <div>
+        <h5>Order Details</h5>
+        <label>Number:</label><span id="order-id"></span>
+        <label>Date:</label><span id="order-date"></span>
+        <label>Amount:</label><span id="order-amount"></span>
+    </div>    
+     <div>
+        <h5>Ordered By</h5>
+        <div id="user-fullname"></div>
+        <div id="user-street"></div>
+        <div id="user-state"></div>
+        <div id="user-phone"></div>
+    </div>
+    <div id="orders-grid-id"></div>
+</div>    
+
+
+<script>
+   
+    $(document).ready(function(e) {
+        $("#orders-grid-id").kendoGrid({
+            columns: [
+              { field: "ProductName" },
+              { template: '<img class="image" src="data:image/png;base64, #:ProductPhoto#" alt="#=ProductName#.jpg">'},
+              { field: "OrderNumber" },
+              { field: "Quantity" },
+              { field: "LineTotal" }
+            ],
+            pageable: true,            
+             dataSource: {                    
+               transport: {
+                   read: "/Account/GetOrderByID/" + @orderNumber,
+                   type: 'json'
+               },
+               pageSize: 20,                 
+            },
+            dataBound: function(e){
+                var record = e.sender.dataSource.data()[0];              
+                $('#order-id').text(record.OrderNumber)
+                $('#order-date').text(record.OrderDate)
+                $('#order-amount').text(record.Total)
+                $('#user-fullname').text(record.UserFirstName + ' ' + record.UserLasttName)
+                $('#user-state').text(record.Country)
+                $('#user-phone').text(record.Phone)
+            }
+        });
+    })
+</script>

@@ -1,0 +1,10 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Segoe UI;
+    height: 100%;
+}

@@ -1,0 +1,35 @@
+﻿<link rel="stylesheet" href="@Url.Content("~/Styles/OrdersPageStyle.css")">
+
+<div class="content-container">
+    <div class="header-contacts">
+        <h1>Orders</h1>
+    </div>
+
+    <div id="orders-grid" class="profile-tabstrip" ></div>
+</div>  
+
+<script>
+    $(document).ready(function(e) {
+        $("#orders-grid").kendoGrid({
+            columns: [
+              { field: "OrderNumber" },
+              { field: "OrderDate" },
+              { field: "Total" },
+              { field: "Status" },
+              { template: "<a href='/Account/OrderDetails/#=OrderNumber#'>View Order</a>" }
+
+            ],
+            pageable: true,   
+            dataSource: {                    
+               transport: {                   
+                   read: {
+		           	    url: "/Account/GetAllOrders",
+                        dataType: "json"
+		           },
+               },
+               pageSize: 20,
+                 
+            }
+        });
+    })
+</script>

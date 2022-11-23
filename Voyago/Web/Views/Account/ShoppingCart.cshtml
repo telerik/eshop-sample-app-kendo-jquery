@@ -1,0 +1,309 @@
+﻿@{
+	ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="shopping-cart-container">
+	<h3 class="shopping-cart-heading">Your cart items</h3>
+
+	@{
+		if (ViewBag.ItemsCount == 0)
+		{
+			<img class="empty-cart-image" src="~/images/shopping_cart_empty.svg" alt="Your shopping cart is empty">
+			<h4 class="empty-cart-heading">Unfortunately, your cart is empty...</h4>
+			<div class="emtpy-cart-text">
+				<p>Looks like you have not added anything to your cart. Go ahead and</p>
+				<a style="color: #0078D4;" href="/Home/Index#top-picks">explore our top-picks.</a>
+			</div>
+		}
+		else
+		{
+			<a class="continue-shopping" href="/Home/Index">Continue shopping</a>
+			<div id="shoppingCartGrid" name="shoppingCartGrid"></div>
+			
+			<div class="shopping-cart-bottom">
+				<div>
+					<div class="sub-total">
+						<h5 class="sub-total-val">Sub-total:</h5>
+						<h5 class="sub-total-val" id="subTotalValue"></h5>
+					</div>
+					<span class="tax-and-shipping">Tax and shipping cost will be calculated later</span>
+				</div>
+				<button id="checkoutButton">Check-Out</button>			
+			</div>
+		}
+	}
+</div>
+
+<script id="shoppingCartProduct-template" type="text/html">
+    <div class="product-col">
+        <a href="/Products/Details?productId=#:ProductId#">
+            <img width="160" height="120" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:ProductPhotoId#" alt="#:ProductName# image">
+        </a>
+
+       <div style="margin-left: 30px;">
+            <a href="/Products/Details?productId=#:ProductId#">
+                <p class="product-name">#:ProductName#</p>
+            </a>
+            <p id="remove_#:ShoppingCartItemId#" onclick="removeItemFromShoppingCart(#:ShoppingCartItemId#)" style="cursor:pointer">Remove</p>
+        </div>
+    </div>
+</script>
+
+
+<script>
+$(document).ready(function(){
+	$('#checkoutButton').on('click', checkoutShoppingCart)
+	
+	var dataSourceT = new kendo.data.DataSource({
+	  transport: {	   
+	    read: {
+	      url: "/Account/GetUserShoppingCartItems",
+	      dataType: "json" 
+	    },
+		update: {
+	      url: "/Account/UpdateUserShoppingCartItem",
+	      dataType: "json" ,
+		  type: 'POST'
+	    },
+		 destroy: {
+	      url: "/Account/RemoverUserShoppingCartItem",
+	      dataType: "json",
+		  type: "DELETE"
+	    },
+	  },
+	  schema: {
+		   model: {
+		     id: "ShoppingCartItemId",
+		     fields: {
+		       ShoppingCartItemId: {
+				 type: "number",
+		         editable: false
+		       }
+		     }
+		   }
+}
+	});
+	
+	$("#shoppingCartGrid").kendoGrid({
+		dataSource: dataSourceT,
+		columns: [
+			{
+	            "title": "Product",
+	            "template": kendo.template($('#shoppingCartProduct-template').html()),
+	            "field": "ProductName",
+				editable: false
+	        }, 
+			{
+	           "title": "Price",
+	           "attributes": {
+	             "class": "currency"
+	           },
+	           "field": "ProductPrice",
+	           "format": "{0:C}",
+			   editable: false
+	        }, 
+			{
+	            "title": "Quantity",
+	            "attributes": { "class": "templateCell" },
+	            "template": '<input class="quantity-editor" data-bind="value: #:Quantity#" id="quantityEditor_#=ShoppingCartItemId#" name="quantityEditor_#=ShoppingCartItemId#" value=""/ >',
+				"field": "Quantity",	           
+	            "encoded": true,	
+	            "editable": function() {
+	              return false;
+	            }
+	          },
+	          {
+	            "title": "Total + discount",
+	            "attributes": {
+	              "class": "currency"
+	            },
+	            "field": "Total",
+	            "format": "{0:C}",
+				editable: false
+	          }
+		],
+		"scrollable": false,
+	    "editable": {	       
+	      "mode": "incell"	        
+	    },
+		dataBound: shoppingCartGridOnDataBound
+	})
+
+	//$("#shoppingCartGrid").data('kendoGrid').one('dataBound', shoppingCartGridOnDataBoundInitial)
+})
+</script>
+
+<style>
+	.empty-cart-image {
+		margin-top: 60px;
+		margin-bottom: 40px;
+	}
+
+	.emtpy-cart-text {
+		margin-bottom: 250px;
+		display: flex;
+		flex-direction: row;
+		gap: 3px;
+	}
+
+	.shopping-cart-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.shopping-cart-heading {
+		margin-top: 56px;
+		font-weight: 500;
+		font-size: 40px;
+		line-height: 58px;
+		text-align: center;
+		letter-spacing: -0.9px;
+		color: #272727;
+	}
+
+	.continue-shopping {
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 24px;
+		text-align: center;
+		color: #0078D4;
+		margin-top: 31px;
+		margin-bottom: 77px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	#shoppingCartGrid {
+		width: 1194px;
+		margin-bottom: 48px;
+	}
+
+	.k-master-row {
+		height: 170px;
+	}
+
+	.product-col {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.k-header {
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 28px;
+		letter-spacing: -0.9px;
+		color: #1D252C;
+	}
+
+	.k-grid-header {
+		background: transparent;
+	}
+
+	.k-alt {
+		background: transparent !important;
+	}
+
+	.k-master-row {
+		background: transparent !important;
+	}
+
+	.shopping-cart-bottom {
+		width: 1194px;
+		justify-content: right;
+		display: flex;
+		flex-direction: row;
+		gap: 60px;
+	}
+
+	.sub-total {
+		width: 227px;
+		justify-content: space-between;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.k-grid {
+		border: none;
+	}
+
+		.k-grid th {
+			border-left: none !important;
+			border-bottom-width: 2px !important;
+		}
+
+		.k-grid td {
+			border-left: none !important;
+			border-bottom-width: 2px !important;
+		}
+
+	.product-name {
+		margin-top: 38px;
+		margin-bottom: 46px;
+		font-size: 22px;
+		line-height: 29px;
+		color: #1D252C;
+	}
+
+	.currency {
+		font-size: 18px;
+		line-height: 28px;
+		letter-spacing: 0.1px;
+		color: #1D252C;
+	}
+
+	.quantity-editor {
+		width: 120px;
+	}
+
+	.k-spinner-increase {
+		background: none;
+		border: none;
+	}
+
+	.k-spinner-decrease {
+		background: none;
+		border: none;
+	}
+
+	.sub-total-val {
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 28px;
+		letter-spacing: 0.1px;
+		color: #1D252C;
+	}
+
+	.tax-and-shipping {
+		width: 227px;
+		height: 17px;
+		font-style: italic;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 17px;
+		text-align: right;
+		color: #818181;
+	}
+
+	#checkoutButton {
+		padding: 12px;
+		gap: 8px;
+		width: 185px;
+		height: 48px;
+		background: #0078D4;
+		border-radius: 4px;
+	}
+
+		#checkoutButton:hover {
+			background: #6AA985;
+		}
+
+	/*.k-button-text {
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 24px;
+		color: #FFFFFF;
+	}*/
+</style>
