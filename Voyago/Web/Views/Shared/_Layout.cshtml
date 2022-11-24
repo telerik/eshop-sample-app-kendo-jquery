@@ -17,7 +17,6 @@
 	</environment>
 	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.3.1109/styles/kendo.fluent-main.min.css" />
 	<script src="https://cdn.kendostatic.com/2022.3.1109/js/jquery.min.js"></script>
-	<script src="https://cdn.kendostatic.com/2022.3.1109/js/jszip.min.js"></script>
 	<script src="https://cdn.kendostatic.com/2022.3.1109/js/kendo.all.min.js"></script>
 	<script src="~/js/product_details.js"></script>
 	<script src="~/js/shopping_cart.js"></script>
@@ -50,6 +49,18 @@
 				asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"></script>
 	</environment>
 	@RenderSection("scripts", required: false)
+	<script>
+        $(document).ready(function () {
+            console.log('document is ready');
+            $(".search-bar-container").css("visibility", "visible");
+			$(".logo").css("visibility", "visible");
+			$(".search-bar-container").css("visibility", "visible");
+			$("#headerCategoriesDDL").css("visibility", "visible");
+			$('.header-menu button').css("visibility", "visible");
+			$('#contacts').css("visibility", "visible");
+			$('.header').css("visibility", "visible");
+        });
+    </script>
 </body>
 </html>
 

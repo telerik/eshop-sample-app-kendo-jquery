@@ -2,24 +2,28 @@
     ViewData["Title"] = "Login Page";
 }
 
-<div class="login-form">
-    <img class="logo" src="~/images/logo.png" alt="Voyago">
-
-    <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm"></form>   
-
-    <div class="register-prompt">
-        <p>Don’t have an account?</p><a href="/Account/Register" style="text-decoration:none; color:#0078D4;">Register</a>
+<div class="login-custom" style="visibility: hidden;">    
+    <div class="login-form">
+        <img class="logo" src="~/images/logo.png" alt="Voyago">
+    
+        <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm"></form>   
+    
+        <div class="register-prompt">
+            <p>Don’t have an account?</p><a href="/Account/Register" style="text-decoration:none; color:#0078D4;">Register</a>
+        </div>
     </div>
+    
+    <script id="formButtonsTmpl" type="text/html">
+        <button class="k-button k-form-submit" type="submit">
+            <span class="k-button-text">Login</span>
+        </button>
+    </script>
 </div>
 
-<script id="formButtonsTmpl" type="text/html">
-    <button class="k-button k-form-submit" type="submit">
-        <span class="k-button-text">Login</span>
-    </button>
-</script>
 
 <script>
-    $("#loginForm").kendoForm({
+    $(document).ready(function(){        
+        $("#loginForm").kendoForm({
         "buttonsTemplate": jQuery('#formButtonsTmpl').html(),
         "validatable": {
             "validateOnBlur": true,
@@ -50,7 +54,10 @@
             },
             "shouldRenderHidden": true
         }]
-    });
+     });     
+    $(".login-custom").css("visibility", "visible");
+ })
+    
 </script>
 
 <style>

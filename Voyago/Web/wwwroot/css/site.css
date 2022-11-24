@@ -8,3 +8,7 @@ body {
     font-family: Segoe UI;
     height: 100%;
 }
+
+:root {
+    --voyago-blue: #0078D4;
+}

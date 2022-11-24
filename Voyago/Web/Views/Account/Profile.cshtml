@@ -1,6 +1,6 @@
 ﻿@model Models.ViewModels.UserProfileViewModel;
 
-<div class="content-container">
+<div class="content-container profile">
     <div class="header-contacts">
         <h1>Profile</h1> 
     </div>
@@ -57,7 +57,11 @@
           {
             field: "Phone",
             label: "Phone:",
-            colSpan: 4
+            colSpan: 4,
+            editor: "MaskedTextBox",
+            editorOptions: {
+                mask: "(000) 000-0000"
+            }
           }
         ],
         messages: {
@@ -66,11 +70,14 @@
         }
       });
 
-      $("#passwordForm").kendoForm({        
+      $("#passwordForm").kendoForm({    
+        validateOnBlur: true,
+        validationSummary: true,
+        errorTemplate: "<span class='k-form-error'>#:message#</span>",
         formData: {
           ID: 1,
           Password: "",
-          ConfimPassword: ""
+          ConfirmPassword: ""
         },
         items: [
           {
@@ -85,11 +92,11 @@
             }
           },
           {
-            field: "ConfimPassword",
+            field: "ConfirmPassword",
             label: "Confirm Password:",
             validation: { required: true },           
             editor: function (container, options) {
-              $('<input type="password" id="confirmPassowrd" name="' + options.field + '" title="confirmPassowrd" required="required" autocomplete="off" aria-labelledby="confirmPassowrd-form-label" data-bind="value: confirmPassowrd" aria-describedby="confirmPassowrd-form-hint"/>')
+              $('<input type="password" id="confirmPassword" name="' + options.field + '" title="confirmPassword" required="required" autocomplete="off" aria-labelledby="confirmPassword-form-label" data-bind="value: confirmPassword" aria-describedby="confirmPassword-form-hint"/>')
                 .appendTo(container)
                 .kendoTextBox();
             }
@@ -175,12 +182,12 @@
         }
       });
 
-        $("#password_details").kendoValidator({
+       $("#passwordForm").kendoValidator({
             rules: {
-                confirmPassCheck: function (input) {
-                    if (input.is("[name=ConfimPassword]") && input.val()) {
-                        let enteredPass = $("#Password").data("kendoTextBox");
-                        let confirmedPass = $("#ConfimPassword").data("kendoTextBox");
+                confirmPassCheck: function (input) {                   
+                    if (input.is("[name=ConfirmPassword]") && input.val()) {
+                        let enteredPass = $("#password").data("kendoTextBox");
+                        let confirmedPass = $("#confirmPassword").data("kendoTextBox");                        
                         if(enteredPass.value() != confirmedPass.value()) {
                             input.attr("data-confirmPassCheck-msg", "Passwords do not match.");
                             return false;
@@ -191,7 +198,7 @@
                 },
                 passCheck: function (input) {
                     if (input.is("[name=Password]") && input.val()) {
-                        let enteredPass = $("#Password").data("kendoTextBox");
+                        let enteredPass = $("#password").data("kendoTextBox");
                         if(enteredPass.value().length < 4  || enteredPass.value().length > 24) {
                             input.attr("data-passCheck-msg", "Enter a valid password between 4 and 24 characters.");
                             return false;
@@ -205,7 +212,7 @@
 
 
 
-       $("#shipping_details").kendoValidator({
+       $("#shippingAddressForm").kendoValidator({
             rules: {
                 stateCheck: function (input) {
                     if (input.is("[name=State]")) {
@@ -226,11 +233,55 @@
 
     <style>
         .content-container{
-            min-height: 700px;
+           min-height: 570px;
            width: 70%;
            margin: 0 auto;
+           margin-bottom: 10vh;
         }
         .k-tabstrip-items {
-            justify-content: center
+            justify-content: center;
         }
+
+        .k-tabstrip-items .k-item{
+            min-width: 27%;
+        }
+
+        .k-tabstrip-items .k-item .k-link{
+            justify-content: center;
+        }
+
+        .k-tabstrip-items .k-item .k-icon{
+            margin: 3px;
+        }
+
+        #personalDetailsForm .k-form-layout.k-grid-cols-2 .k-colspan-1:nth-child(1){
+            margin-right: 5%;
+        }
+
+        .profile .header-contacts{
+            text-align: center;
+        }
+
+        .profile h1{
+            font-weight: 600;
+            font-size: 42px;
+            line-height: 59px;
+            margin: 7vh auto;
+        }
+
+        @@media (max-width: 900px) {		
+            .k-form-layout>.k-colspan-1,
+            .k-form-layout>.k-colspan-2
+            {
+                grid-column: span 4/span 4 !important;
+            }
+
+            #personalDetailsForm .k-form-layout .k-colspan-1:nth-child(1), 
+            #personalDetailsForm .k-form-layout .k-colspan-1, 
+            #personalDetailsForm .k-form-layout .k-colspan-2
+            {
+                margin-right: 0px !important;
+            }
+		
+	    }
     </style>

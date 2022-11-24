@@ -15,7 +15,7 @@ function onCategoryDataBound(e) {
 	//showResultCount(e);
 	distinguishFavorites();
 	bindFavouritesAndCartButtones();
-	bindExcelButtonAndSortDdl();
+	bindSortByDdl();
 }
 
 function distinguishFavorites() {
@@ -133,26 +133,20 @@ function bindFavouritesAndCartButtones() {
 	});
 }
 
-function bindExcelButtonAndSortDdl() {
-	$("#excelExport").kendoButton({
-		"click": exportDataSource,
-		"iconClass": "k-icon k-i-file-excel k-button-icon"
-	});
+function bindSortByDdl() {
 
 	if ($("#sortBy").data('kendoDropDownList') == undefined ) {
 		$("#sortBy").kendoDropDownList({
 			"change": sortDataSource,
-			"dataTextField": "Text",		
-			"dataValueField": "Value",
+			"dataTextField": "text",		
+			"dataValueField": "value",
 			"optionLabel": "Sort by",
-			"dataSource": {
-				"transport": {
-					"read": {
-						"url": "/Products/GetAllSortParameters",
-						"type": "GET"
-					}
-				}
-			}
+			"dataSource": [
+				{ text: "Price - Low to High", value: 1, filterField: "Price", direction: "asc" },
+				{ text: "Price - High to Low", value: 2, filterField: "Price", direction: "desc" },
+				{ text: "Name - A to Z", value: 3, filterField: "Name", direction: "asc" },
+				{ text: "Name - Z to A", value: 4, filterField: "Name", direction: "desc" }
+			]
 		});
     }	
 }
@@ -161,7 +155,7 @@ function onSummaryDataBound(e) {
 	showSearchResult(e);
 	showCategories(e);
 	distinguishFavorites();
-	bindExcelButtonAndSortDdl();
+	bindSortByDdl();
 	bindFavouritesAndCartButtones();
 
 }
@@ -183,12 +177,13 @@ function showSearchResult(e) {
 
 function showCategories(e) {
 	var searchParam = $("#searchBar").data("kendoAutoComplete").value();
-	var data = e.sender.dataSource._data;
-
+	//var data = e.sender.dataSource._data;
+	var groupCount = e.sender.dataSource.view()
+	
 	$("#availableCategories").html("");
-	for (i = 0; i < data.length; ++i) {
-		var value = data[i].value;
-		var count = data[i].items.length;
+	for (i = 0; i < groupCount.length; ++i) {		
+		var value = groupCount[i].value;
+		var count = groupCount[i].items.length;
 		var categoriesElement = $("#availableCategories");
 		categoriesElement.append("<a href='/Products/Category?subCategory=" + value + "&searchParam=" + searchParam + "' ><p style='color: black;' ><strong>" + value + "</strong> (" + count + " results)</p></a>");
 	}
@@ -201,29 +196,33 @@ function onAdditionalData() {
 }
 
 function onSearchSelect(e) {	
-	var product = e.dataItem;
+	e.preventDefault();
+	var product = e.dataItem;	
 	location.href = "/Products/Details?productId=" + product.ProductId;
 }
 
-//function searchProducts(e) {
-//	//debugger;
-//	//var product = e.sender.dataItem()
-//	//location.href = "/Products/Details?productId=" + name + "&subCategory=" + subCategory;
-//}
-//
-//function searchByNameAndCategory(name, subCategory) {
-//	///Products/Details?productId=809
-//	location.href = "/Products/Details?productId=" + name + "&subCategory=" + subCategory;
-//}
-//
-//function searchByName(name) {
-//	if (location.pathname.includes("/Products/")) {
-//		filterDataSource();
-//	}
-//	else {
-//		location.href = "/Products/Summary?searchParam=" + name;
-//	}
-//}
+function searchProducts(e) {	
+	var params = e.sender.value().split("; ");
+	if (params.length == 1) {
+		searchByName(params[0]);
+	}
+	else {
+		searchByNameAndCategory(params[0], params[1]);
+	}
+}
+
+function searchByNameAndCategory(name, subCategory) {
+	location.href = "/Products/Category?searchParam=" + name + "&subCategory=" + subCategory;
+}
+
+function searchByName(name) {
+	if (location.pathname.includes("/Products/")) {
+		filterDataSource();
+	}
+	else {
+		location.href = "/Products/Summary?searchParam=" + name;
+	}
+}
 
 function changeUserCountry(e) {
 	let stateDDL = $("#State").data("kendoDropDownList");

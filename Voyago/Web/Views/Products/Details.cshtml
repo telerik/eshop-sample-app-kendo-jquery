@@ -62,9 +62,9 @@
 					@{
 						if (Model.DiscountPct > 0)
 						{							
-							<label class="list-price">$ @Model.Price</label>
-							<label id="discount" class="discount">10% Off</label>
-							<label id="final-price" class="price"> $90</label>
+							<label class="list-price"></label>
+							<label id="discount" class="discount"></label>
+							<label id="final-price" class="price"></label>
 						}
 						else
 						{						
@@ -105,8 +105,9 @@
 		var price = "@Model.Price"
 		var finalPrice = "@Model.FinalPrice"
 		
-		$('.price').text(kendo.toString(Number(price), 'c'))		
-		$('#discount').text(kendo.toString(Number(discount * 100), 'c0'))
+		$('.price').text(kendo.toString(Number(price), 'c'))
+		$('.list-price').text(kendo.toString(Number(price), 'c'))
+		$('#discount').text(kendo.toString(Number(discount * 100), 'p0'))
 		$('#final-price').text(kendo.toString(Number(finalPrice), 'c2'))
 
 		$.get("/Products/GetAvailableColors?productId=" + productId, function (data) {
@@ -117,10 +118,7 @@
 				value: "@Model.Color",
 				change: function () { selectAlternateProductVersion(modelId); }
 			});
-		});
-
-		//distinguishFavorites();
-		//bindFavouritesAndCartButtones();
+		});		
 
 		$("#breadcrumb").kendoBreadcrumb({
 			"items": [{

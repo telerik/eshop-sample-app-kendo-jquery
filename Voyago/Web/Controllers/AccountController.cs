@@ -446,17 +446,17 @@ namespace Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetFavoriteProducts()
+        public JsonResult GetFavoriteProducts()
         {
             var favoriteProductIds = HttpContext.Session.Get<List<int>>("_Favorites");
             if (favoriteProductIds == default)
             {
-                return Json(new { });
+                return Json(new List<int>());
             }
 
             var favoriteProducts = userService.GetFavoriteProductsById(favoriteProductIds);
 
-            return Json(favoriteProducts);
+            return Json(favoriteProducts.ToList());
         }
 
 
@@ -474,10 +474,10 @@ namespace Web.Controllers
             };
 
             var favoriteProductIds = HttpContext.Session.Get<List<int>>("_Favorites");
-            if (favoriteProductIds == default)
-            {
-               // return Json(new { });
-            }
+            //if (favoriteProductIds == default)
+            //{
+            //   // return Json(new { });
+            //}
 
             var favoriteProducts = userService.GetFavoriteProductsById(favoriteProductIds);
 

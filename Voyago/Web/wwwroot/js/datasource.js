@@ -252,8 +252,8 @@ function filterDataSource() {
 }
 
 function sortDataSource(e) {
-    var parameter = e.sender.value();
-    var direction = e.sender.dataItem().Direction;
+    var parameter = e.sender.dataItem().filterField;
+    var direction = e.sender.dataItem().direction;
     if (parameter != null && direction != null) {
         var ds = $("#allProductsListView").data("kendoListView").dataSource;
         ds.sort({ field: parameter, dir: direction })

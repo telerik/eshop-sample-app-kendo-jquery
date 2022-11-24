@@ -1,34 +1,39 @@
-﻿.k-listview {
+﻿﻿.k-listview {
     border: none;
 }
 
 .k-card {
-    box-shadow: 0px 4px 24px rgba(123, 123, 123, 0.15);
-    border-radius: 10px;
+    box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
+    border-radius: 2px;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 315px;
 }
 
 .k-card-image {
-    border: 10px 10px 0px 0px
+    width: 100%;
+    height: 264px;
+}
+
+.k-card-header h5 {
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 2.4em;
+    color: #000000;
 }
 
 span.discount-pct {
     position: absolute;
     top: 0;
-    left: 0;
-    top: 10px;
-    margin-left: 245px;
-    font-size: 16px;
-    line-height: 24px;
+    right: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
     color: #FFFFFF;
-    background: #0078D4;
-    padding: 5px;
-    padding-right: 15px;
-    left: 10px;
-    opacity: 0.75;
+    background: var(--voyago-blue);
+    padding: 2%;
+    padding-right: 4%;
 }
 
 .price-container {
@@ -47,15 +52,14 @@ span.discount-pct {
 }
 
 .card-price {
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 46px;
-    letter-spacing: -0.9px;
-    color: #0078D4;
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--voyago-blue);
 }
 
 .rating-text {
-    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.93rem;
 }
 
 .card-buttons {
@@ -65,23 +69,125 @@ span.discount-pct {
 }
 
 .card-cart-button {
-    width: 250px;
-    height: 40px;
-    background: #0078D4;
-    border-radius: 4px;
-    color: #FFFFFF !important;
+    width: 264px;
+    height: 34px;
 }
-
-    .card-cart-button:hover {
-        background: white;
-        color: #0078D4;
-        border-color: #0078D4;
-    }
 
 .card-favorites-button {
-    width: 40px;
-    height: 40px;
-    background: #FFFFFF;
-    border: 1px solid #272727;
-    border-radius: 4px;
+    width: 34px;
+    height: 34px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*k-listview {
+    border: none;
+}
+
+.k-card {
+    box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
+    border-radius: 2px;
+    flex: 20%;*/
+    /*width: 17.22vw;
+    height: 23.76vw;*/
+/*}
+
+    .k-card-image {
+        width: 100%;*/
+       /* height: 12.89vw;*/
+    /*}
+
+.k-card-header {
+    padding: 0.78vw;*/
+    /*height: 4.1vw;*/
+/*}
+
+    .k-card-header h5 {
+        padding: 0;
+        font-weight: 600;
+        font-size: 1.82vw;
+        line-height: 2.54vw;
+        color: #323130;
+    }
+
+.discount-badge {
+    position: absolute;
+    width: 2.86vw;
+    height: 1.56vw;
+    right: 0px;
+    top: 0px;
+    padding: 5px;
+    background: var(--voyago-blue);
+}
+
+span.discount-pct {
+    font-weight: 400;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 0.65vw;
+    line-height: 0.9vw;
+    text-align: center;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0vw 0vw 0vw 0.78vw;
+    gap: 0.65vw;*/
+   /* height: 2.92vw;*/
+/*}
+
+.card-old-price {
+    font-weight: 500;
+    font-size: 1.69vw;
+    line-height: 2.99vw;
+    letter-spacing: -00.5vw;
+    color: indianred;
+    text-decoration: line-through;
+}
+
+.card-price {
+    font-weight: 400;
+    font-size: 2.08vw;
+    line-height: 2.91vw;
+    color: var(--voyago-blue);
+}*/
+
+/*.rating-text {
+    margin-bottom: 12px;
+}*/
+
+/*.card-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-cart-button {
+    width: 17.1875vw;
+    height: 2.21vw;
+}
+
+.card-favorites-button {
+    width: 2.21vw;
+    height: 2.21vw;
+}*/

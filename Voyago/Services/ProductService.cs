@@ -18,7 +18,7 @@ namespace Services
             this.dbContext = dbContext;
         }
 
-        
+
         public IEnumerable<ProductAllViewModel> GetAllProducts()
         {
             var products = dbContext.Products.ToList();
@@ -47,22 +47,24 @@ namespace Services
         {
             var viewModels = products.Select(p => new ProductAllViewModel
             {
-                Id = p.ProductId, 
+                Id = p.ProductId,
                 Name = p.ProductName,
                 ModelId = p.ProductModelId,
                 Model = p.ProductModel,
                 Price = p.ListPrice,
                 SubCategory = p.ProductSubCategoryName,
                 SubCategoryId = p.ProductSubcategoryId,
+                Description = p.Description,
                 AverageRating = p.Rating ?? 0,
                 Quantity = p.Quantity,
                 DiscountPct = p.DiscountPct,
+                ProductCategoryName = p.ProductCategoryName,
                 Color = p.Color,
                 Size = p.Size,
                 PhotoId = p.PhotoId,
                 LargePhoto = p.LargePhoto,
                 ThumbNailPhoto = p.ThumbNailPhoto,
-                Weight = p.Weight ?? 0                
+                Weight = p.Weight ?? 0
             });
 
             return viewModels;
@@ -79,19 +81,22 @@ namespace Services
             var productFromDb = await dbContext.Products.FirstAsync(p => p.ProductId == productId);
             var productViewModel = new ProductAllViewModel
             {
-                Id = productFromDb.ProductId,       
-                Name= productFromDb.ProductName,
+                Id = productFromDb.ProductId,
+                Name = productFromDb.ProductName,
                 ProductNumber = productFromDb.ProductNumber,
                 Size = productFromDb.Size,
                 Weight = productFromDb.Weight,
                 Color = productFromDb.Color,
                 Description = productFromDb.Description,
                 Price = productFromDb.ListPrice,
+                PhotoId=productFromDb.PhotoId,
+                //LargePhoto = productFromDb.LargePhoto,
+                DiscountPct = productFromDb.DiscountPct != null ? productFromDb.DiscountPct : 0,
                 ProductCategoryName = productFromDb.ProductCategoryName,
                 ProductCategoryId = productFromDb.ProductCategoryId,
                 SubCategory = productFromDb.ProductSubCategoryName,
-               // FinalPrice = productFromDb.ListPrice * (1 - productFromDb.DiscountPct),
-                ModelId = productFromDb.ProductModelId             
+                //FinalPrice = productFromDb.ListPrice * (1 - productFromDb.DiscountPct),
+                ModelId = productFromDb.ProductModelId
             };
 
             return productViewModel;
@@ -99,10 +104,14 @@ namespace Services
 
         public IQueryable<SearchSuggestionViewModel> GetSearchSuggestions(string text)
         {
-            var suggestions = dbContext.Products.Where(p => p.ProductName.Contains(text)).Select(p => new SearchSuggestionViewModel
+            var suggestions = dbContext.Products.Where(p => p.ProductName.Contains(text) 
+                && p.ProductCategoryName != null
+                && p.ProductSubCategoryName != null
+                && p.ListPrice > 0).Select(p => new SearchSuggestionViewModel
             {
                 ProductName = p.ProductName,
-                ProductId = p.ProductId
+                ProductId = p.ProductId,
+                SubCategory = p.ProductSubCategoryName
             });
 
             return suggestions;
@@ -206,14 +215,14 @@ namespace Services
             return categories;
         }
 
-       // public IEnumerable<string> GetAllSubCategoryNames()
-       // {
-       //     var subCategories = dbContext.Products.GroupBy(p => p.ProductSubCategoryName).Select(p => p.First()).ToList();
-       //         
-       //         //PRodGet.Select(psc => psc.Name);
-       //
-       //     return (IEnumerable<string>)subCategories;
-       // }
+        // public IEnumerable<string> GetAllSubCategoryNames()
+        // {
+        //     var subCategories = dbContext.Products.GroupBy(p => p.ProductSubCategoryName).Select(p => p.First()).ToList();
+        //         
+        //         //PRodGet.Select(psc => psc.Name);
+        //
+        //     return (IEnumerable<string>)subCategories;
+        // }
 
         //public IQueryable<string> GetAllModels()
         //{
@@ -228,17 +237,17 @@ namespace Services
                 .Where(pm => pm.ProductSubCategoryName == subCategory)
                 .Select(pm => pm.ProductModel)
                 .Distinct();
-        
+
             return models;
         }
 
         public IQueryable<string> GetAllSizes()
         {
             var sizes = dbContext.Products.Where(p => p.Size != null).Select(p => p.Size ?? "").Distinct();
-        
+
             return sizes;
         }
-        
+
         public IQueryable<string> GetAllSizesInSubCategory(string subCategory)
         {
             var sizes = dbContext.Products
@@ -246,17 +255,17 @@ namespace Services
                 .Where(p => p.Size != null)
                 .Select(p => p.Size ?? "")
                 .Distinct();
-        
+
             return sizes;
         }
-        
+
         public IQueryable<string> GetAllColors()
         {
             var colors = dbContext.Products.Where(p => p.Color != null).Select(p => p.Color ?? "").Distinct();
-        
+
             return colors;
         }
-        
+
         public IQueryable<string> GetAllColorsInSubCategory(string subCategory)
         {
             var colors = dbContext.Products
@@ -264,69 +273,69 @@ namespace Services
                 .Where(p => p.Color != null)
                 .Select(p => p.Color ?? "")
                 .Distinct();
-        
+
             return colors;
         }
-        
-        public IEnumerable<SortParmeterViewModel> GetAllSortParameters()
-        {
-            PropertyInfo[] properties = typeof(ProductAllViewModel).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-        
-            var parameters = new List<SortParmeterViewModel>();
-            foreach (var property in properties.Where(p => !p.Name.Contains("Id")))
-            {
-                var text = property.Name;
-                for (int i = 1; i < text.Length; ++i)
-                {
-                    if (Char.IsUpper(text[i]))
-                    {
-                        text = text.Insert(i++, " ");
-                    }
-                }
-                var asc = new SortParmeterViewModel() { Text = text + " - Ascending", Value = property.Name, Direction = "asc" };
-                var desc = new SortParmeterViewModel() { Text = text + " - Descending", Value = property.Name, Direction = "desc" };
-                parameters.Add(asc);
-                parameters.Add(desc);
-            }
-        
-            return parameters;
-        }
-        
+
+       // public IEnumerable<SortParmeterViewModel> GetAllSortParameters()
+       // {
+       //     PropertyInfo[] properties = typeof(ProductAllViewModel).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+       //
+       //     var parameters = new List<SortParmeterViewModel>();
+       //     foreach (var property in properties.Where(p => !p.Name.Contains("Id")))
+       //     {
+       //         var text = property.Name;
+       //         for (int i = 1; i < text.Length; ++i)
+       //         {
+       //             if (Char.IsUpper(text[i]))
+       //             {
+       //                 text = text.Insert(i++, " ");
+       //             }
+       //         }
+       //         var asc = new SortParmeterViewModel() { Text = text + " - Ascending", Value = property.Name, Direction = "asc" };
+       //         var desc = new SortParmeterViewModel() { Text = text + " - Descending", Value = property.Name, Direction = "desc" };
+       //         parameters.Add(asc);
+       //         parameters.Add(desc);
+       //     }
+       //
+       //     return parameters;
+       // }
+
         public async Task<byte[]?> GetProductThumbnailById(int photoId)
         {
             if (await dbContext.Products.AnyAsync(p => p.PhotoId == photoId))
             {
                 return (await dbContext.Products.FirstAsync(p => p.PhotoId == photoId)).ThumbNailPhoto;
             }
-        
+
             return null;
         }
-        
+
         public async Task<byte[]?> GetProductLargePhotoById(int photoId)
         {
             if (await dbContext.Products.AnyAsync(p => p.PhotoId == photoId))
             {
                 return (await dbContext.Products.FirstAsync(p => p.PhotoId == photoId)).LargePhoto;
             }
-        
+
             return null;
         }
-        
+
         public async Task<IEnumerable<SubCategoryViewModel>> GetTopSellingSubCategories(int count)
         {
             var products = dbContext.Products.Where(p => p.ProductCategoryId != null && p.ProductSubcategoryId != null && p.ProductSubCategoryName != null)
                 .Shuffle().Take(count).Select(psc => new SubCategoryViewModel
-            {
-                SubCategoryId = psc.ProductSubcategoryId,
-                Name = psc.ProductSubCategoryName,
-                CategoryId = psc.ProductCategoryId,
-                TotalSales = psc.Quantity,
-                ImageName = GetCategoryImageName(psc.ProductSubcategoryId)
-            }).ToList();
+                {
+                    SubCategoryId = psc.ProductSubcategoryId,
+                    Name = psc.ProductSubCategoryName,
+                    CategoryId = psc.ProductCategoryId,
+                    TotalSales = psc.Quantity,
+                    ImageName = GetCategoryImageName(psc.ProductSubcategoryId)
+                }).ToList();
 
             return products;
         }
-        
+
         private static string GetCategoryImageName(int? productSubcategoryId)
         {
             switch (productSubcategoryId)
@@ -371,15 +380,18 @@ namespace Services
                     return "generic_bike1.png";
             }
         }
-        
+
         public async Task<string> GetParentCategory(string subCategory)
         {
-            var productCategory = dbContext.Products.FirstOrDefault(psc => psc.ProductSubCategoryName == subCategory).ProductCategoryName;
-            if (productCategory != String.Empty)
+            if(subCategory != null)
             {
-                return productCategory;
+                var productCategory = dbContext.Products.FirstOrDefault(psc => psc.ProductSubCategoryName == subCategory).ProductCategoryName;
+                if (productCategory != String.Empty)
+                {
+                    return productCategory;
+                }
             }          
-        
+
             return "Other";
         }
     }

@@ -221,7 +221,7 @@ namespace Services
                 Id = p.ProductId,
                 Name = p.ProductName,
                 Price = p.ListPrice,
-              //  FinalPrice = p.
+                //FinalPrice = p.ListPrice,
                 DiscountPct = p.DiscountPct,
                 Description = p.Description != null ? p.Description : "...",
                 ModelId = p.ProductModelId,

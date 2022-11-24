@@ -29,6 +29,6 @@ function removeProductFromFavorites(e) {
 
 function getFavoritesCount() {
 	$.get("/Account/GetFavoritesCount", function (data) {
-		$("#contacts-btn .k-badge").data('kendoBadge').text(data);
+		$("#favourites-btn .k-badge").data('kendoBadge').text(data);
 	});
 }

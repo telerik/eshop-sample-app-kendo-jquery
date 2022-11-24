@@ -29,7 +29,7 @@ namespace Services.Interfaces
 
         Task<byte[]?> GetProductLargePhotoById(int photoId);
 
-        IEnumerable<SortParmeterViewModel> GetAllSortParameters();
+        //IEnumerable<SortParmeterViewModel> GetAllSortParameters();
 
         IEnumerable<string> GetAllCategoryNames();
 
@@ -40,13 +40,13 @@ namespace Services.Interfaces
         IQueryable<string> GetAllModelsInSubCategory(string subCategory);
 
         IQueryable<string> GetAllSizes();
-        
+
         IQueryable<string> GetAllSizesInSubCategory(string subCategory);
-        
+
         IQueryable<string> GetAllColors();
-        
+
         IQueryable<string> GetAllColorsInSubCategory(string subCategory);
-        
+
         Task<IEnumerable<SubCategoryViewModel>> GetTopSellingSubCategories(int count);
 
         Task<string> GetParentCategory(string subCategory);

@@ -18,15 +18,12 @@
 				</div>
 			}
 		}
-		<div class="price-container">
-			#if (FinalPrice != Price) { #
-				<h5 class="card-old-price">#:kendo.toString(Price, "c")#</h5>
-			#}#
+		<div class="price-container">		
 			<h5 class="card-price">#:kendo.toString(FinalPrice, "c")#</h5>
 		</div>
 		<div class="card-buttons">
-			<button class="card-cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
-			<button class="card-favorites-button add-to-favourites" id="addToFavoritesButton_#=Id#" name="addToFavoritesButton_#=Id#" type="button"></button>
+			<button class="card-cart-button add-to-cart k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
+			<button class="card-favorites-button add-to-favourites k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-icon-button" id="addToFavoritesButton_#=Id#" name="addToFavoritesButton_#=Id#" type="button"></button>
 
 		</div>
 	</div>

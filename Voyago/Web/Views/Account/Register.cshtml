@@ -7,8 +7,6 @@
 
 	<form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
 
-	<div>test</div>
-
 	<div class="login-prompt">
 		<p>Already have an account?</p><a href="/Account/Login" style="text-decoration:none; color:#0078D4;">Login</a>
 	</div>
@@ -36,7 +34,14 @@
                 "text": "First and last name"
             },
             "validation": {
-                "type": "text"
+                "type": "text",
+				"required": {
+					"message": "Please enter First and Last name"
+				},
+				"pattern": {
+					"value":"^[a-zA-Z]+\\s+[a-zA-Z]+$", 
+					"message":"Please enter First and Last name separated by a space"
+				},
             }
         }, {
             "field": "Email",
@@ -44,7 +49,8 @@
                 "text": "Email"
             },
             "validation": {
-                "type": "text"
+                "required": true, 
+				"email": true
             }
         }, {
             "field": "Password",
@@ -60,6 +66,24 @@
             }
         }]
     });
+
+	$("#registerForm").kendoValidator({
+            rules: {                
+                passCheck: function (input) {
+                    if (input.is("[name=Password]") && input.val()) {
+                        let enteredPass = $("#Password").data("kendoTextBox");
+                        if(enteredPass.value().length < 4  || enteredPass.value().length > 24) {
+                            input.attr("data-passCheck-msg", "Enter a valid password between 4 and 24 characters.");
+                            return false;
+                        }
+                        return true;
+                    }
+                    return true;
+                }				
+            }
+        });
+
+
 </script>
 
 <style>

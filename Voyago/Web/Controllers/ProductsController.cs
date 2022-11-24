@@ -14,15 +14,15 @@ namespace Web.Controllers
         public ProductsController(IProductService productService)
         {
             this.productService = productService;
-        }       
+        }
 
         [HttpGet]
         public async Task<IActionResult> Category(string? searchParam, string? subCategory)
         {
-            if(subCategory == null)
+            if (subCategory == null || subCategory == "null")
             {
                 return Redirect("/Home/Index");
-            }
+            }            
 
             var parentCategory = await productService.GetParentCategory(subCategory);
 
@@ -34,13 +34,21 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ReadAllProducts()
+        public JsonResult ReadAllProducts()
         {
             var result = productService.GetAllProducts().ToList();
 
             return Json(result);
         }
-       
+
+        [HttpGet]
+        public IActionResult Summary(string? searchParam)
+        {
+            ViewBag.SearchParam = searchParam ?? String.Empty;
+
+            return View();
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> Details(int productId)
@@ -54,7 +62,7 @@ namespace Web.Controllers
 
             addToRecentlyViewed(productId);
 
-            if(!string.IsNullOrEmpty(model.SubCategory))
+            if (!string.IsNullOrEmpty(model.SubCategory))
             {
                 ViewBag.SubCategory = model.SubCategory;
                 ViewBag.Price = model.Price;
@@ -101,27 +109,23 @@ namespace Web.Controllers
             return Json(result);
         }
 
-        [HttpGet]
-        public IActionResult GetAllSortParameters()
-        {
-            return Json(productService.GetAllSortParameters());
-        }
+        //[HttpGet]
+        //public IActionResult GetAllSortParameters()
+        //{
+        //    return Json(productService.GetAllSortParameters());
+        //}
 
-        [HttpGet]
-        public IActionResult GetAllCategories()
-        {
-            return Json(new { });
-        }       
 
         [HttpGet]
         public IActionResult GetAllModelsInSubCategory(string subCategory)
-        {           
-            return Json(productService.GetAllModelsInSubCategory(subCategory));
+        {
+            var result = productService.GetAllModelsInSubCategory(subCategory);
+            return Json(result);
         }
 
         [HttpGet]
         public IActionResult GetAllSizes()
-        {            
+        {
             return Json(productService.GetAllSizes());
         }
 
@@ -148,7 +152,7 @@ namespace Web.Controllers
         {
             byte[]? thumbnailData = await productService.GetProductThumbnailById(photoId);
 
-            if(thumbnailData == null)
+            if (thumbnailData == null)
             {
                 return File("./images/generic_bike1.png", "image/png");
             }
