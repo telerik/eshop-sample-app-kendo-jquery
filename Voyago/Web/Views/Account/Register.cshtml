@@ -2,18 +2,21 @@
 	ViewData["Title"] = "Register Page";
 }
 
-<div class="register-form">
-	<img class="logo" src="~/images/logo.png" alt="Voyago">
+<div>
+    <div class="register-form">
+	    <img class="logo" src="~/images/logo.png" alt="Voyago">
 
-	<form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
+	    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
 
-	<div class="login-prompt">
-		<p>Already have an account?</p><a href="/Account/Login" style="text-decoration:none; color:#0078D4;">Login</a>
-	</div>
+	    <div class="login-prompt">
+	    	<p>Already have an account?</p><a href="/Account/Login" class="login-link">Login</a>
+	    </div>
+    </div>
 </div>
 
+
 <script id="formButtonsTmpl" type="text/html">
-	<button class="k-button k-form-submit" type="submit">
+	<button class="k-button k-form-submit" type="submit">       
 		<span class="k-button-text">Register</span>
 	</button>
 </script>
@@ -62,107 +65,19 @@
                 "type": "password"
             },
             "validation": {
-                "type": "text"
+                "type": "text",
+				"required": {
+					"message": "Please enter First and Last name"
+				},
+				"pattern": {
+					"value":"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", 
+					"message":"Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers"
+				},
             }
         }]
     });
 
-	$("#registerForm").kendoValidator({
-            rules: {                
-                passCheck: function (input) {
-                    if (input.is("[name=Password]") && input.val()) {
-                        let enteredPass = $("#Password").data("kendoTextBox");
-                        if(enteredPass.value().length < 4  || enteredPass.value().length > 24) {
-                            input.attr("data-passCheck-msg", "Enter a valid password between 4 and 24 characters.");
-                            return false;
-                        }
-                        return true;
-                    }
-                    return true;
-                }				
-            }
-        });
-
 
 </script>
 
-<style>
-	.register-form {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 0px;
-		gap: 64px;
-		position: absolute;
-		width: 420px;
-		height: 570px;
-		left: calc(50% - 420px/2);
-		top: calc(50% - 570px/2 - 1px);
-	}
-
-	.k-form-field  {
-		margin-bottom: 32px;
-	}
-
-	.k-form-hint {
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-		display: flex;
-		align-items: center;
-	}
-
-	.logo {
-		width: 238px;
-		height: 58px;
-		flex: none;
-		order: 0;
-		flex-grow: 0;
-	}
-
-	.k-input-inner {
-		font-size: 18px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 10px;
-		width: 420px;
-		height: 48px;
-	}
-
-	.k-label.k-form-label {
-		width: 420px;
-		height: 48px;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 18px;
-		line-height: 28px;
-		letter-spacing: 0.1px;
-		color: #424242;
-	}
-
-	.k-button.k-form-submit {
-		width: 420px;
-		height: 48px;
-		margin-top: 32px;
-		background: #0078D4;
-		border: none;
-		border-radius: 4px;
-	}
-
-	.k-button-text {
-		width: 53px;
-		height: 24px;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 20px;
-		line-height: 24px;
-		color: #FFFFFF;
-	}
-
-	.login-prompt {
-		display: flex;
-		gap: 10px;
-	}
-</style>
+<link rel="stylesheet" href="/css/register_form.css">

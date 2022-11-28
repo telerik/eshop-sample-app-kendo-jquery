@@ -8,10 +8,7 @@ function shoppingCartGridOnDataBoundInitial(e) {
 }
 
 function shoppingCartGridOnDataBound(e) {
-	//$(".templateCell").each(function () {
-	//	eval($(this).children("script").last().html());
-	//});	
-
+	
 	var grid = e.sender;
 	var items = e.sender.items();
 
@@ -29,12 +26,6 @@ function shoppingCartGridOnDataBound(e) {
 			"rounded": "none"
 		});
 	});
-	
-	//var rows = this.tbody.children();
-	//var dataItems = this.dataSource.view();
-	//for (var i = 0; i < dataItems.length; i++) {
-	//	kendo.bind(rows[i], dataItems[i]);
-	//}
 
 	calculateShoppingCartTotal();
 	getShoppingCartItemsCount();
@@ -60,8 +51,7 @@ function updateShoppingCartChanges(e) {
 	var newQtyValue = e.sender.value()
 	editDataItem.set('Quantity', newQtyValue)
 	editDataItem.set('Total', newQtyValue * editDataItem.ProductPrice)
-	getShoppingCartGrid().dataSource.sync();
-	debugger;
+	getShoppingCartGrid().dataSource.sync();	
 }
 
 function checkoutShoppingCart() {

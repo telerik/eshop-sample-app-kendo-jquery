@@ -18,8 +18,7 @@ namespace Web.Controllers
 
         [HttpGet]
         public IActionResult Index()
-        {
-            //var products = productService.GetAllProducts();
+        {            
             return View();
         }
 
@@ -72,7 +71,7 @@ namespace Web.Controllers
 
         public JsonResult GetSearchSuggestions(string text)
         {
-            var products = productService.GetSearchSuggestions(text).ToList();
+            var products = productService.GetSearchSuggestions(text).Where(p => p.SubCategory != "Other" && p.SubCategory != null).ToList();
 
             return Json(products);
         }

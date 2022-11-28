@@ -7,7 +7,7 @@
 	<nav id="breadcrumb" name="breadcrumb"></nav>	
 	<div class="model-details">
 		<div class="model-image">
-			<img width="453" height="453" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">			
+			<img class="detail-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">			
 		</div>
 		<div class="model-info">
 			<div class="info-top">
@@ -23,20 +23,20 @@
 						}
 					}
 				</h1>
-				<input id="productRating" name="productRating" style="color: #0078D4;" type="text" value="0" />				
+				<input id="productRating" name="productRating" type="text" value="0" />				
 				<hr class="splitter1">
 			</div>
 			<div class="info-bottom">
 				<div class="bottom-left">
-					<div class="info-row" style="gap:53px;">
+					<div class="info-row">
 						<p class="info-title">Product Name</p>
 						<p class="info-value">@Model.Name</p>
 					</div>
-					<div class="info-row" style="gap:76px;">
+					<div class="info-row">
 						<p class="info-title">Product No</p>
 						<p>@Model.ProductNumber</p>
 					</div>
-					<div class="info-row" style="gap:130px;">
+					<div class="info-row">
 						<p class="info-title">Size</p>
 						@{
 							if (Model.Size != null)
@@ -45,17 +45,17 @@
 							}
 						}
 					</div>
-					<div class="info-row" style="gap:109px;">
+					<div class="info-row">
 						<p class="info-title">Weight</p>
 						<p>@Model.Weight</p>
 					</div>
-					<div class="info-row" style="gap:121px;">
+					<div class="info-row">
 						<p class="info-title">Color</p>
 						<ul id="colorPicker"></ul>
 					</div>
-					<div class="info-row" style="gap:75px;">
+					<div class="info-row">
 						<p class="info-title">Description</p>
-						<p style="width:400px;">@Model.Description</p>
+						<p class="description-text">@Model.Description</p>
 					</div>
 				</div>
 				<div class="bottom-right">
@@ -107,7 +107,7 @@
 		
 		$('.price').text(kendo.toString(Number(price), 'c'))
 		$('.list-price').text(kendo.toString(Number(price), 'c'))
-		$('#discount').text(kendo.toString(Number(discount * 100), 'p0'))
+		$('#discount').text(kendo.toString(Number(discount), 'p0'))
 		$('#final-price').text(kendo.toString(Number(finalPrice), 'c2'))
 
 		$.get("/Products/GetAvailableColors?productId=" + productId, function (data) {
@@ -179,201 +179,15 @@
 			      dataType: "json" 
 			    }
 			  }
-			});
-
-			//dataSource.fetch(function() {
+			});		
 							
-				$("#similarProductsListView").kendoListView({
-			        "tagName": "div",				
-			        "dataSource": dataSource,
-					"dataBound": onSimilarDataBound,
-			        "template": kendo.template($('#product-template').html())
-			    });    
-			//});
+		$("#similarProductsListView").kendoListView({
+		    "tagName": "div",				
+		    "dataSource": dataSource,
+			"dataBound": onSimilarDataBound,
+		    "template": kendo.template($('#product-template').html())
+		}); 
 	});
 </script>
 
-<style>
-	.details-container {
-		width: 1440px;
-		margin: auto;
-	}
-
-	.splitter1 {
-		border-top: 2px solid #bbb;
-	}
-
-	.splitter2 {
-		margin-top: 80px;
-		margin-bottom: 80px;
-		border-top: 2px solid #bbb;
-	}
-
-	.model-details {
-		display: flex;
-		flex-direction: row;
-	}
-
-	.model-info {
-		display: flex;
-		flex-direction: column;
-		margin-left: 40px;
-	}
-
-	.info-bottom {
-		display: flex;
-		flex-direction: row;
-	}
-
-	.bottom-left {
-		width: 650px;
-		display: flex;
-		gap: 8px;
-		flex-direction: column;
-	}
-
-	.info-row {
-		display: flex;
-		flex-direction: row;
-	}
-
-	.bottom-right {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.info-text {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.similar-products {
-		font-weight: 500;
-		font-size: 26px;
-		line-height: 46px;
-		letter-spacing: -0.9px;
-		color: #000000;
-		margin-left: 20px;
-	}
-
-	.k-listview-content {
-		display: flex;
-		flex-direction: row;
-		justify-content: left;
-		border: none;
-	}
-
-	.large-image {
-		width: 453px;
-		height: 453px;
-	}
-
-	#breadcrumb {
-		margin-top: 35px;
-		margin-bottom: 58px;
-	}
-
-	.details-heading {
-		font-weight: 500;
-		font-size: 40px;
-		line-height: 58px;
-		letter-spacing: -0.9px;
-	}
-
-	.splitter {
-		border: 1px solid #E5E5E5;
-	}
-
-	.info-text {
-		width: 300px;
-	}
-
-	.info-title {
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 24px;
-	}
-
-	.info-value {
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-		color: #1D252C;
-	}
-
-	.k-picker {
-		width: 174px;
-	}
-
-	.k-input-value-text {
-		font-size: 16px;
-	}
-
-	.k-radio.k-checked, .k-radio:checked {
-		background-color: #0078D4 !important;
-		border: 1px solid !important;
-		border-color: #0078D4 !important;
-	}
-
-	.list-price {
-		font-weight: 500;
-		text-align: right;
-		font-size: 40px;
-		line-height: 58px;
-		letter-spacing: -0.9px;
-		color: indianred;
-		margin-bottom: 5px;
-		text-decoration: line-through;
-	}
-	.discount {
-		font-weight: 500;
-		text-align: right;
-		font-size: 22px;
-		letter-spacing: -0.9px;
-		margin-bottom: 5px;
-	}
-	.price {
-		font-weight: 500;
-		text-align: right;
-		font-size: 40px;
-		line-height: 58px;
-		letter-spacing: -0.9px;
-		color: #0078D4;
-		margin-bottom: 22px;
-	}
-
-	.product-buttons {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
-
-	.cart-button {
-		width: 250px;
-		height: 40px;
-		border-radius: 4px;
-		background: #0078D4;
-		color: #FFFFFF !important;
-	}
-
-	 .card-cart-button:hover {
-        background: white;
-        color: #0078D4;
-        border-color: #0078D4;
-    }
-
-	.favorites-button {
-		width: 250px;
-		height: 40px;
-		background: #FFFFFF;
-		border: 1px solid #272727;
-		border-radius: 4px;
-	}
-
-	.k-button-text {
-		font-weight: 500 !important;
-		font-size: 16px !important;
-		line-height: 24px !important;
-		text-align: center !important;
-	}
-</style>
+<link rel="stylesheet" href="/css/details.css">

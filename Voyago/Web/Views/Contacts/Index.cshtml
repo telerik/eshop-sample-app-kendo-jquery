@@ -3,33 +3,31 @@
 }
 
 <div class="contacts-container">
-<div class="header-contacts">
-    <h1>Contacts</h1>
-</div>
-<form class="contact-form"></form>
-
-
-<span class="location">
-    <div class="location-message">
-
-        <label>United States<br>
-            932 Clousson Road Str<br>
-            Sergeant Bluff, Iowa<br>
-            712-923-1916<br>
-            51054United States<br>
-            932 Clousson Road Str<br>
-            Sergeant Bluff, Iowa<br>
-            712-923-1916<br>
-            51054</label>
-
+    <div class="header-contacts">
+        <h1>Contacts</h1>
     </div>
-    <div class="map"></div>
-</span>
+    <form class="contact-form"></form>
+
+
+    <div class="location">
+        <div class="location-message">
+
+            <label>United States<br>
+                932 Clousson Road Str<br>
+                Sergeant Bluff, Iowa<br>
+                712-923-1916<br>
+                51054United States<br>
+                932 Clousson Road Str<br>
+                Sergeant Bluff, Iowa<br>
+                712-923-1916<br>
+                51054</label>
+
+        </div>
+        <div class="map"></div>
+    </div>
 </div>
 
 <script>
-
-
     $(document).ready(function () {
         $(".contact-form").kendoForm({
             formData: {
@@ -87,60 +85,8 @@
             }]
         });  
     });
-
-
 </script>
 
-<style>
-    .contacts-container{
-       min-height: 570px;
-       width: 45%;
-       margin: 0 auto;
-       margin-bottom: 10vh;
-    } 
+<link rel="stylesheet" href="/css/contacts.css">
 
-    .map{
-        width: 600px; 
-        height: 300px;
-    }
-
-    .contacts-container .header-contacts{
-        text-align: center;
-    }
-
-    .header-contacts h1{
-        font-weight: 600;
-        font-size: 42px;
-        line-height: 59px;
-        margin: 7vh auto;
-    }
-
-    .contacts-button{
-        width: 33%;
-    }
-
-    .location{
-        display: inline-flex;
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 12vh;
-    }
-
-     @@media (max-width: 900px) {		
-          .contacts-container{              
-               width: 85%;
-               margin: 0 auto;
-               margin-bottom: 5%;
-            } 
-
-        .location{
-            flex-direction: column;
-        }
-
-        .map{
-            width: 80vw;             
-        }
-		
-	}
-</style>
 

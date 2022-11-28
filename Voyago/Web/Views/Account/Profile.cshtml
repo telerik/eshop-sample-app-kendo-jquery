@@ -21,11 +21,10 @@
         <form id="shippingAddressForm" method="post" action="@Url.Action("SaveUserShippingDetails", "Account")"></form>
       </div>
     </div>
-</div>
-    
+</div>    
 
 
-    <script>
+ <script>
      $(document).ready(function(e) {
          var tabStrip = $("#tabstrip").kendoTabStrip().data("kendoTabStrip");
          tabStrip.select(0);
@@ -231,57 +230,4 @@
     })
     </script>
 
-    <style>
-        .content-container{
-           min-height: 570px;
-           width: 70%;
-           margin: 0 auto;
-           margin-bottom: 10vh;
-        }
-        .k-tabstrip-items {
-            justify-content: center;
-        }
-
-        .k-tabstrip-items .k-item{
-            min-width: 27%;
-        }
-
-        .k-tabstrip-items .k-item .k-link{
-            justify-content: center;
-        }
-
-        .k-tabstrip-items .k-item .k-icon{
-            margin: 3px;
-        }
-
-        #personalDetailsForm .k-form-layout.k-grid-cols-2 .k-colspan-1:nth-child(1){
-            margin-right: 5%;
-        }
-
-        .profile .header-contacts{
-            text-align: center;
-        }
-
-        .profile h1{
-            font-weight: 600;
-            font-size: 42px;
-            line-height: 59px;
-            margin: 7vh auto;
-        }
-
-        @@media (max-width: 900px) {		
-            .k-form-layout>.k-colspan-1,
-            .k-form-layout>.k-colspan-2
-            {
-                grid-column: span 4/span 4 !important;
-            }
-
-            #personalDetailsForm .k-form-layout .k-colspan-1:nth-child(1), 
-            #personalDetailsForm .k-form-layout .k-colspan-1, 
-            #personalDetailsForm .k-form-layout .k-colspan-2
-            {
-                margin-right: 0px !important;
-            }
-		
-	    }
-    </style>
+    <link rel="stylesheet" href="/css/profile.css">

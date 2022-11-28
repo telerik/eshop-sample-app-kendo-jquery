@@ -51,18 +51,6 @@ namespace Services
             return await dbContext.Contacts.AnyAsync(c => c.EmailAddress == email);
         }
 
-       // public IEnumerable<SalesOrderViewModel> OrdersByUser()
-       // {
-       //     return dbContext.SalesOrders.Select(p => new SalesOrderViewModel()
-       //     {
-       //         //OrderId = p.OrderId,
-       //         //ShipDate = p.ShipDate,
-       //         //UnitPrice = p.UnitPrice,
-       //         //Quantity = p.Quantity,
-       //         //LineTotal = p.LineTotal,                
-       //     }).ToList();
-       // }
-
         public async Task<bool> CreateNewUser(RegisterUserInpuModel input)
         {
             var inputName = input.FirstAndLastName.Trim();
@@ -152,7 +140,6 @@ namespace Services
             var shoppingCartItemForDb = new ShoppingCartItem
             {
                 ShoppingCartId = userEmail,
-                //ShoppingCartItemId = 158,
                 ProductId = productId,
                 Quantity = 1,
                 DateCreated = DateTime.Now,
@@ -221,7 +208,6 @@ namespace Services
                 Id = p.ProductId,
                 Name = p.ProductName,
                 Price = p.ListPrice,
-                //FinalPrice = p.ListPrice,
                 DiscountPct = p.DiscountPct,
                 Description = p.Description != null ? p.Description : "...",
                 ModelId = p.ProductModelId,
@@ -255,30 +241,7 @@ namespace Services
             Random random = new Random();
 
             return new string(Enumerable.Repeat(allowedCharacters, length - 1).Select(s => s[random.Next(s.Length)]).ToArray()) + '=';
-        }
-
-       //public async Task<bool> AddSalesOrder(List<SalesOrderViewModel> items, string userEmail)
-       //{      
-       //    var userID = dbContext.Contacts.FirstOrDefault( u => u.EmailAddress == userEmail);
-       //    var listSH = new List<SalesOrder>();
-       //    for(var i = 0; i < items.Count(); i++)
-       //    {
-       //        var shoppingCartItemForDb = new SalesOrder
-       //        {
-       //            //ProductName = items[i].ProductName,
-       //            //ProductId = items[i].ProductId,
-       //            //Total = items[i].Total,
-       //            //Status = 1,
-       //            //ShipDate = DateTime.Now.AddDays(3),
-       //            //UnitPrice = items[i].UnitPrice,
-       //            //Quantity = (short)items[i].Quantity,
-       //            //ContactId = userID.ContactId
-       //        };               
-       //        await dbContext.SalesOrders.AddAsync(shoppingCartItemForDb);
-       //    }   
-       //
-       //    return await dbContext.SaveChangesAsync() > 0 ? true : false;
-       //}
+        }     
 
         public async Task<bool> EditUserDetails(ProfileUserInputModel input, string email)
         {

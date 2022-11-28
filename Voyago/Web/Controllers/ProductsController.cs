@@ -36,7 +36,7 @@ namespace Web.Controllers
         [HttpGet]
         public JsonResult ReadAllProducts()
         {
-            var result = productService.GetAllProducts().ToList();
+            var result = productService.GetAllProducts().Where(p => p.SubCategory != "Other" && p.SubCategory != null).ToList();
 
             return Json(result);
         }
@@ -108,12 +108,6 @@ namespace Web.Controllers
 
             return Json(result);
         }
-
-        //[HttpGet]
-        //public IActionResult GetAllSortParameters()
-        //{
-        //    return Json(productService.GetAllSortParameters());
-        //}
 
 
         [HttpGet]

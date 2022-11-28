@@ -34,9 +34,7 @@ namespace Web.Controllers
         {
             if (string.IsNullOrEmpty(captchaModel.captchaID))
             {
-                GenerateNewCaptcha();
-
-                //return Redirect("/Home/Index");
+                GenerateNewCaptcha();              
                 return View();
             }
             else
@@ -89,13 +87,7 @@ namespace Web.Controllers
 
         private CaptchaImage SetCaptchaImage()
         {
-            CaptchaImage newCaptcha = CaptchaHelper.GetNewCaptcha();
-
-            //MemoryStream audio = CaptchaHelper.SpeakText(newCaptcha);
-            //using (FileStream file = new FileStream(Path.Combine(CaptchaPath, newCaptcha.UniqueId + ".wav"), FileMode.Create, FileAccess.Write))
-            //{
-            //    audio.WriteTo(file);
-            //}
+            CaptchaImage newCaptcha = CaptchaHelper.GetNewCaptcha();          
 
             var image = CaptchaHelper.RenderCaptcha(newCaptcha);
             image.Save(Path.Combine(CaptchaPath, newCaptcha.UniqueId + ".png"), ImageFormat.Png);

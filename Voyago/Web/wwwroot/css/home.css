@@ -145,17 +145,23 @@ a {
 }
 
 .download-app {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 3%;
-    margin: 3em 35em 5em 35em;
+    margin: 3em 10em 3em 10em;
 }
 
 .download-text {
     font-weight: 400;
     font-size: 1.75em;
     color: #605E5C;
+}
+
+.downlaod-icons {
+    display: flex;
+    flex-direction: row;
 }
 
 @media (max-width: 1300px) {
@@ -202,5 +208,21 @@ a {
 @media (max-width: 900px) {
     .recently-viewed {
         margin: 0em 0em 3em 0em;
+    }
+
+    .download-app {
+        flex-direction: column;
+        margin: 0em 3em 3em 3em;
+    }
+
+
+    .download-text {
+        margin: 1em;
+    }
+}
+
+@media (max-width: 460px) {
+    .download-app {
+        margin: 0em 1em 1em 1em;
     }
 }

@@ -23,10 +23,7 @@ namespace Services.Interfaces
 
         Task<bool> ClearUserShoppingCart(string userEmail);
 
-        IEnumerable<FavoriteProductViewModel> GetFavoriteProductsById(IEnumerable<int> productIds);
-
-        //IEnumerable<SalesOrderViewModel> OrdersByUser();
-        //Task<bool> AddSalesOrder(List<SalesOrderViewModel> items, string userEmail);
+        IEnumerable<FavoriteProductViewModel> GetFavoriteProductsById(IEnumerable<int> productIds);       
 
         Task<bool> EditUserDetails(ProfileUserInputModel input, string email);
 

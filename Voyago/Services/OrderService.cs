@@ -74,11 +74,7 @@ namespace Services
         }
 
         public IEnumerable<OrderDetailsViewModel> GetOrderDetailsById(int orderNumber, string userEmail)
-        {
-            //if (!await dbContext.SalesOrders.AnyAsync(p => p.OrderId == orderId))
-            //{
-            //    return null;
-            //}
+        {            
             List<OrderDetailsViewModel> orders = (from order in dbContext.SalesOrders
                           join contact in dbContext.Contacts on order.ContactId equals contact.ContactId
                           where contact.EmailAddress == userEmail && order.OrderNumber == orderNumber

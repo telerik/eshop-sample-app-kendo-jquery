@@ -1,7 +1,7 @@
 function onRecentlyViewedDataBound(e) {
-	hideRecentlyViewedIfEmpty(e);
+	hideRecentlyViewedIfEmpty(e);	
+	bindFavouritesAndCartButtones();
 	distinguishFavorites();
-	bindFavouritesAndCartButtones()
 }
 
 function hideRecentlyViewedIfEmpty(e) {
@@ -11,21 +11,25 @@ function hideRecentlyViewedIfEmpty(e) {
 	}
 }
 
-function onCategoryDataBound(e) {
-	//showResultCount(e);
-	distinguishFavorites();
+function onCategoryDataBound(e) {		
 	bindFavouritesAndCartButtones();
 	bindSortByDdl();
+	distinguishFavorites();
 }
 
-function distinguishFavorites() {
+function distinguishFavorites() {	
 	var favButtons = $("[id^=addToFavoritesButton_]");
 	favButtons.each(function () {
 		var currentButton = $(this);
+		var icon = currentButton.find(".k-icon");
 		var productId = this.id.split("_")[1];
 		$.get("/Account/ProductIsInFavorites?productId=" + productId, function (data) {
 			if (data) {
-				currentButton.css("background-color", "#ffdf73");
+				if (currentButton.find(".k-button-text")) {
+					currentButton.find(".k-button-text").text("Added to favorites");
+				}
+				icon.removeClass("k-i-heart-outline");
+				icon.addClass("k-i-heart");
 			}
 		});
 	});
@@ -48,8 +52,7 @@ function addFilterCheckBoxes() {
 		}],
 		value: ["1"]
 	});
-
-	// add checkboxes for the rating
+	
 	$("#ratingPicker").kendoCheckBoxGroup({
 		"change": filterDataSource,
 		"items": [{
@@ -117,19 +120,21 @@ function goToCategoryPage(e) {
 }
 
 function bindFavouritesAndCartButtones() {
+
 	$(".add-to-cart").kendoButton({
 		"click": addProductToShoppingCart,
-		"imageUrl": "/images/shopping_cart.svg"
+		"themeColor": "primary",
+		"icon": "cart"
 	});
 
 	$(".add-to-favourites").kendoButton({
 		"click": addProductToFavorites,
-		"imageUrl": "/images/heart.svg"
+		"icon": 'heart-outline'
 	});
 
 	$(".remove-from-cart").kendoButton({
-		"click": removeProductFromFavorites,
-		"imageUrl": "/images/heart_full.svg"
+		"click": removeProductFromFavorites,		
+		"icon": 'heart'
 	});
 }
 
@@ -142,8 +147,8 @@ function bindSortByDdl() {
 			"dataValueField": "value",
 			"optionLabel": "Sort by",
 			"dataSource": [
-				{ text: "Price - Low to High", value: 1, filterField: "Price", direction: "asc" },
-				{ text: "Price - High to Low", value: 2, filterField: "Price", direction: "desc" },
+				{ text: "Price - Low to High", value: 1, filterField: "FinalPrice", direction: "asc" },
+				{ text: "Price - High to Low", value: 2, filterField: "FinalPrice", direction: "desc" },
 				{ text: "Name - A to Z", value: 3, filterField: "Name", direction: "asc" },
 				{ text: "Name - Z to A", value: 4, filterField: "Name", direction: "desc" }
 			]
@@ -153,16 +158,16 @@ function bindSortByDdl() {
 
 function onSummaryDataBound(e) {
 	showSearchResult(e);
-	showCategories(e);
-	distinguishFavorites();
+	showCategories(e);	
 	bindSortByDdl();
 	bindFavouritesAndCartButtones();
+	distinguishFavorites();
 
 }
 
-function onSimilarDataBound(e) {	
-	distinguishFavorites();
+function onSimilarDataBound(e) {
 	bindFavouritesAndCartButtones();
+	distinguishFavorites();
 }
 
 function showSearchResult(e) {

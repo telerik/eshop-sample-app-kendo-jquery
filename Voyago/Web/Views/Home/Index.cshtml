@@ -1,165 +1,6 @@
 ﻿@{
 	ViewData["Title"] = "Home Page";
 }
-
-<style>
-	.home-content {
-		display: flex;
-		flex-direction: column;
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	#topPicks .k-scrollview-wrap li.k-scrollview-page {
-		width: inherit!important;
-	}
-
-/*	#topPicks{
-		margin: 0 auto;
-
-	}*/
-
-	#scrollView .k-scrollview-wrap img {
-		display: inline-block;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        width:inherit;
-        height:inherit;
-		object-fit: cover;
-	}
-
-	.top-picks-container {
-		height: 480px;
-		/*height: 25vw;*/
-		left: 0px;
-		background-color: #C7E0F4;		
-	}
-
-	.home-heading {
-		font-weight: 600;
-		font-size: 2.187vw;
-		line-height: 3.0625vw;
-		color: #000000;
-/*		margin-top: 1.56em;
-		margin-left: 15em;
-		margin-bottom: 1.56em;*/
-		margin-top: 1.25vw;
-		margin-left: 19.5vw;
-		margin-bottom: 1vw;
-	}
-
-	.top-picks {
-		display: flex;
-		flex-direction: row;
-		gap: 1.5vw;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-
-		.top-pick-card {
-			background: #FFFFFF;
-
-		    width: 16.84rem;
-			height: 20rem;
-
-/*			width: 15.44vw;
-			height: 16.67vw*/;
-		}
-
-		.top-pick-heading {
-			font-weight: 600;
-			font-size: 1.458vw;
-			color: #323130;
-			border-radius: 0px;
-			padding: 0.75em 1em 0.75em 1em;
-		/*	padding: 0.625vw 0.83vw 0.625vw 0.83vw;*/
-			margin: 0;
-		}
-
-	.top-pick-image {
-		width: 16.84rem;
-		height: 18.8rem;
-/*		width: 15.44vw;
-		height: 13.33vw;*/
-		background-repeat:no-repeat; 
-		background-size: cover;
-		object-fit: cover;
-	}
-
-	.categories-container {
-		margin: 5em 15em 5em 15em;
-	}
-
-	.categories-header {
-		display: flex;
-		flex-direction:row;
-		justify-content: space-between;
-	}
-
-	.categories-title {
-		font-weight: 600;
-		font-size: 2.187vw;
-		line-height: 3.06vw;
-		color: #000000;
-	}
-
-	#download-catalog {
-		height: 2.375em;
-		align-self: center;
-	}
-
-	.categories-inner {
-	  display: flex;
-	  justify-content: center;
-	  flex-wrap: wrap;
-	  gap: 3%;
-	}
-
-	/* Create four equal columns that sits next to each other */
-	.column {
-	  flex: 30%;
-	  max-width: 30%;
-	}
-
-		.category-heading {
-			font-weight: 600;
-			font-size: 1.458vw;
-			line-height: 2.04vw;
-			color: #323130;
-		}
-
-		.column img {
-		  margin-top: 8px;
-		  vertical-align: middle;
-		}
-
-
-	/* Responsive layout - makes a two column-layout instead of four columns */
-	@@media (max-width: 1300px) {
-
-	.categories-container {
-		margin: 3em 5em 3em 5em;
-	}
-
-		.categories-header {
-			flex-direction:column;
-		}
-
-		.categories-title {
-			align-self: center;
-		}
-
-	  .column {
-		flex: 100%;
-		max-width: 100%;
-	  }
-	}	
-</style>
-
-
 <div class="home-content">
 	<div class="scrollview-container">
 	<div id="scrollView" style="width:100vw; max-width: 100%; margin: auto; height: 31.3vw;">
@@ -263,14 +104,7 @@
 			               "type": "GET"
 			           }
 			       },
-			       "pageSize": 4,
-			       //"page": 0,
-			       //"groupPaging": false,
-			       //"total": 0,			                
-			       //"sort": [{
-			       //    "field": "TotalSales",
-			       //    "dir": "desc"
-			       //}],
+			       "pageSize": 4,			      
 				   schema: {
 					  data: function(response) {
 					    return response.Result; 
@@ -363,3 +197,5 @@
         });
 	})
 </script>
+
+<link rel="stylesheet" href="/css/home.css">

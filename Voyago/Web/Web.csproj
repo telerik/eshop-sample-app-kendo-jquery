@@ -40,10 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Reports\Favourites.trdp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

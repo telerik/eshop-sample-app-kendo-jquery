@@ -1,35 +1,57 @@
-﻿<link rel="stylesheet" href="@Url.Content("~/Styles/OrdersPageStyle.css")">
-
-<div class="content-container">
-    <div class="header-contacts">
-        <h1>Orders</h1>
-    </div>
-
-    <div id="orders-grid" class="profile-tabstrip" ></div>
+﻿
+<div class="orders-container">
+    <h4 class="orders-title">Orders</h4>
+    <div id="orders-grid" class="profile-tabstrip"></div>
 </div>  
 
 <script>
-    $(document).ready(function(e) {
-        $("#orders-grid").kendoGrid({
-            columns: [
-              { field: "OrderNumber" },
-              { field: "OrderDate" },
-              { field: "Total" },
-              { field: "Status" },
-              { template: "<a href='/Account/OrderDetails/#=OrderNumber#'>View Order</a>" }
+$(document).ready(function(e) {
+    $("#orders-grid").kendoGrid({
+        columns: [
+            { field: "OrderNumber", template: '\\##=OrderNumber#' },
+            { field: "OrderDate", format: "{0:MM/dd/yyyy HH:mm:ss tt}" },
+            { field: "Total", format: '{0:c}' },
+            { field: "Status", template: '#if(Status == 1){# In progress  #}else{# Completed #}#' },
+            { template: "<a href='/Account/OrderDetails/#=OrderNumber#' class='view-order-link'>View Order</a>" }
 
-            ],
-            pageable: true,   
-            dataSource: {                    
-               transport: {                   
-                   read: {
-		           	    url: "/Account/GetAllOrders",
-                        dataType: "json"
-		           },
-               },
-               pageSize: 20,
-                 
-            }
-        });
-    })
+        ],
+        noRecords: true,
+        pageable: {
+            previousNext: false,                
+            messages:{
+                page: '',
+                of: "orders per page"
+            },  
+        },
+        sortable: true,
+        scrollable: true,
+        dataSource: {                    
+            transport: {                   
+                read: {
+		           	url: "/Account/GetAllOrders",
+                    dataType: "json"
+		        },
+            },
+            pageSize: 10,
+            schema: {
+                model: {
+                    fields: {
+                        OrderNumber: { type: "number" },
+                        OrderDate: { type: "date" }
+                    }
+                }
+            },                 
+        }
+    });
+
+    $('#orders-grid .k-grid-pager').addClass('k-pager-sm')   
+    $('#orders-grid .k-grid-pager').removeClass('k-pager-md')
+      
+    $(window).resize(function() {
+    $('#orders-grid .k-grid-pager').addClass('k-pager-sm')   
+    $('#orders-grid .k-grid-pager').removeClass('k-pager-md')
+    });
+})
 </script>
+
+<link rel="stylesheet" href="/css/orders.css">

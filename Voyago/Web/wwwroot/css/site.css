@@ -4,11 +4,27 @@
     height: 100%;
 }
 
-body {
-    font-family: Segoe UI;
+body {   
     height: 100%;
+	font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #323130;
 }
 
 :root {
     --voyago-blue: #0078D4;
 }
+
+a, a:hover {
+    text-decoration: none;
+    color: #323130;
+}
+
+.k-popup .k-item, .k-list-item, .k-list-optionlabel {
+    outline: none!important;
+}
+
+

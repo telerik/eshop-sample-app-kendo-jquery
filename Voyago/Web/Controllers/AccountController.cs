@@ -102,29 +102,13 @@ namespace Web.Controllers
             {
                 return Redirect("/Home/Index");
             }
-        }
-
-        //[HttpGet]
-        //public ActionResult Invoice(int orderNumber)
-        //{
-        //    var test = new OrderDetailsViewModel()
-        //    {
-        //        OrderNumber = orderNumber
-        //    };
-        //
-        //    ViewBag.OrderNumber = orderNumber;
-        //    return View("Invoice2",test);
-        //}
+        }       
 
         [HttpGet]
         public IActionResult Invoice(int orderNumber)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("OrN", orderNumber);
-
-            //string parameterValue = Newtonsoft.Json.JsonConvert.SerializeObject(parameters).Replace("\"", "'");
-            //reportSource.Parameters.Add("JSONData", parameterValue);
-            // {}
+            parameters.Add("OrN", orderNumber);           
 
             var reportSource = new ReportSourceModel()
             {
@@ -132,9 +116,6 @@ namespace Web.Controllers
                 Parameters = parameters
                                                                     
             };
-
-            //report.Parameters.Add("OrN", orderNumber);
-            //return View("~/Views/Shared/ReportViewer.cshtml", report);
 
             return View("~/Views/Shared/ReportViewer.cshtml", reportSource);
         }
@@ -474,16 +455,11 @@ namespace Web.Controllers
             };
 
             var favoriteProductIds = HttpContext.Session.Get<List<int>>("_Favorites");
-            //if (favoriteProductIds == default)
-            //{
-            //   // return Json(new { });
-            //}
-
+            
             var favoriteProducts = userService.GetFavoriteProductsById(favoriteProductIds);
 
             foreach(var favoriteProduct in favoriteProducts)
-            {
-                //var photo = productService.GetProductLargePhotoById((int)favoriteProduct.PhotoId);
+            {                
                 byte[]? largePhotoData = await productService.GetProductLargePhotoById((int)favoriteProduct.PhotoId);
 
                 reportData.FavoriteReportProducts.Add(new FavoriteReportProductViewModel
@@ -509,6 +485,8 @@ namespace Web.Controllers
             if (!result.HasErrors)
             {
                 return File(result.DocumentBytes, "application/pdf", "favourites.pdf");
+
+                //use this code if you want to save the file locally
 
                 //string fileName = result.DocumentName + "." + result.Extension;
                 //string path = System.IO.Path.GetTempPath();
@@ -538,22 +516,7 @@ namespace Web.Controllers
             }
 
             return Json(favoriteProductIds.Count);
-        }
-
-        //[HttpGet]
-        //[Authorize]
-        //public async Task<IActionResult> AddSalesOrder()
-        //{
-        //    var userEmail = User.FindFirstValue(ClaimTypes.Email);
-        //    var items = userService.GetUserShoppingCartItems(userEmail);
-        //
-        //    if (!await orderService.AddSalesOrder(items, userEmail))
-        //    {
-        //        return Redirect("/Home/Error");
-        //    }
-        //
-        //    return Ok();
-        //}
+        }       
 
         [HttpGet]
         [Authorize]
