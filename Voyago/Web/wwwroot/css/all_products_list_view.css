@@ -20,4 +20,16 @@
     color: none;
 }
 
+#allProductsListView {
+    margin-top: 0px;
+    margin-bottom: 60px;
+    border: none;
+    border-bottom: 1px solid #EDEBE9;
+}
+
+.no-product-msg {
+    text-align: center;
+    padding: 2%;
+}
+
 

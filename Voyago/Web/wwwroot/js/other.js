@@ -11,7 +11,10 @@ function hideRecentlyViewedIfEmpty(e) {
 	}
 }
 
-function onCategoryDataBound(e) {		
+function onCategoryDataBound(e) {
+	if (this.dataSource.total() == 0) {
+		$("#allProductsListView").append("<h4 class='no-product-msg'>This category is out of stock at the moment.</h4>");
+	}
 	bindFavouritesAndCartButtones();
 	bindSortByDdl();
 	distinguishFavorites();
@@ -81,14 +84,13 @@ function addFilterCheckBoxes() {
 			label: false,
 			min: 1,
 			max: 5,
-			precision: "half",
 			value: Number(i) - 0.5
 		});
 	}
 
 	$("#priceSlider").kendoRangeSlider({
-		"change": filterDataSource,
-		"largeStep": 2000,
+		"change": filterDataSource,		
+		"largeStep": 1000,
 		"max": 4000,
 		"min": 0,
 		"orientation": "horizontal",
@@ -100,13 +102,13 @@ function addFilterCheckBoxes() {
 
 	$("#weightSlider").kendoRangeSlider({
 		"change": filterDataSource,
-		"largeStep": 50,
-		"max": 100,
+		"largeStep": 500,
+		"max": 1500,
 		"min": 0,
 		"orientation": "horizontal",
-		"selectionEnd": 100,
+		"selectionEnd": 1500,
 		"selectionStart": 0,
-		"smallStep": 10,
+		"smallStep": 250,
 		"tickPlacement": "both"
 	});
 }

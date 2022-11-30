@@ -3,12 +3,14 @@
 }
 
 <div class="category-page-container">
-	<nav id="breadcrumb" name="breadcrumb"></nav>
-	    @await Html.PartialAsync("_ListViewHeader.cshtml")
+	<nav id="breadcrumb" name="breadcrumb"></nav>	    
 
 	<div class="category-content-container">
-		@await Html.PartialAsync("_MainControls.cshtml")		
-		<div id="allProductsListView" name="allProductsListView"></div>
+		@await Html.PartialAsync("_MainControls.cshtml")	
+		<div>
+			@await Html.PartialAsync("_ListViewHeader.cshtml", (string)ViewBag.SubCategory)
+			<div id="allProductsListView" name="allProductsListView"></div>
+		</div>		
 	</div>
 </div>
 
@@ -87,12 +89,13 @@
 		});
 
 		var dataSourceProducts = new kendo.data.DataSource({
-		  transport: {	   
-		    read: {
-		      url: "/Products/ReadAllProducts",
-		      dataType: "json" 
-		    }
-		  },
+		transport: {
+              read: {
+                  url: "/Products/ReadAllProducts",
+                  dataType: "json"
+              }
+          },
+          pageSize: 12,		  
 		  "filter": [{
                "logic": "and",
                "filters": [{
@@ -103,12 +106,18 @@
            }],
 		});	
 					
-			$("#allProductsListView").kendoListView({
-				"tagName": "div",				
-				"dataSource": dataSourceProducts,			
-				"template": kendo.template($('#product-template').html()),
-				dataBound: onCategoryDataBound
-			});
+		$("#allProductsListView").kendoListView({
+			"tagName": "div",				
+			"dataSource": dataSourceProducts,			
+			"template": kendo.template($('#product-template').html()),
+			dataBound: onCategoryDataBound,
+			pageable: true,
+			layout: "grid",
+            grid: {
+                rows: 4,
+                cols: 3
+            }
+		});		
 
 		 $('.toggle-view').kendoButtonGroup({
             items: [
@@ -162,3 +171,4 @@
 
 
 <link rel="stylesheet" href="/css/category.css">
+<link rel="stylesheet" href="/css/all_products_list_view.css">

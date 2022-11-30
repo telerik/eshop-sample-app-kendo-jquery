@@ -286,7 +286,7 @@ namespace Services
                     CategoryId = psc.ProductCategoryId,
                     TotalSales = psc.Quantity,
                     ImageName = GetCategoryImageName(psc.ProductSubcategoryId)
-                }).ToList();
+                }).DistinctBy(c => c.Name).ToList();
 
             return products;
         }
@@ -340,10 +340,10 @@ namespace Services
         {
             if(subCategory != null)
             {
-                var productCategory = dbContext.Products.FirstOrDefault(psc => psc.ProductSubCategoryName == subCategory).ProductCategoryName;
-                if (productCategory != String.Empty)
+                var productCategory = dbContext.Products.FirstOrDefault(psc => psc.ProductSubCategoryName == subCategory);
+                if (productCategory != null)
                 {
-                    return productCategory;
+                    return productCategory.ProductCategoryName;
                 }
             }          
 

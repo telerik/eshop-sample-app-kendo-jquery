@@ -19,7 +19,8 @@ namespace Services
         }
 
         public async Task<UserViewModel?> GetUserByLoginCredentials(LoginUserInpuModel input)
-        {
+        {           
+
             if (await dbContext.Contacts.AnyAsync(user => user.EmailAddress == input.Email))
             {
                 var attemptedUser = await dbContext.Contacts.FirstAsync(user => user.EmailAddress == input.Email);
@@ -292,9 +293,9 @@ namespace Services
             userAddressFromDb.City = input.City;
             userAddressFromDb.ZipCode = input.Zipcode;
             userAddressFromDb.Country = input.Country;
-            userAddressFromDb.State = input.State;
+            userAddressFromDb.State = input.State == null ? "" : input.State;
 
-            dbContext.Contacts.Update(userAddressFromDb);
+            dbContext.Update(userAddressFromDb);
 
             return await dbContext.SaveChangesAsync() > 0 ? true : false;
 

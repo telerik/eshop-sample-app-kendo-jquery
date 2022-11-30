@@ -3,13 +3,13 @@
 }
 
 <div class="order-details-container">
-    <h4 class="order-details-title">Order #<span id="order-id-header"></span></h4>
+    <h4 class="order-details-title">Order # <span id="order-id-header"></span></h4>
 <div class="order-details-header">
         <div class="order-details-information">
-            <p>Order detials</p>
-            <div><span class="order-information-title">Number:#</span><span id="order-id"></span></div>
-            <div><span class="order-information-title">Date:</span><span id="order-date"></span></div>
-            <div><span class="order-information-title">Amount:</span><span id="order-amount"></span></div>
+            <p>Order details</p>
+            <div><span class="order-information-title">Number: #</span><span id="order-id"></span></div>
+            <div><span class="order-information-title">Date: </span><span id="order-date"></span></div>
+            <div><span class="order-information-title">Amount: </span><span id="order-amount"></span></div>
         </div>
         <div class="ordered-by-container">
             <p>Ordered by:</p>
@@ -43,11 +43,11 @@
             columns: [
               { selectable: true, width: "44px" },
               { width: "144px", template: '<img class="image" src="data:image/png;base64, #:ProductPhoto#" alt="#=ProductName#.jpg">'},
-              { field: "ProductName"},                          
+              { field: "ProductName", title: "Product Name"},                          
               { 
                   field: "Quantity", 
                   width: "172px", 
-                  footerTemplate: "Quantity:" + '#=sum#',
+                  footerTemplate: "Quantity: " + '#=sum#',
                   attributes: { style: "text-align: right; class='cell-text'" },
                   headerAttributes: {
                     style: "text-align: right; justify-content: right"
@@ -68,11 +68,12 @@
               },
               { 
                   field: "LineTotal",
-                  title: "Total",
-                  footerTemplate: "Total: $" + ' #=sum#',
+                  title: "Final Price",
+                  footerTemplate: "Total: $" + '#=sum#',
                   format: '{0:c}',
                   width: "172px",
                   attributes: { style: "text-align: right; class='cell-text'" },
+                  footerTemplate: "Total : #= kendo.toString(sum, 'c') #",
                   headerAttributes: {
                     style: "text-align: right; justify-content: right"
                   },

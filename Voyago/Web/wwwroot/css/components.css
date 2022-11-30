@@ -4,7 +4,6 @@
 
 .edge-image-container {
     min-width: 200px;
-    ;
 }
 
 .category-large-image {
@@ -14,11 +13,13 @@
 .category-small-image {
     width: 100%;
     margin-bottom: 20%;
+    height: 176px;
 }
 
 .category-bottom-image {
     width: auto;
     margin-bottom: 20%;
+    height: 176px;
 }
 
 a {
@@ -58,6 +59,13 @@ a {
     display: flex;
     flex-direction: row;
     gap: 3%
+}
+
+.sub-category-images-bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+    margin-top: 40px;
 }
 
 .category-heading-large {

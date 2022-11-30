@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-right: 70px;
+    margin-top: 20px;
 }
 
 .result-count {
@@ -18,11 +20,9 @@
 }
 
 .list-view-header-controls {
-    align-self: end;
-    display: flex;
-    flex-direction: row;
-    margin-right: 30px;
-    gap: 20px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #excelExport {
@@ -33,4 +33,20 @@
 [aria-controls="sortBy_listbox"] {
     background: none;
     border-radius: 0;
+}
+
+.list-view-header-controls .k-dropdownlist{
+    margin-right: 33px;
+}
+
+.category-name-header {
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 58.8px;
+    color: black;
+    font-family: 'Segoe UI';
+}
+
+.k-i-arrow-s::before {
+    content: "\e015" !important;
 }

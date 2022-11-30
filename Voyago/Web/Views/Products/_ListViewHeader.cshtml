@@ -1,8 +1,12 @@
-﻿<div class="list-view-header">
+﻿@model String
+
+<div class="list-view-header">
 	<div class="result-count">
 		<p id="resultCount"></p>
 
 	</div>
+
+	<div class="category-name-header">@Model</div>
 
 	<div class="list-view-header-controls">		
 		<input id="sortBy" name="sortBy" style="width: 200px; height:30px;" />

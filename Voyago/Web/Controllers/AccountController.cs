@@ -161,7 +161,11 @@ namespace Web.Controllers
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> LogOut()
-        {
+        {    
+            var valueFavs = new List<int>();
+            var valueRecently = new Queue<int>(4);
+            HttpContext.Session.Set<List<int>>("_Favorites", valueFavs);
+            HttpContext.Session.Set<Queue<int>>("_RecentlyViewed", valueRecently);
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
@@ -404,7 +408,7 @@ namespace Web.Controllers
 
             HttpContext.Session.Set<List<int>>(key, value);
 
-            var test = HttpContext.Session.Get<List<int>>(key);
+            var items = HttpContext.Session.Get<List<int>>(key);
 
             return Json(productId);
         }

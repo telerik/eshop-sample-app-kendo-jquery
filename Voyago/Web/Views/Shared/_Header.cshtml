@@ -6,7 +6,7 @@
 		<input id="searchBar" name="searchBar" type="text" value="" />		
 	</div>
 	<div class="header-menu">
-		<div>
+		<div class="ddl-container">
 			<input id="headerCategoriesDDL" name="headerCategoriesDDL" type="text" />	
 		</div>	
 		<button id="favourites-btn">Favourites</button>	
@@ -60,7 +60,6 @@
 				location.href='/Account/ShoppingCart'
 			},
 			icon: 'cart',
-			size: "large",
             badge: {
                 position: "edge",
                 rounded: "full",
@@ -83,7 +82,7 @@
 		$("#searchBar").kendoAutoComplete({			
 			"clearButton": false,
 			"dataTextField": "ProductName",
-			"minLength": 4,
+			"minLength": 2,
 			"placeholder": "Search",
 			"select": onSearchSelect,
 			"change": searchProducts,
@@ -102,8 +101,7 @@
 
 		 $("#headerCategoriesDDL").kendoDropDownList({
 			"change": goToCategoryPage,
-			"optionLabel": "Categories",
-			"size": "large",
+			"optionLabel": "Categories",			
 			"dataSource":[
 				"Accessories",
 				"Bikes",

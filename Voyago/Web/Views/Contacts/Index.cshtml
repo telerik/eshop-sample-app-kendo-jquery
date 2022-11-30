@@ -6,6 +6,7 @@
     <div class="header-contacts">
         <h1>Contacts</h1>
     </div>
+    <div id="validation-success"></div>
     <form class="contact-form"></form>
 
 
@@ -49,23 +50,32 @@
                     {
                         field: "Message",
                         label: "Message",
+                        editor: "TextArea",
+                        editorOptions:{
+                            rows: 10
+                        }
                     },
                     {
                         field: "Captcha", label: "", validation: { required: true }, attributes: {style: "width: 280px" },
                         hint: "Type the characters you see in the picture above.",
-                        editor: "Captcha", editorOptions: {
-                        handler: "/Contacts/Reset_Events",                         
-                        audioButton: false,
-                        validationHandler: "/Contacts/Validate_Events",
-                        error: function (data) {
-                            console.log(data);
-                        }
+                        editor: "Captcha", 
+                        editorOptions: {
+                            validateOnBlur: true,
+                            handler: "/Contacts/Reset",                         
+                            audioButton: false,
+                            validationHandler: "/Contacts/Validate",
+                            error: function (data) {
+                                console.log(data);
+                            }
                     }
                 }],
                  submit: function (e) {
-                    e.preventDefault();
-                    validationSuccess.html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+                    e.preventDefault();                   
+                    $('#validation-success').html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
                 },
+                clear: function(ev) {
+                    $('#validation-success').html("");
+                }
         });
 
         $(".map").kendoMap({

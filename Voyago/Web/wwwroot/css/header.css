@@ -7,11 +7,11 @@
 }
 
 .logo {
-    width: auto;
+    width: 238px;
     height: 57px;
     margin-left: 12.5vw;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     margin-right: 2%;
 }
 
@@ -31,7 +31,15 @@
     align-items: center;
     border-color: white !important;
     min-width: 120px;
-    margin-right: 20px;
+}
+
+.ddl-container{
+    margin-right: 10px;
+}
+
+#favourites-btn {
+    padding-right: 7px;
+    padding-left: 7px;
 }
 
 #headerCategoriesDDL, #searchBar, h6 {
@@ -83,6 +91,14 @@
     width: 100px !important;
 }
 
+.shopping-cart.k-button{
+    padding: 6px !important;
+}
+
+.k-i-arrow-s::before {
+    content: "\e015";
+}
+
 
 @media (max-width: 1300px) {
     .header {
@@ -92,8 +108,8 @@
     .logo {
         width: auto;
         height: 35px;
-        margin-top: 10%;
-        margin-left: 2%;
+        margin-top: 25%;
+        margin-left: 40%;
     }
 
     .search-bar-container {

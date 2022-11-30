@@ -60,18 +60,18 @@
             "label": {
                 "text": "Password"
             },
-            "hint": "Your password must be at least 4 symbols long.",
+            "hint": "Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers.",
             "attributes": {
                 "type": "password"
             },
             "validation": {
                 "type": "text",
 				"required": {
-					"message": "Please enter First and Last name"
+					"message": "Please enter password"
 				},
 				"pattern": {
-					"value":"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", 
-					"message":"Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers"
+					"value":"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",
+					"message":"Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers."
 				},
             }
         }]

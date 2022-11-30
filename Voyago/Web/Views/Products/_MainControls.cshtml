@@ -7,7 +7,7 @@
 		}
 	}
 
-	<h6>Filters</h6>
+	<div class="main-controls-filter">Filters</div>
 
 	@{
 		if (Context.Request.Path.ToString().Contains("Category"))
@@ -15,7 +15,7 @@
 			<div class="control">
 				<a href="/Products/Category?subCategory=@ViewBag.SubCategory">
 					<div class="clear-all">
-						<h6 style="color: black;">Clear All</h6>
+						<div class="clear-all-text">Clear All</div>
 						<img class="close-button" src="~/images/close_button.svg" alt="Clear All">
 					</div>
 				</a>
@@ -26,7 +26,7 @@
 			<div class="control">
 				<a href="/Products/Summary">
 					<div class="clear-all">
-						<h6 style="color: black;">Clear All</h6>
+						<div class="clear-all-text">Clear All</div>
 						<img class="close-button" src="~/images/close_button.svg" alt="Clear All">
 					</div>
 				</a>
@@ -35,7 +35,7 @@
 	}
 
 	<div class="control">
-		<h6>Show</h6>
+		<div class="control-label">Show</div>
 		<ul data-role="checkboxgroup" id="discountPicker" name="discountPicker" type="text"></ul>	
 	</div>
 
@@ -47,20 +47,22 @@
 	}
 
 	<div class="control">
-		<h6 class="control-label">Rating</h6>
+		<div class="control-label">Rating</div>
 		<ul data-role="checkboxgroup" id="ratingPicker" name="ratingPicker" type="text"></ul>		
 	</div>
 
 	<div class="control">
-		<h6 class="control-label">Price</h6>
+		<div class="control-label">Price</div>
 		<div class="price-slider" id="priceSlider" name="priceSlider">
-			<input class="price-slider" value="0" />
-			<input class="price-slider" value="4000" />
+			<input class="price-slider" name="priceSlider" value="0" />
+			<input class="price-slider" name="priceSlider" value="1000" />
+			<input class="price-slider" name="priceSlider" value="2000" />
+			<input class="price-slider" name="priceSlider" value="4000" />
 		</div>
 	</div>
 
 	<div class="control">
-		<h6 class="control-label">Weight</h6>		
+		<div class="control-label">Weight</div>		
 
 		<div class="weight-slider" id="weightSlider" name="weightSlider">
 			<input class="weight-slider" value="0" />

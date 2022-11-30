@@ -18,20 +18,35 @@
 		}
 
         #container, #reportViewer1, .trv-report-viewer{
-            height: 1000px;
-            width: 850px;
-            margin: 0 auto !important;
+            height: 1078px;
+            width: 980px;
+            margin: 20px auto 100px auto !important;
         }  
-	</style>
 
-    <div id="container">       
+        .order-link{
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 20px;
+            color: #0078D4;
+            margin-left: 10%;
+        }
+	</style>    
+
+    <div id="container">      
+        <a class="order-link" visibility="hidden" href="javascript:history.back()"><span class="k-icon k-i-chevron-left"></span>Back To Order</a>
         <div id="reportViewer1">
             loading...
        </div>
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {         
+        $(document).ready(function () { 
+            
+            if(window.location.href.includes("Invoice")){
+                $('.order-link').css('visibility', 'visible');
+            }else{
+                $('.order-link').css('visibility', 'hidden');
+            }
        
             $("#reportViewer1")
                 .telerik_ReportViewer({

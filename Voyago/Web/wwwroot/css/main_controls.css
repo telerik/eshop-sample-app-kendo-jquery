@@ -5,12 +5,10 @@
 }
 
 .controls {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 20px;
+    margin: 20px 40px 60px 40px;    
     padding: 30px;
     background: #F2F2F2;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .control {
@@ -19,5 +17,30 @@
     margin-bottom: 20px;
     padding: 30px;
     background: white;
-    border-radius: 10px;
+    border-radius: 2px;
+}
+
+.main-controls-filter {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #323130;
+}
+
+.control-label {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25.2px;
+    color: #201F1E;
+}
+
+.clear-all-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25.2px;
+    color: #201F1E;
+}
+
+.k-slider-tick, .k-tick{
+    display: flex !important;
 }

@@ -10,8 +10,6 @@ namespace Models.ViewModels
     {
         public string ReportId { get; set; }
 
-        //public string Parameters { get; set; }
-
         public Dictionary<string, object> Parameters { get; set; }
     }
 }
