@@ -231,6 +231,13 @@ function searchByName(name) {
 	}
 }
 
+
+function dataBoundUserCountry(e) {
+	if ($("#shippingAddressForm").data('kendoForm').options.formData.Country != "US") {
+		$("#State").data("kendoDropDownList").enable(false)
+	}
+}
+
 function changeUserCountry(e) {
 	let stateDDL = $("#State").data("kendoDropDownList");
 	if (this.value() == "US") {

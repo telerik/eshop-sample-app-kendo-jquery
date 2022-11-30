@@ -52,7 +52,7 @@ a {
 }
 
 .category-heading-large {
-    color: black;
+    color: #323130;
     font-weight: 600;
     font-size: 42px;
     line-height: 58.8px;
@@ -64,6 +64,9 @@ a {
 .category-heading {
     color: black;
     margin-bottom: 5vh;
+    font-size: 28px;
+    line-height: 39.2px;
+    font-weight: 600;
 }
 
     .category-heading.heading-tires {

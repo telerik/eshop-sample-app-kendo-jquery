@@ -2,9 +2,13 @@
     ViewData["Title"] = "Login Page";
 }
 
+@model Models.InputModels.LoginUserInpuModel
+
 <div class="login-custom" style="visibility: hidden;">    
     <div class="login-form">
         <img class="logo" src="~/images/logo.png" alt="Voyago">
+
+        <span asp-validation-for="Email" class="text-danger"></span>
     
         <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm"></form>   
     
@@ -30,7 +34,10 @@
             "validateOnBlur": true,
             "validationSummary": {}
         },
-        "formData": null,
+        "formData": {
+            'Email': "@Model.Email",
+            'Password': "@Model.Password"
+        },
         "serverErrors": {},
         "items": [{
             "field": "Email",

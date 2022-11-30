@@ -29,10 +29,7 @@
          var tabStrip = $("#tabstrip").kendoTabStrip().data("kendoTabStrip");
          tabStrip.select(0);
 
-      $("#personalDetailsForm").kendoForm({
-        grid: {
-          cols: 2
-        },
+      $("#personalDetailsForm").kendoForm({        
         layout:"grid",
         formData: {
           ID: 1,
@@ -43,20 +40,17 @@
         items: [
           {
             field: "FirstName",
-            label: "First Name:",
-            colSpan: 1,
+            label: "First Name:",            
             validation: { required: true }
           }, 
           {
             field: "LastName",
-            label: "Last Name:",
-            colSpan: 1,
+            label: "Last Name:",            
             validation: { required: true }
           },
           {
             field: "Phone",
-            label: "Phone:",
-            colSpan: 4,
+            label: "Phone:",           
             editor: "MaskedTextBox",
             editorOptions: {
                 mask: "(000) 000-0000"
@@ -79,17 +73,26 @@
           ConfirmPassword: ""
         },
         items: [
-          {
-            field: "Password",
-            label: "Change Password:",
-            validation: { required: true },
-            hint: "Must contain a inimum of 8 characters included with at least 1 upper case letter, 1 number, and 1 special character",
-            editor: function (container, options) {
-              $('<input type="password" id="password" name="' + options.field + '" title="password" required="required" autocomplete="off" aria-labelledby="password-form-label" data-bind="value: password" aria-describedby="password-form-hint"/>')
-                .appendTo(container)
-                .kendoTextBox();
+         {
+            "field": "Password",
+            "label": {
+                "text": "Change Password"
+            },
+            "hint": "Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers.",
+            "attributes": {
+                "type": "password"
+            },
+            "validation": {
+                "type": "text",
+				"required": {
+					"message": "Please enter password"
+				},
+				"pattern": {
+					"value":"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",
+					"message":"Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers."
+				},
             }
-          },
+        },
           {
             field: "ConfirmPassword",
             label: "Confirm Password:",
@@ -175,7 +178,8 @@
                    { text: "United Kingdom", value: "UK"},
                    { text: "USA", value: "US"}                
                 ],
-                change: changeUserCountry
+                change: changeUserCountry,
+                dataBound: dataBoundUserCountry
             }
           }, 
         ],
@@ -189,21 +193,10 @@
             rules: {
                 confirmPassCheck: function (input) {                   
                     if (input.is("[name=ConfirmPassword]") && input.val()) {
-                        let enteredPass = $("#password").data("kendoTextBox");
-                        let confirmedPass = $("#confirmPassword").data("kendoTextBox");                        
+                        let enteredPass = $("#Password").data("kendoTextBox");
+                        let confirmedPass = $("#confirmPassword").data("kendoTextBox");  
                         if(enteredPass.value() != confirmedPass.value()) {
                             input.attr("data-confirmPassCheck-msg", "Passwords do not match.");
-                            return false;
-                        }
-                        return true;
-                    }
-                    return true;
-                },
-                passCheck: function (input) {
-                    if (input.is("[name=Password]") && input.val()) {
-                        let enteredPass = $("#password").data("kendoTextBox");
-                        if(enteredPass.value().length < 4  || enteredPass.value().length > 24) {
-                            input.attr("data-passCheck-msg", "Enter a valid password between 4 and 24 characters.");
                             return false;
                         }
                         return true;

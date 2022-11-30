@@ -62,8 +62,11 @@ a {
 }
 
 .category-heading {
-    color: black;
+    color: #323130;
     margin-bottom: 5vh;
+    font-size: 28px;
+    line-height: 39.2px;
+    font-weight: 600;
 }
 
     .category-heading.heading-double {

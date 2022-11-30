@@ -17,6 +17,11 @@
     min-width: 150px;
 }
 
+.text-danger {
+    font-size:24px;
+    font-weight: 500;
+}
+
 .k-form-field {
     margin-bottom: 3vh;
 }

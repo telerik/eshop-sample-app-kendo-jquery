@@ -1,6 +1,7 @@
 ﻿.content-container {
     min-height: 570px;
     width: 50%;
+    max-width: 600px;
     margin: 0 auto;
     margin-bottom: 10vh;
 }

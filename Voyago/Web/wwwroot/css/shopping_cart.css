@@ -157,6 +157,10 @@
     text-align: center;
 }
 
+.k-i-arrow-n::before {
+    content: "\e013";
+}
+
 @media (max-width: 1000px) {
     .shopping-cart-container {
         margin: 2em 5em 5em 5em;

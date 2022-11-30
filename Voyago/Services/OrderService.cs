@@ -52,7 +52,7 @@ namespace Services
             var orders = (from order in dbContext.SalesOrders                         
                           join contact in dbContext.Contacts on order.ContactId equals contact.ContactId                          
                           where contact.EmailAddress == userEmail
-                          //group order by order.OrderNumber into x
+
                           select new OrderViewModel
                           {
                               OrderID = order.OrderId,
