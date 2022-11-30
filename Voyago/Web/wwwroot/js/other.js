@@ -44,7 +44,7 @@ function showResultCount(e) {
 }
 
 function addFilterCheckBoxes() {
-	$("#discountPicker").kendoCheckBoxGroup({
+	$("#discountPicker").kendoRadioGroup({
 		change: toggleDiscountPicker,
 		items: [{
 			"label": "All",
@@ -53,7 +53,7 @@ function addFilterCheckBoxes() {
 			"label": "Discounted items only",
 			"value": "2"
 		}],
-		value: ["1"]
+		value: "1"
 	});
 	
 	$("#ratingPicker").kendoCheckBoxGroup({
