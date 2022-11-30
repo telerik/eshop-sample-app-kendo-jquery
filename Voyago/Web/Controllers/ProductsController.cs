@@ -21,7 +21,7 @@ namespace Web.Controllers
         {
             if (subCategory == null || subCategory == "null")
             {
-                return Redirect("/Home/Index");
+                return RedirectToAction("Index", "Home"); ;
             }            
 
             var parentCategory = await productService.GetParentCategory(subCategory);
@@ -57,7 +57,7 @@ namespace Web.Controllers
 
             if (model == null)
             {
-                return Redirect("/Home/Index");
+                return RedirectToAction("Index", "Home");
             }
 
             addToRecentlyViewed(productId);

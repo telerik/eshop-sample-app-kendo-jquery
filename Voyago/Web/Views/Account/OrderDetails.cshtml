@@ -35,7 +35,8 @@
             themeColor: "primary",
             icon: "file",
             click: function(){
-                location.href='/Account/Invoice?orderNumber=' + '@orderNumber'
+                var orderNumber = '@orderNumber';
+                location.href= '@Url.Action("Invoice", "Account", new{ orderNumber = orderNumber})' 
             }
         })
 
@@ -109,4 +110,4 @@
     })
 </script>
 
-<link rel="stylesheet" href="/css/order_details.css">
+<link rel="stylesheet" href="~/css/order_details.css">

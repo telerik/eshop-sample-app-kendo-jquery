@@ -96,11 +96,11 @@ namespace Web.Controllers
 
             if (!HttpContext.User.Identity.IsAuthenticated)
             {                
-                return View(new LoginUserInpuModel() { Email = "jaxons.danniels@company.com", Password = "User*123" });
+                return View(new LoginUserInpuModel() { Email = "jaxons.danniels@company.com", Password = "User1234" });
             }
             else
             {
-                return Redirect("/Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -141,7 +141,7 @@ namespace Web.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("Email", "Account does not exists.");
-                return View(new LoginUserInpuModel() { Email = "jaxons.danniels@company.com", Password = "User*123" });
+                return View(new LoginUserInpuModel() { Email = "jaxons.danniels@company.com", Password = "User1234" });
             }
 
             var claims = new List<Claim>
@@ -161,7 +161,7 @@ namespace Web.Controllers
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
 
-            return Redirect("/Home/Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -190,7 +190,7 @@ namespace Web.Controllers
             }
             else
             {
-                return Redirect("/Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -204,7 +204,7 @@ namespace Web.Controllers
 
             if (await userService.UserExists(input.Email))
             {
-                ModelState.AddModelError(string.Empty, "User already exists.");
+                ModelState.AddModelError("Email", "User already exists.");
                 return View();
             }
 
@@ -214,7 +214,7 @@ namespace Web.Controllers
                 return View();
             }
 
-            return Redirect("/Account/Login");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]
@@ -243,7 +243,7 @@ namespace Web.Controllers
             }
             else
             {
-                return Redirect("/Account/Login");
+                return RedirectToAction("Login", "Account");
             }
         }
 
@@ -263,7 +263,7 @@ namespace Web.Controllers
             {
                 if (!await userService.EditUserDetails(personalDetails, userEmail))
                 {
-                    return Redirect("/Home/Error");
+                    return RedirectToAction("Error", "Home");
                 }
                 userProfile.FirstName = personalDetails.FirstName;
                 userProfile.LastName = personalDetails.LastName;
@@ -280,7 +280,7 @@ namespace Web.Controllers
             {
                 if (!await userService.EditUserPassword(input, userEmail))
                 {
-                    return Redirect("/Home/Error");
+                    return RedirectToAction("Error", "Home");
                 }
                 userProfile.Password = input.Password;
                 userProfile.ConfimPassword = input.ConfimPassword;
@@ -296,7 +296,7 @@ namespace Web.Controllers
             {
                 if (!await userService.EditUserAddress(input, userEmail))
                 {
-                    return Redirect("/Home/Error");
+                    return RedirectToAction("Error", "Home");
                 }
                 userProfile.Street = input.Street;
                 userProfile.State = input.State;
@@ -315,7 +315,7 @@ namespace Web.Controllers
 
             if (!await userService.AddShoppingCartItem(productId, userEmail))
             {
-                return Redirect("/Home/Error");
+                return RedirectToAction("Error", "Home");
             }
 
             return Ok();
@@ -376,15 +376,15 @@ namespace Web.Controllers
 
             if (!await orderService.AddSalesOrder(shoppingCartItems, userEmail))
             {
-                return Redirect("/Home/Error");
+                return RedirectToAction("Error", "Home");
             }
 
             if (!await userService.ClearUserShoppingCart(userEmail))
             {
-                return Redirect("/Home/Error");
+                return RedirectToAction("Error", "Home");
             }
 
-            return Redirect("/Account/ShoppingCart");
+            return RedirectToAction("OrdersPage", "Account");
         }
 
         [HttpGet]

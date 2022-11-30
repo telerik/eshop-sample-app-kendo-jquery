@@ -27,23 +27,23 @@
 		
 		<div class="categories-inner">
 			<div class="column">
-				<a href="/Home/Accessories">
+				<a href="~/Home/Accessories">
 					<div class="category-heading">Accessories</div>
 					<img src="~/images/accessories.png" style="width:100%" class="category-image" />
 				</a>
 			</div>
 			<div class="column">
-				<a href="/Home/Bikes">
+				<a href="~/Home/Bikes">
 					<div class="category-heading">Bikes</div>
 					<img src="~/images/bikes.png" style="width:100%" class="category-image" />
 				</a>
-				<a href="/Home/Components">
+				<a href="~/Home/Components">
 					<div class="category-heading" style="margin-top: 0.9em;">Components</div>
 					<img src="~/images/components.png" style="width:100%" class="category-image" />
 				</a>
 			</div>
 			<div class="column">
-				<a href="/Home/Clothing">
+				<a href="~/Home/Clothing">
 					<div class="category-heading">Clothing</div>
 					<img src="~/images/clothes.png" style="width:100%" class="category-image" />
 				</a>
@@ -64,10 +64,11 @@
 </div>
 
 <script id="topPicks-template" type="text/html">
-	<div class="top-picks">
+	<div class="top-picks">		
 		# for (var i = 0; i < data.length; i++) { #
-		<div class="top-pick-card">
-			<a href="/Products/Category?subCategory=#=data[i].Name#">
+		<div class="top-pick-card">		
+			# var urlHref = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/Category?subCategory=" + data[i].Name : "/Products/Category?subCategory=" + data[i].Name #			
+			<a href= '#=urlHref#'>
 			<h4 class="top-pick-heading" style="color: black">#= data[i].Name #</h4>
 			<img src="~/images/#=data[i].ImageName#" class="top-pick-image"/>
 			</a>
@@ -89,7 +90,7 @@
 		$('#download-catalog').kendoButton({
 			icon: 'download',
 			click: function(){
-				location.href = '/Home/ProductCatalog'
+				location.href = '@Url.Action("ProductCatalog", "Home")';
 			}
 		})
 
@@ -198,4 +199,4 @@
 	})
 </script>
 
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="~/css/home.css">

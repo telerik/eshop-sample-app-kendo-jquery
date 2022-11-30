@@ -2,9 +2,14 @@
 	ViewData["Title"] = "Register Page";
 }
 
+@model Models.InputModels.RegisterUserInpuModel
+
+
 <div>
     <div class="register-form">
 	    <img class="logo" src="~/images/logo.png" alt="Voyago">
+
+        <span asp-validation-for="Email" class="text-danger"></span>
 
 	    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
 
@@ -80,4 +85,4 @@
 
 </script>
 
-<link rel="stylesheet" href="/css/register_form.css">
+<link rel="stylesheet" href="~/css/register_form.css">

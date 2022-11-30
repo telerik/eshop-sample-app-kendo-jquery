@@ -55,8 +55,8 @@ function updateShoppingCartChanges(e) {
 }
 
 function checkoutShoppingCart() {
-	kendo.ui.progress($("#checkoutButton"), true);	
-	location.href = "/Account/CheckoutShoppingCart";
+	kendo.ui.progress($("#checkoutButton"), true);
+	location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
 }
 
 function calculateShoppingCartTotal() {

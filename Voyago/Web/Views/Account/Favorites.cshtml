@@ -63,10 +63,10 @@
 
 	$('#export-pdf').kendoButton({
 		click: function(){
-			location.href = "/Account/FavouritesReport";
+			location.href = '@Url.Action("FavouritesReport", "Account")';
 		},
 		icon: 'download'
 	})	
 </script>
 
-<link rel="stylesheet" href="/css/favorites.css">
+<link rel="stylesheet" href="~/css/favorites.css">
