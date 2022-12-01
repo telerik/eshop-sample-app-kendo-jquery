@@ -3,16 +3,16 @@
 		<img class="logo" src="~/images/logo.png" alt="Voyago">
 	</a>
 	<div class="search-bar-container" >
-		<input id="searchBar" name="searchBar" type="text" value="" />		
-	</div>	
+		<input id="searchBar" name="searchBar" type="text" value="" />
+	</div>
 	<div class="header-menu">
 		<div class="ddl-container">
-			<input id="headerCategoriesDDL" name="headerCategoriesDDL" type="text" />	
-		</div>	
-		<button id="favourites-btn">Favourites</button>	
-		<button id="contacts">Contacts</button>					
+			<input id="headerCategoriesDDL" name="headerCategoriesDDL" type="text" />
+		</div>
+		<button id="favourites-btn">Favourites</button>
+		<button id="contacts">Contacts</button>
 		<button class="profile" id="profile-btn"></button>
-		<button class="shopping-cart" id="shopping-cart"></button>		
+		<button class="shopping-cart" id="shopping-cart"></button>
 	</div>
 </div>
 
@@ -31,7 +31,7 @@
 	$(".logo").css("visibility", "hidden");
     $(".search-bar-container").css("visibility", "hidden");
 	$('.header-menu button').css("visibility", "hidden");
-	$('#contacts').css("visibility", "hidden");	
+	$('#contacts').css("visibility", "hidden");
 	$(document).ready(function () {
 		getFavoritesCount();
 		getShoppingCartItemsCount();
@@ -56,7 +56,7 @@
         });
 
 		$("#shopping-cart").kendoButton({
-			click: function(){				
+			click: function(){
 				location.href = '@Url.Action("ShoppingCart", "Account")';
 			},
 			icon: 'cart',
@@ -64,11 +64,10 @@
                 position: "edge",
                 rounded: "full",
 				align: "top end",
-                themeColor: "primary",				
+                themeColor: "primary",
 				text: 0
             }
-        });	
-
+        });
 
 		$("#profile-btn").kendoDropDownButton({
 			icon: "user",
@@ -81,7 +80,7 @@
 			]
        });
 
-		$("#searchBar").kendoAutoComplete({			
+		$("#searchBar").kendoAutoComplete({
 			"clearButton": false,
 			"dataTextField": "ProductName",
 			"minLength": 2,
@@ -93,24 +92,24 @@
 			"dataSource": {
 			    "transport": {
 			        "read": {
-			            "url": "/Home/GetSearchSuggestions",
+			            "url": '@Url.Action("GetSearchSuggestions", "Home")',
 			            "data": onAdditionalData
 			        }
 			    },
-			    "serverFiltering": true,			    
+			    "serverFiltering": true,
 			}
 		});
 
 		function goToCategoryPage(e) {
 			var category = e.sender.value();
 			if (category != "") {
-				location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Home/" + category : "/Home/" + category;			
+				location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Home/" + category : "/Home/" + category;
 			}
 		}
 
 		 $("#headerCategoriesDDL").kendoDropDownList({
 			"change": goToCategoryPage,
-			"optionLabel": "Categories",			
+			"optionLabel": "Categories",
 			"dataSource":[
 				"Accessories",
 				"Bikes",
