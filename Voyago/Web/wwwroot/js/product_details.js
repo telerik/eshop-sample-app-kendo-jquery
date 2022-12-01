@@ -14,7 +14,7 @@ function selectAlternateProductVersion(modelId) {
 }
 
 function selectProductByColor(modelId, color) {
-	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/GetProductIdByModelAndColor?modelId=" : "/Products/GetProductIdByModelAndColor?modelId=";
+	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ?  "/fluent-eshop-voyago/Products/GetProductIdByModelAndColor?modelId=" : "/Products/GetProductIdByModelAndColor?modelId=";
 	$.get(getUrl + modelId + "&color=" + color, function (data) {
 		if (data != null) {
 			location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/Details?productId=" + data : "/Products/Details?productId=" + data;
@@ -23,7 +23,7 @@ function selectProductByColor(modelId, color) {
 }
 
 function selectProductBySize(modelId, size) {
-	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/GetProductIdByModelAndSize?modelId=" : "/Products/GetProductIdByModelAndSize?modelId=";
+	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Products/GetProductIdByModelAndSize?modelId=" : "/Products/GetProductIdByModelAndSize?modelId=";
 	$.get(getUrl + modelId + "&size=" + size, function (data) {
 		if (data != null) {
 			location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/Details?productId=" + data : "/Products/Details?productId=" + data;
@@ -32,7 +32,7 @@ function selectProductBySize(modelId, size) {
 }
 
 function selectProductByColorAndSize(modelId, color, size) {
-	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/GetProductIdByModelSizeAndColor?modelId=" : "/Products/GetProductIdByModelSizeAndColor?modelId=";
+	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Products/GetProductIdByModelSizeAndColor?modelId=" : "/Products/GetProductIdByModelSizeAndColor?modelId=";
 	$.get(getUrl + modelId + "&size=" + size + "&color=" + color, function (data) {
 		if (data != null) {
 			location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/Details?productId=" + data : "/Products/Details?productId=" + data;

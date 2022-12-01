@@ -27,7 +27,7 @@ function distinguishFavorites() {
 		var icon = currentButton.find(".k-icon");
 		var productId = this.id.split("_")[1];
 
-		var getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/ProductIsInFavorites?productId=" : "/Account/ProductIsInFavorites?productId=";
+		var getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/ProductIsInFavorites?productId=" : "/Account/ProductIsInFavorites?productId=";
 		$.get(getUrl + productId, function (data) {
 			if (data) {
 				if (currentButton.find(".k-button-text")) {
@@ -179,7 +179,6 @@ function showSearchResult(e) {
 
 function showCategories(e) {
 	var searchParam = $("#searchBar").data("kendoAutoComplete").value();
-	//var data = e.sender.dataSource._data;
 	var groupCount = e.sender.dataSource.view()
 	
 	$("#availableCategories").html("");
