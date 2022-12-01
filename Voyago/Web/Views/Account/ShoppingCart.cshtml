@@ -12,7 +12,7 @@
             <img class="empty-cart-image" src="~/images/shopping_cart_empty.svg" alt="Your shopping cart is empty">
             <p class="empty-cart-heading">Unfortunately, your cart is empty...</p>
             <div class="empty-cart-description">
-                <p>Looks like you have not added anything to your cart. Go ahead and <a style="color: var(--voyago-blue);" href="@Url.Action("Index", "Home")#top-picks">explore our top-picks.</a>
+                <p>Looks like you have not added anything to your cart. Go ahead and <a style="color: #0078D4;" href="@Url.Action("Index", "Home")#top-picks">explore our top-picks.</a>
                 </p>
             </div>
             </div>
@@ -21,7 +21,7 @@
 		{
 			<a class="continue-shopping" href="@Url.Action("Index","Home")">Continue shopping</a>
 			<div id="shoppingCartGrid" name="shoppingCartGrid"></div>
-			
+
 			<div class="shopping-cart-bottom">
 				<div>
 					<div class="sub-total">
@@ -30,7 +30,7 @@
 					</div>
 					<span class="tax-and-shipping">Tax and shipping cost will be calculated later</span>
 				</div>
-				<button id="checkoutButton">Check-Out</button>			
+				<button id="checkoutButton">Check-Out</button>
 			</div>
 		}
 	}
@@ -57,13 +57,13 @@ $(document).ready(function(){
 	$('#checkoutButton').kendoButton({
 		click: checkoutShoppingCart,
 		themeColor: "primary"
-	})   		
-	
+	})
+
 	var dataSourceT = new kendo.data.DataSource({
-	  transport: {	   
+	  transport: {
 	    read: {
 	      url: '@Url.Action("GetUserShoppingCartItems", "Account")',
-	      dataType: "json" 
+	      dataType: "json"
 	    },
 		update: {
 	      url: '@Url.Action("UpdateUserShoppingCartItem", "Account")',
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		 destroy: {
 	      url:  '@Url.Action("RemoverUserShoppingCartItem", "Account")',
 	      dataType: "json",
-		  type: "DELETE"
+		  type: "POST"
 	    },
 	  },
 	  schema: {
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		   }
 }
 	});
-	
+
 	$("#shoppingCartGrid").kendoGrid({
 		dataSource: dataSourceT,
 		columns: [
@@ -97,7 +97,7 @@ $(document).ready(function(){
 	            "template": kendo.template($('#shoppingCartProduct-template').html()),
 	            "field": "ProductName",
 				editable: false
-	        }, 
+	        },
 			{
 	           "title": "Price",
 	           "attributes": {
@@ -106,13 +106,13 @@ $(document).ready(function(){
 	           "field": "ProductPrice",
 	           "format": "{0:C}",
 			   editable: false
-	        }, 
+	        },
 			{
 	            "title": "Quantity",
 	            "attributes": { "class": "templateCell" },
 	            "template": '<input class="quantity-editor" data-bind="value: #:Quantity#" id="quantityEditor_#=ShoppingCartItemId#" name="quantityEditor_#=ShoppingCartItemId#" value=""/ >',
-				"field": "Quantity",	           
-	            "encoded": true,	
+				"field": "Quantity",
+	            "encoded": true,
 	            "editable": function() {
 	              return false;
 	            }
@@ -129,11 +129,11 @@ $(document).ready(function(){
 	          }
 		],
 		"scrollable": false,
-	    "editable": {	       
-	      "mode": "incell"	        
+	    "editable": {
+	      "mode": "incell"
 	    },
 		dataBound: shoppingCartGridOnDataBound
-	})	
+	})
 })
 </script>
 

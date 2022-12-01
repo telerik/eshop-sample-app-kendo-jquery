@@ -74,7 +74,7 @@ namespace Web.Controllers
 
         public AccountController(IUserService userService, IOrderService orderService, IProductService productService)
         {
-            
+
             this.userService = userService;
             this.productService = productService;
 
@@ -95,7 +95,7 @@ namespace Web.Controllers
             }
 
             if (!HttpContext.User.Identity.IsAuthenticated)
-            {                
+            {
                 return View(new LoginUserInpuModel() { Email = "jaxons.danniels@company.com", Password = "User1234" });
             }
             else
@@ -114,19 +114,17 @@ namespace Web.Controllers
         public IActionResult Invoice(int orderNumber)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("OrN", orderNumber);           
+            parameters.Add("OrN", orderNumber);
 
             var reportSource = new ReportSourceModel()
             {
                 ReportId = "OrderInvoice.trdp",
                 Parameters = parameters
-                                                                    
+
             };
 
             return View("~/Views/Shared/ReportViewer.cshtml", reportSource);
         }
-
-
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginUserInpuModel input)
@@ -167,7 +165,7 @@ namespace Web.Controllers
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> LogOut()
-        {    
+        {
             var valueFavs = new List<int>();
             var valueRecently = new Queue<int>(4);
             HttpContext.Session.Set<List<int>>("_Favorites", valueFavs);
@@ -271,6 +269,7 @@ namespace Web.Controllers
             }
             return View("Profile", userProfile);
         }
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> SaveUserPassword(PasswordUserInputModel input)
@@ -344,7 +343,7 @@ namespace Web.Controllers
             return Json(item);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Authorize]
         public async Task<IActionResult> RemoverUserShoppingCartItem(ShoppingCartItemViewModel item)
         {
@@ -366,7 +365,7 @@ namespace Web.Controllers
 
             return Json(itemsCount);
         }
-        
+
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> CheckoutShoppingCart()
@@ -449,7 +448,6 @@ namespace Web.Controllers
             return Json(favoriteProducts.ToList());
         }
 
-
         [HttpGet]
         public async Task<FileContentResult> FavouritesReport()
         {
@@ -464,11 +462,11 @@ namespace Web.Controllers
             };
 
             var favoriteProductIds = HttpContext.Session.Get<List<int>>("_Favorites");
-            
+
             var favoriteProducts = userService.GetFavoriteProductsById(favoriteProductIds);
 
             foreach(var favoriteProduct in favoriteProducts)
-            {                
+            {
                 byte[]? largePhotoData = await productService.GetProductLargePhotoById((int)favoriteProduct.PhotoId);
 
                 reportData.FavoriteReportProducts.Add(new FavoriteReportProductViewModel
@@ -507,8 +505,7 @@ namespace Web.Controllers
                 //}
             }
 
-            //var fileContents = Convert.FromBase64String(base64); 
-
+            //var fileContents = Convert.FromBase64String(base64);
 
             throw new Exception("Incorrect data");
         }
@@ -525,7 +522,7 @@ namespace Web.Controllers
             }
 
             return Json(favoriteProductIds.Count);
-        }       
+        }
 
         [HttpGet]
         [Authorize]
@@ -546,12 +543,11 @@ namespace Web.Controllers
             return View();
         }
 
-
         [HttpGet]
         [Authorize]
 
         public IActionResult OrdersPage()
-        {           
+        {
             return View();
         }
 

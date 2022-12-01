@@ -40,7 +40,7 @@ function removeItemFromShoppingCart(itemId) {
 	grid.dataSource.sync();
 
 	if (refresh) {
-		location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/ShoppingCart" : "/Account/ShoppingCart";
+		location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/ShoppingCart" : "/Account/ShoppingCart";
     }
 }
 
@@ -56,7 +56,7 @@ function updateShoppingCartChanges(e) {
 
 function checkoutShoppingCart() {
 	kendo.ui.progress($("#checkoutButton"), true);
-	location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
+	location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
 }
 
 function calculateShoppingCartTotal() {
