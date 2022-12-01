@@ -185,7 +185,7 @@ function showCategories(e) {
 		var value = groupCount[i].value;
 		var count = groupCount[i].items.length;
 		var categoriesElement = $("#availableCategories");
-		categoriesElement.append("<a href='/Products/Category?subCategory=" + value + "&searchParam=" + searchParam + "' ><p style='color: black;' ><strong>" + value + "</strong> (" + count + " results)</p></a>");
+		categoriesElement.append("<a href='~/Products/Category?subCategory=" + value + "&searchParam=" + searchParam + "' ><p style='color: black;' ><strong>" + value + "</strong> (" + count + " results)</p></a>");
 	}
 }
 

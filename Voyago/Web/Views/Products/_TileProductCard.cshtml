@@ -1,12 +1,12 @@
 ﻿<div class="k-card">	
-	<a style="position: relative;" href="/Products/Details?productId=#:Id#">
+	<a style="position: relative;" href="~/Products/Details?productId=#:Id#">
 		<img class="k-card-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" width="330" height="244" alt="#:Name# image" />
 		# if(DiscountPct != 0) { #
 			<span class="discount-pct">#:Number(DiscountPct) * 100#% off</span>
 		# } #
 	</a>
 	<div class="k-card-body">
-		<a style="text-decoration: none;" href="/Products/Details?productId=#:Id#">
+		<a style="text-decoration: none;" href="~/Products/Details?productId=#:Id#">
 			<h5 style="color: black;">#:Name#</h5>
 		</a>
 		@{

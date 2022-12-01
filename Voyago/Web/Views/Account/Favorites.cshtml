@@ -5,7 +5,7 @@
 <div class="favorites-container">
 	<h3 class="favorites-title">Favorites</h3>
 	<div class="favorites-header">
-		<a class="continue-shopping" href="/Home/Index">Continue shopping</a>
+		<a class="continue-shopping" href="~/Home/Index">Continue shopping</a>
 		<button id="export-pdf" class="fav-btn">Download PDF</button>
 	 </div>
 	
@@ -14,12 +14,12 @@
 
 <script id="favoriteProduct-template" type="text/html">
 	<div class="favorite-product-container">
-		<a href="/Products/Details?productId=#:Id#">
+		<a href="~/Products/Details?productId=#:Id#">
 			<img src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
 		</a>
 
 		<div class="favorite-product-info-container">
-			<a href="/Products/Details?productId=#:Id#">
+			<a href="~/Products/Details?productId=#:Id#">
 				<h4 class="favorite-product-name">#:Name#</h4>
 			</a>
 			<div class="avg-rating">

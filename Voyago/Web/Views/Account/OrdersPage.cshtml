@@ -6,13 +6,18 @@
 
 <script>
 $(document).ready(function(e) {
+    var urlHref = 
     $("#orders-grid").kendoGrid({
         columns: [
             { field: "OrderNumber", template: '\\##=OrderNumber#' },
             { field: "OrderDate", format: "{0:MM/dd/yyyy HH:mm:ss tt}" },
             { field: "Total", format: '{0:c}' },
             { field: "Status", template: '#if(Status == 1){# In progress  #}else{# Completed #}#' },
-            { template: "<a href='/Account/OrderDetails/#=OrderNumber#' class='view-order-link'>View Order</a>" }
+            { template: function(dataItem){
+                    var urlHref = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/OrderDetails/" + dataItem.OrderNumber : "/Account/OrderDetails/" + dataItem.OrderNumber		
+			        return  "<a href=" + urlHref +" class='view-order-link'>View Order</a>" 
+                } 
+            }
 
         ],
         noRecords: true,

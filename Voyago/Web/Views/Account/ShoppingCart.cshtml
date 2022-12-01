@@ -12,14 +12,14 @@
             <img class="empty-cart-image" src="~/images/shopping_cart_empty.svg" alt="Your shopping cart is empty">
             <p class="empty-cart-heading">Unfortunately, your cart is empty...</p>
             <div class="empty-cart-description">
-                <p>Looks like you have not added anything to your cart. Go ahead and <a style="color: var(--voyago-blue);" href="/Home/Index#top-picks">explore our top-picks.</a>
+                <p>Looks like you have not added anything to your cart. Go ahead and <a style="color: var(--voyago-blue);" href="~/Home/Index#top-picks">explore our top-picks.</a>
                 </p>
             </div>
             </div>
 		}
 		else
 		{
-			<a class="continue-shopping" href="/Home/Index">Continue shopping</a>
+			<a class="continue-shopping" href="~/Home/Index">Continue shopping</a>
 			<div id="shoppingCartGrid" name="shoppingCartGrid"></div>
 			
 			<div class="shopping-cart-bottom">
@@ -38,12 +38,12 @@
 
 <script id="shoppingCartProduct-template" type="text/html">
     <div class="product-col">
-        <a href="/Products/Details?productId=#:ProductId#">
+        <a href="~/Products/Details?productId=#:ProductId#">
             <img width="160" height="120" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:ProductPhotoId#" alt="#:ProductName# image">
         </a>
 
        <div class="product-info">
-            <a href="/Products/Details?productId=#:ProductId#">
+            <a href="~/Products/Details?productId=#:ProductId#">
                 <p class="product-name">#:ProductName#</p>
             </a>
             <p id="remove_#:ShoppingCartItemId#" class="remove-product" onclick="removeItemFromShoppingCart(#:ShoppingCartItemId#)" style="cursor:pointer">Remove</p>
