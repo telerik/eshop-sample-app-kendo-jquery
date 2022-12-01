@@ -13,8 +13,8 @@ function hideRecentlyViewedIfEmpty(e) {
 
 function onCategoryDataBound(e) {
 	if (this.dataSource.total() == 0) {
-		$("#allProductsListView").append("<h4 class='no-product-msg'>This category is out of stock at the moment.</h4>");
-	}
+		$(".no-product-msg").show();
+	} else $(".no-product-msg").hide();
 	bindFavouritesAndCartButtones();
 	bindSortByDdl();
 	distinguishFavorites();
@@ -26,7 +26,9 @@ function distinguishFavorites() {
 		var currentButton = $(this);
 		var icon = currentButton.find(".k-icon");
 		var productId = this.id.split("_")[1];
-		$.get("/Account/ProductIsInFavorites?productId=" + productId, function (data) {
+
+		var getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/ProductIsInFavorites?productId=" : "/Account/ProductIsInFavorites?productId=";
+		$.get(getUrl + productId, function (data) {
 			if (data) {
 				if (currentButton.find(".k-button-text")) {
 					currentButton.find(".k-button-text").text("Added to favorites");
@@ -185,8 +187,8 @@ function showCategories(e) {
 		var value = groupCount[i].value;
 		var count = groupCount[i].items.length;
 		var categoriesElement = $("#availableCategories");
-		categoriesElement.append("<a href='~/Products/Category?subCategory=" + value + "&searchParam=" + searchParam + "' ><p style='color: black;' ><strong>" + value + "</strong> (" + count + " results)</p></a>");
-	}
+		let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/Category?subCategory=" : "/Products/Category?subCategory=";
+		categoriesElement.append("<a href=' " + getUrl + value + "&searchParam=" + searchParam + "' ><p style='color: black;' ><strong>" + value + "</strong> (" + count + " results)</p></a>");	}
 }
 
 function onAdditionalData() {

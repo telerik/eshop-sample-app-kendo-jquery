@@ -5,19 +5,14 @@
 </div>  
 
 <script>
-$(document).ready(function(e) {
-    var urlHref = 
+$(document).ready(function(e) {   
     $("#orders-grid").kendoGrid({
         columns: [
             { field: "OrderNumber", template: '\\##=OrderNumber#' },
             { field: "OrderDate", format: "{0:MM/dd/yyyy HH:mm:ss tt}" },
             { field: "Total", format: '{0:c}' },
             { field: "Status", template: '#if(Status == 1){# In progress  #}else{# Completed #}#' },
-            { template: function(dataItem){
-                    var urlHref = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/OrderDetails/" + dataItem.OrderNumber : "/Account/OrderDetails/" + dataItem.OrderNumber		
-			        return  "<a href=" + urlHref +" class='view-order-link'>View Order</a>" 
-                } 
-            }
+            { template: '<a href=' + '@Url.Action("OrderDetails", "Account")' + '?orderNumber=#=OrderNumber# class="order-details-link">View Order</a>'}
 
         ],
         noRecords: true,
@@ -27,7 +22,7 @@ $(document).ready(function(e) {
         dataSource: {                    
             transport: {                   
                 read: {
-		           	url: "/Account/GetAllOrders",
+		           	url: '@Url.Action("GetAllOrders", "Account")',
                     dataType: "json"
 		        },
             },
@@ -47,8 +42,8 @@ $(document).ready(function(e) {
     $('#orders-grid .k-grid-pager').removeClass('k-pager-md')
       
     $(window).resize(function() {
-    $('#orders-grid .k-grid-pager').addClass('k-pager-sm')   
-    $('#orders-grid .k-grid-pager').removeClass('k-pager-md')
+        $('#orders-grid .k-grid-pager').addClass('k-pager-sm')   
+        $('#orders-grid .k-grid-pager').removeClass('k-pager-md')
     });
 })
 </script>

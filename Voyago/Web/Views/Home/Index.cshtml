@@ -27,23 +27,23 @@
 		
 		<div class="categories-inner">
 			<div class="column">
-				<a href="~/Home/Accessories">
+				<a href="@Url.Action("Accessories","Home")">
 					<div class="category-heading">Accessories</div>
 					<img src="~/images/accessories.png" style="width:100%" class="category-image" />
 				</a>
 			</div>
 			<div class="column">
-				<a href="~/Home/Bikes">
+				<a href="@Url.Action("Bikes","Home")">
 					<div class="category-heading">Bikes</div>
 					<img src="~/images/bikes.png" style="width:100%" class="category-image" />
 				</a>
-				<a href="~/Home/Components">
+				<a href="@Url.Action("Components","Home")" class="components-header">
 					<div class="category-heading" style="margin-top: 0.9em;">Components</div>
 					<img src="~/images/components.png" style="width:100%" class="category-image" />
 				</a>
 			</div>
 			<div class="column">
-				<a href="~/Home/Clothing">
+				<a href="@Url.Action("Clothing","Home")">
 					<div class="category-heading">Clothing</div>
 					<img src="~/images/clothes.png" style="width:100%" class="category-image" />
 				</a>
@@ -67,8 +67,7 @@
 	<div class="top-picks">		
 		# for (var i = 0; i < data.length; i++) { #
 		<div class="top-pick-card">		
-			# var urlHref = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Products/Category?subCategory=" + data[i].Name : "/Products/Category?subCategory=" + data[i].Name #			
-			<a href= '#=urlHref#'>
+			<a href="@Url.Action("Category", "Products")?subCategory=#=data[i].Name#">
 			<h4 class="top-pick-heading" style="color: black">#= data[i].Name #</h4>
 			<img src="~/images/#=data[i].ImageName#" class="top-pick-image"/>
 			</a>
@@ -78,7 +77,7 @@
 </script>
 
 <script type="text/html" id="product-template">	
-	@await Html.PartialAsync("/Views/Products/_TileProductCard.cshtml")
+	@await Html.PartialAsync("~/Views/Products/_TileProductCard.cshtml")
 </script>
 
 <script>
@@ -101,7 +100,7 @@
 			   "dataSource": {			                
 			       "transport": {
 			           "read": {
-			               "url": "/Home/GetTopSellingSubCategories?count=12",
+			               "url": '@Url.Action("GetTopSellingSubCategories","Home")?count=12',
 			               "type": "GET"
 			           }
 			       },
@@ -117,7 +116,7 @@
 		var dataSourceRecent = new kendo.data.DataSource({
 		  transport: {	   
 		    read: {
-		      url: "/Home/GetRecentlyViewedProducts",
+		      url: '@Url.Action("GetRecentlyViewedProducts", "Home")',
 		      dataType: "json" 
 		    }
 		  }
@@ -147,8 +146,8 @@
         topPicksSV.setDataSource(
           new kendo.data.DataSource({
             "transport": {
-              "read": {
-                "url": "/Home/GetTopSellingSubCategories?count=12",
+              "read": {                
+				"url": '@Url.Action("GetTopSellingSubCategories","Home")?count=12',
                 "type": "GET"
               }
             },
@@ -165,7 +164,7 @@
           new kendo.data.DataSource({
             "transport": {
               "read": {
-                "url": "/Home/GetTopSellingSubCategories?count=12",
+                "url": '@Url.Action("GetTopSellingSubCategories","Home")?count=12',
                 "type": "GET"
               }
             },
@@ -182,7 +181,7 @@
           new kendo.data.DataSource({
             "transport": {
               "read": {
-                "url": "/Home/GetTopSellingSubCategories?count=12",
+                "url": '@Url.Action("GetTopSellingSubCategories","Home")?count=12',
                 "type": "GET"
               }
             },

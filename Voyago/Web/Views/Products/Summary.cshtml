@@ -20,7 +20,7 @@
 <script type="text/html" id="product-template">
 	# var searchParam = $("\\#searchBar").data("kendoAutoComplete").value(); #
 
-	<a href="~/Products/Category?subCategory=#=data.value#&searchParam=#=searchParam#">		
+	<a href="@Url.Action("Category", "Products")?subCategory=#=data.value#&searchParam=#=searchParam#">	
 		<h4 class="k-group-title">#= (data.value != null) ? data.value : "Other" # (#=data.items.length#)</h4>
 	</a>
 	<div class="sub-category-cards">
@@ -36,7 +36,7 @@
 		# } #
 	</div>
 	# if(data.items.length > 3) { #		
-		<a href="~/Products/Category?subCategory=#=data.value#&searchParam=#=searchParam#">
+		<a href="@Url.Action("Category", "Products")?subCategory=#=data.value#&searchParam=#=searchParam#">
 			<p class="show-all">Show all results from <strong>#= (data.value != null) ? data.value : "Other" #</strong> subcategory</p>
 		</a>
 	# } #
@@ -52,7 +52,7 @@
 		var dataSourceProducts = new kendo.data.DataSource({
 		  transport: {	   
 		    read: {
-		      url: "/Products/ReadAllProducts",
+		      url: '@Url.Action("ReadAllProducts", "Products")',
 		      dataType: "json" 
 		    }
 		  },

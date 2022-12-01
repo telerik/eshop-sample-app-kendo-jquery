@@ -1,5 +1,5 @@
 ﻿<div class="header" style="visibility: hidden;">
-	<a href="~/Home/Index">
+	<a href="@Url.Action("Index","Home")" class="navbar-brand">
 		<img class="logo" src="~/images/logo.png" alt="Voyago">
 	</a>
 	<div class="search-bar-container" >
@@ -104,7 +104,7 @@
 		function goToCategoryPage(e) {
 			var category = e.sender.value();
 			if (category != "") {
-				   location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Home/" + category : "/Home/" + category;
+				location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Home/" + category : "/Home/" + category;			
 			}
 		}
 

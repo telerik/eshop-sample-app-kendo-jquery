@@ -14,12 +14,12 @@
 
 <script id="favoriteProduct-template" type="text/html">
 	<div class="favorite-product-container">
-		<a href="~/Products/Details?productId=#:Id#">
+		<a href="@Url.Action("Details","Products")?productId=#:Id#">
 			<img src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
 		</a>
 
 		<div class="favorite-product-info-container">
-			<a href="~/Products/Details?productId=#:Id#">
+			<a href="@Url.Action("Details","Products")?productId=#:Id#">
 				<h4 class="favorite-product-name">#:Name#</h4>
 			</a>
 			<div class="avg-rating">
@@ -41,7 +41,7 @@
 	var dataSource = new kendo.data.DataSource({
 	  transport: {	   
 	    read: {
-	      url: "/Account/GetFavoriteProducts",
+	      url: '@Url.Action("GetFavoriteProducts", "Account")',
 	      dataType: "json" 
 	    }
 	  }

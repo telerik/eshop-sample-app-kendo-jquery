@@ -567,9 +567,9 @@ namespace Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult OrderDetails(int id)
+        public IActionResult OrderDetails(int orderNumber)
         {
-            ViewData["OrderNumber"] = id;
+            ViewData["OrderNumber"] = orderNumber;
             return View();
         }
 

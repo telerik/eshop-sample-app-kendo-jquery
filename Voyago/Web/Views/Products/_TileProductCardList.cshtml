@@ -1,12 +1,12 @@
 ﻿
 
 <div class="favorite-product-container">
-		<a href="~/Products/Details?productId=#:Id#">
+		<a href="@Url.Action("Details", "Products")?productId=#:Id#" class="favorite-product-image">
 			<img width="272" height="272" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
 		</a>
 
 		<div class="favorite-product-info-container">
-			<a href="~/Products/Details?productId=#:Id#">
+			<a href="@Url.Action("Details", "Products")?productId=#:Id#">
 				<h4 class="favorite-product-name">#:Name#</h4>
 			</a>
 			<div class="avg-rating">

@@ -110,7 +110,7 @@
 		$('#discount').text(kendo.toString(Number(discount), 'p0'))
 		$('#final-price').text(kendo.toString(Number(finalPrice), 'c2'))
 
-		$.get("/Products/GetAvailableColors?productId=" + productId, function (data) {
+		$.get('@Url.Action("GetAvailableColors","Products")?productId=' + productId, function (data) {
 			$("#colorPicker").kendoRadioGroup({
 				items: data,
 
@@ -128,17 +128,17 @@
 			    "showText": false,
 			    "type": "rootItem"
 			}, {
-			    "href": "/Home/@Model.ProductCategoryName",
+			    "href": '@Url.Action("@Model.ProductCategoryName", "Home")',
 			    "text": "@Model.ProductCategoryName",
 			    "showText": true,
 			    "type": "item"
 			}, {
-			    "href": "/Products/Category?subCategory=@Model.SubCategory&subCategoryId=@Model.SubCategoryId&count=4",
+			    "href": '@Url.Action("Category", "Products")?subCategory=@Model.SubCategory&subCategoryId=@Model.SubCategoryId&count=4',
 			    "text": "@Model.SubCategory",
 			    "showText": true,
 			    "type": "item"
 			},{
-				"href": "/Products/Details?productId=@Model.Name",
+				"href": "@Url.Action("Details", "Products")?productId=@Model.Name",
 				"text": "@Model.Name",
 				"showText": true,
 				"type": "item"
@@ -165,7 +165,7 @@
 			"dataSource": {
 			    "transport": {
 			        "read": {
-			            "url": "/Products/GetAvailableSizes?productId=@Model.Id"
+			            "url": '@Url.Action("GetAvailableSizes", "Products")?productId=@Model.Id''
 			        }
 			    }
 			}
@@ -174,7 +174,7 @@
 		var dataSource = new kendo.data.DataSource({
 			  transport: {	   
 			    read: {
-			      url: "/Products/ReadSimilarProducts?productId=@Model.Id&count=4",
+			      url: '@Url.Action("ReadSimilarProducts", "Products")?productId=@Model.Id&count=4',
 			      dataType: "json" 
 			    }
 			  }

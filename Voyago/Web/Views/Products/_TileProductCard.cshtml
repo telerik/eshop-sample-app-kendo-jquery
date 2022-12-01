@@ -1,16 +1,16 @@
 ﻿<div class="k-card">	
-	<a style="position: relative;" href="~/Products/Details?productId=#:Id#">
+	<a style="position: relative;" href="@Url.Action("Details", "Products")?productId=#:Id#">
 		<img class="k-card-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" width="330" height="244" alt="#:Name# image" />
 		# if(DiscountPct != 0) { #
 			<span class="discount-pct">#:Number(DiscountPct) * 100#% off</span>
 		# } #
 	</a>
 	<div class="k-card-body">
-		<a style="text-decoration: none;" href="~/Products/Details?productId=#:Id#">
+		<a href="@Url.Action("Details", "Products")?productId=#:Id#">
 			<h5 style="color: black;">#:Name#</h5>
 		</a>
 		@{
-			if (!Context.Request.Path.ToString().Contains("Home"))
+			if (Context.Request.Path.ToString().Contains("Products"))
 			{
 				<div class="avg-rating">
 					<img class="rating-icon" src="~/images/star.svg" alt="star icon" />
