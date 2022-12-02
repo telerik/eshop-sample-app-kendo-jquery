@@ -61,9 +61,9 @@
                         editor: "Captcha", 
                         editorOptions: {
                             validateOnBlur: true,
-                            handler: "/Contacts/Reset",                         
+                            handler: '@Url.Action("Reset", "Contacts")',                         
                             audioButton: false,
-                            validationHandler: "/Contacts/Validate",
+                            validationHandler: '@Url.Action("Validate", "Contacts")',
                             error: function (data) {
                                 console.log(data);
                             }

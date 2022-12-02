@@ -19,12 +19,12 @@
     font-weight: 600;
 }
 
-#grid_orders a.order-details-link {
-    color: #0078D4;
-    text-decoration: underline;
+.order-details-link {
+    color: #0078D4 !important;
+    text-decoration: underline !important;
     border-color: transparent;
     background: 0 0;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
 .view-order-link {

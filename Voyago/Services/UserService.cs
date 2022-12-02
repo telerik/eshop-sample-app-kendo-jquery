@@ -19,8 +19,7 @@ namespace Services
         }
 
         public async Task<UserViewModel?> GetUserByLoginCredentials(LoginUserInpuModel input)
-        {           
-
+        {            
             if (await dbContext.Contacts.AnyAsync(user => user.EmailAddress == input.Email))
             {
                 var attemptedUser = await dbContext.Contacts.FirstAsync(user => user.EmailAddress == input.Email);
@@ -102,7 +101,7 @@ namespace Services
 
         public int GetUsersCount()
         {
-            return dbContext.Contacts.Select(c => c.ContactId).Sum();
+            return dbContext.Contacts.Select(c => c.ContactId).Count();
         }        
 
         public IQueryable<ShoppingCartItemViewModel> GetUserShoppingCartItems(string userEmail)
