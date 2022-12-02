@@ -58,10 +58,10 @@
                     {
                         field: "Captcha", label: "", validation: { required: true }, attributes: {style: "width: 280px" },
                         hint: "Type the characters you see in the picture above.",
-                        editor: "Captcha", 
+                        editor: "Captcha",
                         editorOptions: {
                             validateOnBlur: true,
-                            handler: '@Url.Action("Reset", "Contacts")',                         
+                            handler: '@Url.Action("Reset", "Contacts")',
                             audioButton: false,
                             validationHandler: '@Url.Action("Validate", "Contacts")',
                             error: function (data) {
@@ -70,7 +70,7 @@
                     }
                 }],
                  submit: function (e) {
-                    e.preventDefault();                   
+                    e.preventDefault();
                     $('#validation-success').html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
                 },
                 clear: function(ev) {
@@ -93,7 +93,7 @@
                     content: "Iowa"
                 }
             }]
-        });  
+        });
     });
 </script>
 

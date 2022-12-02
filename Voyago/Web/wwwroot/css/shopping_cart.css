@@ -18,7 +18,7 @@
     font-weight: 600;
     font-size: calc(14px + 0.390625vw);
     line-height: calc(20px + 0.390625vw);
-    color: var(--voyago-blue);
+    color: #0078D4;
     text-align: center;
     padding: 2% 0;
 }

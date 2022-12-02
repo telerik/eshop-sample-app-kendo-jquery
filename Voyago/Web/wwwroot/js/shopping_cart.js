@@ -1,14 +1,14 @@
 function getShoppingCartGrid() {
-	
+
 	return $("#shoppingCartGrid").data("kendoGrid");
 }
 
-function shoppingCartGridOnDataBoundInitial(e) {	
-	
+function shoppingCartGridOnDataBoundInitial(e) {
+
 }
 
 function shoppingCartGridOnDataBound(e) {
-	
+
 	var grid = e.sender;
 	var items = e.sender.items();
 
@@ -40,23 +40,23 @@ function removeItemFromShoppingCart(itemId) {
 	grid.dataSource.sync();
 
 	if (refresh) {
-		location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/ShoppingCart" : "/Account/ShoppingCart";
+		location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/ShoppingCart" : "/Account/ShoppingCart";
     }
 }
 
-function updateShoppingCartChanges(e) {	
+function updateShoppingCartChanges(e) {
 	var shoppingCartGrid = $('#shoppingCartGrid').data('kendoGrid')
 	var currentRow = $(e.sender.element).closest('tr')
 	var editDataItem = shoppingCartGrid.dataItem(currentRow);
 	var newQtyValue = e.sender.value()
 	editDataItem.set('Quantity', newQtyValue)
 	editDataItem.set('Total', newQtyValue * editDataItem.ProductPrice)
-	getShoppingCartGrid().dataSource.sync();	
+	getShoppingCartGrid().dataSource.sync();
 }
 
 function checkoutShoppingCart() {
 	kendo.ui.progress($("#checkoutButton"), true);
-	location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
+	location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
 }
 
 function calculateShoppingCartTotal() {
@@ -71,17 +71,17 @@ function calculateShoppingCartTotal() {
 	$("#subTotalValue").html("$ " + total);
 }
 
-function addProductToShoppingCart(e) {	
+function addProductToShoppingCart(e) {
 	var productId = e.sender.element[0].id.split('_')[1];
-	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/AddProductToShoppingCart?productId=" : window.location.origin + "/Account/AddProductToShoppingCart?productId=";
-	debugger;
+	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/AddProductToShoppingCart?productId=" : window.location.origin + "/Account/AddProductToShoppingCart?productId=";
+
 	$.post(getUrl + productId, function () {
 		getShoppingCartItemsCount();
 	});
 }
 
 function getShoppingCartItemsCount() {
-	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? window.location.host + "/fluent-eshop-voyago/Account/GetShoppingCartItemsCount" : window.location.origin + "/Account/GetShoppingCartItemsCount";
+	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/GetShoppingCartItemsCount" : window.location.origin + "/Account/GetShoppingCartItemsCount";
 	$.get(getUrl, function (data) {
 		$('#shopping-cart .k-badge').data('kendoBadge').text(data);
 	});

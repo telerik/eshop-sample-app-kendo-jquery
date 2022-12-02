@@ -4,10 +4,10 @@
 @model Models.ViewModels.ProductAllViewModel;
 
 <div class="details-container">
-	<nav id="breadcrumb" name="breadcrumb"></nav>	
+	<nav id="breadcrumb" name="breadcrumb"></nav>
 	<div class="model-details">
 		<div class="model-image">
-			<img class="detail-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">			
+			<img class="detail-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">
 		</div>
 		<div class="model-info">
 			<div class="info-top">
@@ -23,7 +23,7 @@
 						}
 					}
 				</h1>
-				<input id="productRating" name="productRating" type="text" value="0" />				
+				<input id="productRating" name="productRating" type="text" value="0" />
 				<hr class="splitter1">
 			</div>
 			<div class="info-bottom">
@@ -41,7 +41,7 @@
 						@{
 							if (Model.Size != null)
 							{
-								<input id="sizePicker" name="sizePicker" type="text" />								
+								<input id="sizePicker" name="sizePicker" type="text" />
 							}
 						}
 					</div>
@@ -61,19 +61,19 @@
 				<div class="bottom-right">
 					@{
 						if (Model.DiscountPct > 0)
-						{							
+						{
 							<label class="list-price"></label>
 							<label id="discount" class="discount"></label>
 							<label id="final-price" class="price"></label>
 						}
 						else
-						{						
+						{
 							<label class="price"></label>
 						}
 					}
-					<div class="product-buttons">		
+					<div class="product-buttons">
 						<button class="cart-button add-to-cart" id="addToCartButton_@Model.Id" type="button">Add to cart</button>
-						<button class="favorites-button add-to-favourites" id="addToFavoritesButton_@Model.Id" type="button">Add to Favorites</button>						
+						<button class="favorites-button add-to-favourites" id="addToFavoritesButton_@Model.Id" type="button">Add to Favorites</button>
 					</div>
 				</div>
 			</div>
@@ -87,7 +87,7 @@
 		{
 			<div>
 				<h4 class="similar-products">Similar Products</h4>
-				<div id="similarProductsListView" name="similarProductsListView"></div>				
+				<div id="similarProductsListView" name="similarProductsListView"></div>
 			</div>
 		}
 	}
@@ -104,7 +104,7 @@
 		var discount = "@Model.DiscountPct";
 		var price = "@Model.Price"
 		var finalPrice = "@Model.FinalPrice"
-		
+
 		$('.price').text(kendo.toString(Number(price), 'c'))
 		$('.list-price').text(kendo.toString(Number(price), 'c'))
 		$('#discount').text(kendo.toString(Number(discount), 'p0'))
@@ -118,7 +118,7 @@
 				value: "@Model.Color",
 				change: function () { selectAlternateProductVersion(modelId); }
 			});
-		});		
+		});
 
 		$("#breadcrumb").kendoBreadcrumb({
 			"items": [{
@@ -145,7 +145,7 @@
 			}],
 			"navigational": true
 		});
-		
+
 
 		 $("#productRating").kendoRating({
 		    "min": 1,
@@ -165,27 +165,27 @@
 			"dataSource": {
 			    "transport": {
 			        "read": {
-			            "url": '@Url.Action("GetAvailableSizes", "Products")?productId=@Model.Id''
+			            "url": '@Url.Action("GetAvailableSizes", "Products")?productId=@Model.Id'
 			        }
 			    }
 			}
-		});		
+		});
 
 		var dataSource = new kendo.data.DataSource({
-			  transport: {	   
+			  transport: {
 			    read: {
 			      url: '@Url.Action("ReadSimilarProducts", "Products")?productId=@Model.Id&count=4',
-			      dataType: "json" 
+			      dataType: "json"
 			    }
 			  }
-			});		
-							
+			});
+
 		$("#similarProductsListView").kendoListView({
-		    "tagName": "div",				
+		    "tagName": "div",
 		    "dataSource": dataSource,
 			"dataBound": onSimilarDataBound,
 		    "template": kendo.template($('#product-template').html())
-		}); 
+		});
 	});
 </script>
 

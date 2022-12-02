@@ -3,8 +3,8 @@
 
 
 @{
-    ViewData["Title"] = "ProductCatalog";    
-    var result = Html.Raw(Json.Serialize(Model.Parameters));  
+    ViewData["Title"] = "ProductCatalog";
+    var result = Html.Raw(Json.Serialize(Model.Parameters));
 }
 
 @model Models.ViewModels.ReportSourceModel
@@ -13,7 +13,7 @@
 
 
 	<style>
-		#reportViewer1 {	
+		#reportViewer1 {
 			font-family: Verdana, Arial;
 		}
 
@@ -21,7 +21,7 @@
             height: 1078px;
             width: 980px;
             margin: 20px auto 100px auto !important;
-        }  
+        }
 
         .order-link{
             font-weight: 600;
@@ -30,9 +30,9 @@
             color: #0078D4;
             margin-left: 10%;
         }
-	</style>    
+	</style>
 
-    <div id="container">      
+    <div id="container">
         <a class="order-link" visibility="hidden" href="javascript:history.back()"><span class="k-icon k-i-chevron-left"></span>Back To Order</a>
         <div id="reportViewer1">
             loading...
@@ -40,14 +40,14 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () { 
-            
+        $(document).ready(function () {
+
             if(window.location.href.includes("Invoice")){
                 $('.order-link').css('visibility', 'visible');
             }else{
                 $('.order-link').css('visibility', 'hidden');
             }
-       
+
             $("#reportViewer1")
                 .telerik_ReportViewer({
 
@@ -64,12 +64,12 @@
 
                     //ReportSource - report description
                     reportSource: {
-                        // The report can be set to a report file name (trdx report definition) 
+                        // The report can be set to a report file name (trdx report definition)
                         // or CLR type name (report class definition).
                         report: '@Model.ReportId',
                         parameters: @result
                     },
-                   
+
                     // Specifies whether the viewer is in interactive or print preview mode.
                     // PRINT_PREVIEW - Displays the paginated report as if it is printed on paper. Interactivity is not enabled.
                     // INTERACTIVE - Displays the report in its original width and height without paging. Additionally interactivity is enabled.
