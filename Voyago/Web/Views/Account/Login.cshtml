@@ -4,26 +4,28 @@
 
 @model Models.InputModels.LoginUserInpuModel
 
-<div class="login-custom" style="visibility: hidden;">    
-    <div class="login-form">
-        <img class="logo" src="~/images/logo.png" alt="Voyago">
+@section loginStyles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/login-register.css")" />
+}
 
-        <span asp-validation-for="Email" class="text-danger"></span>
+<div class="login-form" style="visibility: hidden;">
+    <img class="logo" src="~/images/logo.png" alt="Voyago">
+
+    <span asp-validation-for="Email" class="text-danger"></span>
     
-        <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm"></form>   
+    <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm"></form>   
     
-        <div class="register-prompt">
-            <p>Don’t have an account?</p><a href="@Url.Action("Register","Account")" class="login-link">Register</a>
-        </div>
+    <div class="register-prompt">
+        <p>Don’t have an account?</p><a href="@Url.Action("Register","Account")" class="login-link">Register</a>
     </div>
 </div>
+
     
 <script id="formButtonsTmpl" type="text/html">
     <button class="k-button k-form-submit" type="submit">
         <span class="k-button-text">Login</span>
     </button>
 </script>
-
 
 
 <script>
@@ -63,9 +65,7 @@
             "shouldRenderHidden": true
         }]
      });     
-    $(".login-custom").css("visibility", "visible");
+    $(".login-form").css("visibility", "visible");
  })
     
 </script>
-
-<link rel="stylesheet" href="~/css/login_form.css">

@@ -20,7 +20,7 @@
 }
 
 .order-details-link {
-    color: #0078D4 !important;
+    color: var( --voyago-primary ) !important;
     text-decoration: underline !important;
     border-color: transparent;
     background: 0 0;
@@ -28,7 +28,7 @@
 }
 
 .view-order-link {
-    color: #0078D4 !important;
+    color: var( --voyago-primary ) !important;
     display: flex;
     align-items: center;
     text-align: center;

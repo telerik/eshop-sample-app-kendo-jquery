@@ -34,7 +34,7 @@
     font-size: 20px;
     line-height: 24px;
     text-align: center;
-    color: #0078D4;
+    color: var( --voyago-primary );
     margin-top: 31px;
     margin-bottom: 53px;
 }
@@ -119,14 +119,14 @@ a {
     font-size: 26px;
     line-height: 46px;
     letter-spacing: -0.9px;
-    color: #0078D4;
+    color: var( --voyago-primary );
     margin-bottom: 30px;
 }
 
 .cart-button {
     width: 250px;
     height: 40px;
-    background: #0078D4;
+    background: var( --voyago-primary );
     border-radius: 2px;
     margin-bottom: 16px;
     color: #FFFFFF !important;
@@ -134,8 +134,8 @@ a {
 
 .card-cart-button:hover {
     background: white;
-    color: #0078D4 !important;
-    border-color: #0078D4 !important;
+    color: var( --voyago-primary ) !important;
+    border-color: var( --voyago-primary ) !important;
 }
 
 .favorites-button {

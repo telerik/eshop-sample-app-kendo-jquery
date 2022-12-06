@@ -31,7 +31,7 @@ span.discount-pct {
     font-size: 1rem;
     line-height: 1.5rem;
     color: #FFFFFF;
-    background: #0078D4;
+    background: var( --voyago-primary );
     padding: 2%;
     padding-right: 4%;
 }
@@ -54,7 +54,7 @@ span.discount-pct {
 .card-price {
     font-weight: 400;
     font-size: 2rem;
-    color: #0078D4;
+    color: var( --voyago-primary );
 }
 
 .rating-text {
@@ -132,7 +132,7 @@ span.discount-pct {
     right: 0px;
     top: 0px;
     padding: 5px;
-    background: #0078D4;
+    background: var( --voyago-primary );
 }
 
 span.discount-pct {
@@ -166,7 +166,7 @@ span.discount-pct {
     font-weight: 400;
     font-size: 2.08vw;
     line-height: 2.91vw;
-    color: #0078D4;
+    color: var( --voyago-primary );
 }*/
 
 /*.rating-text {
