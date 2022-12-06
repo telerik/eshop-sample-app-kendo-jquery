@@ -1,125 +1,123 @@
-﻿<div class="header" style="visibility: hidden;">
-	<a href="@Url.Action("Index","Home")" class="navbar-brand">
-		<img class="logo" src="~/images/logo.png" alt="Voyago">
-	</a>
-	<div class="search-bar-container" >
-		<input id="searchBar" name="searchBar" type="text" value="" />
-	</div>
-	<div class="header-menu">
-		<div class="ddl-container">
-			<input id="headerCategoriesDDL" name="headerCategoriesDDL" type="text" />
-		</div>
-		<button id="favourites-btn">Favourites</button>
-		<button id="contacts">Contacts</button>
-		<button class="profile" id="profile-btn"></button>
-		<button class="shopping-cart" id="shopping-cart"></button>
-	</div>
-</div>
-
-<script id="searchBar-template" type="text/html">
-	<span class="k-state-default">
-		<span style="color: \\#849A8E;">
-			#:data.ProductName#
-		</span>
-		# if(data.SubCategory != null) { #
-			in #:data.SubCategory#
-		# } #
-	</span>
+﻿<script id="searchBar-template" type="text/html">
+    <span class="k-state-default">
+        <span style="color: \\#849A8E;">
+            #:data.ProductName#
+        </span>
+        # if(data.SubCategory != null) { #
+            in #:data.SubCategory#
+        # } #
+    </span>
 </script>
 
 <script>
-	$(".logo").css("visibility", "hidden");
+    $(".logo").css("visibility", "hidden");
     $(".search-bar-container").css("visibility", "hidden");
-	$('.header-menu button').css("visibility", "hidden");
-	$('#contacts').css("visibility", "hidden");
-	$(document).ready(function () {
-		getFavoritesCount();
-		getShoppingCartItemsCount();
+    $('.header-menu button').css("visibility", "hidden");
+    $('#contacts').css("visibility", "hidden");
+    $(document).ready(function() {
+        getFavoritesCount();
+        getShoppingCartItemsCount();
 
-		$("#favourites-btn").kendoButton({
-			click: function(){
-				location.href = '@Url.Action("Favorites", "Account")';
-			},
+        $("#favourites-btn").kendoButton({
+            click: function() {
+                location.href = '@Url.Action("Favorites", "Account")';
+            },
             badge: {
                 position: "edge",
                 rounded: "full",
-				align: "top end",
+                align: "top end",
                 themeColor: "primary",
-				text: 0
+                text: 0
             }
         });
 
-		$("#contacts").kendoButton({
-			click: function(){
-				location.href = '@Url.Action("Index", "Contacts")';
-			}
+        $("#contacts").kendoButton({
+            click: function() {
+                location.href = '@Url.Action("Index", "Contacts")';
+            }
         });
 
-		$("#shopping-cart").kendoButton({
-			click: function(){
-				location.href = '@Url.Action("ShoppingCart", "Account")';
-			},
-			icon: 'cart',
+        $("#shopping-cart").kendoButton({
+            click: function() {
+                location.href = '@Url.Action("ShoppingCart", "Account")';
+            },
+            icon: 'cart',
             badge: {
                 position: "edge",
                 rounded: "full",
-				align: "top end",
+                align: "top end",
                 themeColor: "primary",
-				text: 0
+                text: 0
             }
         });
 
-		$("#profile-btn").kendoDropDownButton({
-			icon: "user",
-			fillMode: "flat",
-			items: [
-			    { class: "profile", text: "Profile", click: function (e) { location.href = '@Url.Action("Profile", "Account")' } },
-			    { class: "orders", text: "Orders", click: function (e) { location.href = '@Url.Action("OrdersPage", "Account")' } },
-				{ class: "about", text: "About Us", click: function (e) { location.href = '@Url.Action("About", "Account")' } },
-			    { class: "logout", text: "Logout", click: function (e) { location.href= '@Url.Action("Logout", "Account")' }}
-			]
-       });
+        $("#profile-btn").kendoDropDownButton({
+            icon: "user",
+            fillMode: "flat",
+            items: [
+                { class: "profile", text: "Profile", click: function(e) { location.href = '@Url.Action("Profile", "Account")' } },
+                { class: "orders", text: "Orders", click: function(e) { location.href = '@Url.Action("OrdersPage", "Account")' } },
+                { class: "about", text: "About Us", click: function(e) { location.href = '@Url.Action("About", "Account")' } },
+                { class: "logout", text: "Logout", click: function(e) { location.href = '@Url.Action("Logout", "Account")' } }
+            ]
+        });
 
-		$("#searchBar").kendoAutoComplete({
-			"clearButton": false,
-			"dataTextField": "ProductName",
-			"minLength": 2,
-			"placeholder": "Search",
-			"select": onSearchSelect,
-			"change": searchProducts,
-			"template": $('#searchBar-template').html(),
-			"filter": "contains",
-			"dataSource": {
-			    "transport": {
-			        "read": {
-			            "url": '@Url.Action("GetSearchSuggestions", "Home")',
-			            "data": onAdditionalData
-			        }
-			    },
-			    "serverFiltering": true,
-			}
-		});
+        $("#searchBar").kendoAutoComplete({
+            "clearButton": false,
+            "dataTextField": "ProductName",
+            "minLength": 2,
+            "placeholder": "Search",
+            "select": onSearchSelect,
+            "change": searchProducts,
+            "template": $('#searchBar-template').html(),
+            "filter": "contains",
+            "dataSource": {
+                "transport": {
+                    "read": {
+                        "url": '@Url.Action("GetSearchSuggestions", "Home")',
+                        "data": onAdditionalData
+                    }
+                },
+                "serverFiltering": true,
+            }
+        });
 
-		function goToCategoryPage(e) {
-			var category = e.sender.value();
-			if (category != "") {
-				location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Home/" + category : "/Home/" + category;
-			}
-		}
+        function goToCategoryPage(e) {
+            var category = e.sender.value();
+            if (category != "") {
+                location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Home/" + category : "/Home/" + category;
+            }
+        }
 
-		 $("#headerCategoriesDDL").kendoDropDownList({
-			"change": goToCategoryPage,
-			"optionLabel": "Categories",
-			"dataSource":[
-				"Accessories",
-				"Bikes",
-				"Clothing",
-				"Components"
-			]
-		});
+        $("#headerCategoriesDDL").kendoDropDownList({
+            "change": goToCategoryPage,
+            "optionLabel": "Categories",
+            "dataSource": [
+                "Accessories",
+                "Bikes",
+                "Clothing",
+                "Components"
+            ]
+        });
 
-		 $(".k-autocomplete").prepend("<span class='k-icon k-i-search'></span>")
-	})
+        $(".k-autocomplete").prepend("<span class='k-icon k-i-search'></span>")
+    })
 </script>
 
-<link rel="stylesheet" href="~/css/header.css">
+<div class="header" style="visibility: hidden;">
+    <a href="@Url.Action("Index","Home")" class="navbar-brand">
+        <img class="logo" src="~/images/logo.png" alt="Voyago">
+    </a>
+    <div class="search-bar-container">
+        <input id="searchBar" name="searchBar" type="text" value="" />
+    </div>
+    <div class="header-menu">
+        <div class="ddl-container">
+            <input id="headerCategoriesDDL" name="headerCategoriesDDL" type="text" />
+        </div>
+        <button id="favourites-btn">Favourites</button>
+        <button id="contacts">Contacts</button>
+        <button class="profile" id="profile-btn"></button>
+        <button class="shopping-cart" id="shopping-cart"></button>
+    </div>
+</div>

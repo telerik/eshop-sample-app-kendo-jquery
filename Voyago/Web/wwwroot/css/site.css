@@ -3,8 +3,21 @@
     min-height: 100%;
 }
 
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    margin: 0;
+}
+
 :root {
-    --voyago-blue: #0078D4;
+    --voyago-primary: #0078D4;
+    --viewport-width: 1440px;
+    --viewport-padding-inline: 30px;
 }
 
 body {
@@ -12,13 +25,16 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 20px;
     color: #323130;
+}
+
+p {
+    margin: 0;
 }
 
 a, a:hover {
     text-decoration: none;
-    color: #323130;
+    color: var( --voyago-primary );
 }
 
 .k-i-arrow-n::before {
@@ -27,6 +43,12 @@ a, a:hover {
 
 .k-i-arrow-s::before {
     content: "\e015" !important;
+}
+
+.wrap-width {
+    width: var( --viewport-width );
+    margin-inline: var( --viewport-padding-inline );
+    margin: auto;
 }
 
 .k-breadcrumb-link {
@@ -48,13 +70,231 @@ a, a:hover {
     display: inherit;
 }
 
-a, a:hover {
-    text-decoration: none;
-    color: #323130;
-}
-
 .k-popup .k-item, .k-list-item, .k-list-optionlabel {
     outline: none!important;
 }
+
+
+/* Header */
+.header {
+    width: var( --viewport-width );
+    margin: auto;
+    padding-inline: var( --viewport-padding-inline );
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    width: 238px;
+    margin: 28px auto;
+}
+
+.search-bar-container {
+    flex-grow: 1;
+    padding-inline: 38px;
+}
+
+.search-bar-container .k-autocomplete {
+    display: flex;
+    align-items: center;
+    max-width: 634px;
+    min-width: 120px;
+    height: 40px;
+}
+
+.k-i-search {
+    margin-left: 18px;
+    color: var( --voyago-primary );
+}
+
+.ddl-container {
+    margin-right: 10px;
+}
+
+#favourites-btn {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+#headerCategoriesDDL, #searchBar, h6 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+    .header-menu .k-dropdownlist {
+        align-items: center;
+        border-color: white !important;
+        min-width: 120px;
+    }
+
+#favoritesBadge {
+    margin-top: -39px;
+    margin-left: 62px;
+}
+
+#shoppingCartBadge {
+    margin-top: -34px;
+    margin-left: 25px;
+}
+
+.header-menu .k-button {
+    border: none;
+}
+
+.shopping-cart .k-icon {
+    font-size: 20px;
+}
+
+.k-button-text {
+    font-weight: normal;
+}
+
+#profile-btn_buttonmenu {
+    width: 100px !important;
+}
+
+.shopping-cart.k-button {
+    padding: 6px !important;
+}
+
+.k-i-arrow-s::before {
+    content: "\e015";
+}
+
+
+/* Footer */
+.footer {
+    color: #ffffff;
+    background-color: var( --voyago-primary );
+}
+    .footer .wrap-width {
+        padding-block: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+
+.footer-content {
+    color: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 28px;
+}
+
+.footer-column {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .footer-column .footer-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .socials {
+        gap: 25px;
+    }
+
+    .footer-logo {
+        margin-top: auto;
+        align-items: center;
+    }
+
+    .progress-logo {
+        padding-right: 6px;
+    }
+
+    .rights {
+        line-height: 16px;
+        border-left: 1px solid;
+        padding-left: 6px;
+    }
+
+.footer-heading {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.footer-payment-methods img {
+    width: 10vw;
+    height: 2.5vh;
+    background: white;
+    min-height: 40px;
+}
+
+.progress-logo {
+    min-height: 24px;
+    height: 2vh;
+    width: auto;
+}
+
+.socials-inner:nth-of-type(2) {
+    margin-top: 17vh;
+}
+
+.contact-email {
+    margin-top: 6vh;
+}
+
+
+@media (max-width: 1500px) {
+    :root {
+        --viewport-width: calc( 100% - 60px );
+    }
+
+    .logo {
+        width: auto;
+        height: 35px;
+    }
+
+    .header-menu {
+        gap: 2px;
+    }
+}
+
+@media (max-width: 820px) {
+    .logo {
+        width: auto;
+        height: 20px;
+        margin-top: 50%;
+        margin-left: 20%;
+    }
+
+    .header {
+        height: 140px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .footer {
+        height: 40vh;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-payment-methods {
+        display: none;
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .contact-email {
+        margin-top: -3vh;
+    }
+}
+
 
 

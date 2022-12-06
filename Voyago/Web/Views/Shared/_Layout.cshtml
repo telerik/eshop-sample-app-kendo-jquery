@@ -4,18 +4,15 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>@ViewData["Title"] - Web</title>
-
+	
+	<link rel="stylesheet" type="text/css" href="https://kendo.cdn.telerik.com/2022.3.1109/styles/kendo.fluent-main.min.css" />
 	<environment names="Development">
-		<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
-		<link rel="stylesheet" href="~/css/site.css" />
+		<link  rel="stylesheet" type="text/css" href="~/css/site.css" />
 	</environment>
 	<environment names="Staging,Production">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-			  asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
-			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 		<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	</environment>
-	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.3.1109/styles/kendo.fluent-main.min.css" />
+	@RenderSection("loginStyles", false)
 	<script src="https://cdn.kendostatic.com/2022.3.1109/js/jquery.min.js"></script>
 	<script src="https://cdn.kendostatic.com/2022.3.1109/js/kendo.all.min.js"></script>
 	<script src="~/js/product_details.js"></script>
@@ -50,16 +47,15 @@
 	</environment>
 	@RenderSection("scripts", required: false)
 	<script>
-        $(document).ready(function () {
-            $(".search-bar-container").css("visibility", "visible");
-			$(".logo").css("visibility", "visible");
+		$(document).ready(function () {
 			$(".search-bar-container").css("visibility", "visible");
+			$(".logo").css("visibility", "visible");
 			$("#headerCategoriesDDL").css("visibility", "visible");
 			$('.header-menu button').css("visibility", "visible");
 			$('#contacts').css("visibility", "visible");
 			$('.header').css("visibility", "visible");
-        });
-    </script>
+		});
+	</script>
 </body>
 </html>
 

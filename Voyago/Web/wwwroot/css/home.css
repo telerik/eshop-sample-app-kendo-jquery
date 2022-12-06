@@ -3,8 +3,8 @@
     flex-direction: column;
 }
 
-a {
-    text-decoration: none;
+h4 {
+    margin: 24px 0;
 }
 
 #topPicks .k-scrollview-wrap li.k-scrollview-page {
@@ -31,28 +31,18 @@ a {
     height: 38px;
 }
 
-.home-heading {
-    font-weight: 600;
-    font-size: 2.187vw;
-    line-height: 3.0625vw;
-    color: #000000;
-    margin-top: 1.56rem;
-    margin-left: 15rem;
-    margin-bottom: 1.56rem;
-}
-
 .top-picks {
     display: flex;
     flex-direction: row;
-    gap: 1.5vw;
+    gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.top-pick-card {
-    background: #FFFFFF;
-    width: 296.5px;
-    height: 256px;
+.home-heading {
+    font-weight: 600;
+    font-size: 42px;
+    color: #000000;
 }
 
 .top-pick-heading {
@@ -64,6 +54,12 @@ a {
     margin: 0;
 }
 
+.top-pick-card {
+    background: #FFFFFF;
+    width: 296.5px;
+    height: 256px;
+}
+
 .top-pick-image {
     width: 100%;
     height: 256px;
@@ -72,14 +68,10 @@ a {
     object-fit: cover;
 }
 
-.categories-container {
-    margin: 5em 15em 5em 15em;
-}
-
 .categories-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .categories-title {
@@ -119,10 +111,6 @@ a {
     vertical-align: middle;
 }
 
-.recently-viewed {
-    margin: 0em 15em 5em 15em;
-}
-
 .recently-viewed-title {
     font-weight: 600;
     font-size: 2.187vw;
@@ -146,11 +134,11 @@ a {
 
 .download-app {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    gap: 24px;
+    padding: 38px 0;
+    border-top: 1px solid #EDEBE9;
     justify-content: center;
-    gap: 3%;
-    margin: 3em 10em 3em 10em;
+    align-items: center;
 }
 
 .download-text {

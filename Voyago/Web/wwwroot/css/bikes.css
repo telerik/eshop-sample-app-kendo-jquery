@@ -29,9 +29,8 @@ a {
 }
 
 .sub-category-container {
-    width: 80%;
-    margin-left: 15%;
-    margin-bottom: 4%;
+    width: var( --viewport-width );
+    margin: auto;
 }
 
 .k-breadcrumb-link {

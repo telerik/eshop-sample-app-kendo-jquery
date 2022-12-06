@@ -132,7 +132,7 @@
     text-align: right;
     font-size: 36px;
     line-height: 58px;
-    color: #0078D4;
+    color: var( --voyago-primary );
     margin-bottom: 22px;
 }
 
@@ -144,15 +144,15 @@
 .cart-button {
     width: 16vw;
     height: 38px;
-    background: #0078D4;
+    background: var( --voyago-primary );
     color: #FFFFFF !important;
     margin-bottom: 10px;
 }
 
 .card-cart-button:hover {
     background: white;
-    color: #0078D4;
-    border-color: #0078D4;
+    color: var( --voyago-primary );
+    border-color: var( --voyago-primary );
 }
 
 .favorites-button {

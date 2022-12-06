@@ -1,38 +1,40 @@
 ﻿@{
-	ViewData["Title"] = "Register Page";
+    ViewData["Title"] = "Register Page";
 }
 
 @model Models.InputModels.RegisterUserInpuModel
 
+@section loginStyles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/login-register.css")" />
+}
 
-<div>
-    <div class="register-form">
-	    <img class="logo" src="~/images/logo.png" alt="Voyago">
+<div class="register-form">
+    <img class="logo" src="~/images/logo.png" alt="Voyago">
 
-        <span asp-validation-for="Email" class="text-danger"></span>
+    <span asp-validation-for="Email" class="text-danger"></span>
 
-	    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
+    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
 
-	    <div class="login-prompt">
-	    	<p>Already have an account?</p><a href="@Url.Action("Login","Account")" class="login-link">Login</a>
-	    </div>
+    <div class="login-prompt">
+        <p>Already have an account?</p><a href="@Url.Action("Login","Account")" class="login-link">Login</a>
     </div>
 </div>
 
 
+
 <script id="formButtonsTmpl" type="text/html">
-	<button class="k-button k-form-submit" type="submit">       
-		<span class="k-button-text">Register</span>
-	</button>
+    <button class="k-button k-form-submit" type="submit">
+        <span class="k-button-text">Register</span>
+    </button>
 </script>
 
 <script>
-	$("#registerForm").kendoForm({
+    $("#registerForm").kendoForm({
         "buttonsTemplate": $('#formButtonsTmpl').html(),
         "validatable": {
             "validateOnBlur": true,
             "validationSummary": true,
-			"errorTemplate": "<span class='k-form-error'>#:message#</span>"
+            "errorTemplate": "<span class='k-form-error'>#:message#</span>"
         },
         "formData": null,
         "serverErrors": {},
@@ -43,13 +45,13 @@
             },
             "validation": {
                 "type": "text",
-				"required": {
-					"message": "Please enter First and Last name"
-				},
-				"pattern": {
-					"value":"^[a-zA-Z]+\\s+[a-zA-Z]+$", 
-					"message":"Please enter First and Last name separated by a space"
-				},
+                "required": {
+                    "message": "Please enter First and Last name"
+                },
+                "pattern": {
+                    "value": "^[a-zA-Z]+\\s+[a-zA-Z]+$",
+                    "message": "Please enter First and Last name separated by a space"
+                },
             }
         }, {
             "field": "Email",
@@ -57,8 +59,8 @@
                 "text": "Email"
             },
             "validation": {
-                "required": true, 
-				"email": true
+                "required": true,
+                "email": true
             }
         }, {
             "field": "Password",
@@ -71,18 +73,14 @@
             },
             "validation": {
                 "type": "text",
-				"required": {
-					"message": "Please enter password"
-				},
-				"pattern": {
-					"value":"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",
-					"message":"Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers."
-				},
+                "required": {
+                    "message": "Please enter password"
+                },
+                "pattern": {
+                    "value": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",
+                    "message": "Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers."
+                },
             }
         }]
     });
-
-
 </script>
-
-<link rel="stylesheet" href="~/css/register_form.css">
