@@ -1,13 +1,13 @@
 ﻿<div class="k-card">	
-	<a style="position: relative;" href="@Url.Action("Details", "Products")?productId=#:Id#">
-		<img class="k-card-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" width="330" height="244" alt="#:Name# image" />
+	<a class="k-card-link" href="@Url.Action("Details", "Products")?productId=#:Id#">
+		<img class="k-card-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image" />
 		# if(DiscountPct != 0) { #
 			<span class="discount-pct">#:Number(DiscountPct) * 100#% off</span>
 		# } #
 	</a>
 	<div class="k-card-body">
 		<a href="@Url.Action("Details", "Products")?productId=#:Id#">
-			<h5 style="color: black;">#:Name#</h5>
+			<h5 class="k-card-title">#:Name#</h5>
 		</a>
 		@{
 			if (Context.Request.Path.ToString().Contains("Products"))
@@ -18,7 +18,7 @@
 				</div>
 			}
 		}
-		<div class="price-container">		
+		<div class="price-container">
 			<h5 class="card-price">#:kendo.toString(FinalPrice, "c")#</h5>
 		</div>
 		<div class="card-buttons">
@@ -28,5 +28,3 @@
 		</div>
 	</div>
 </div>
-
-<link rel="stylesheet" href="~/css/tile_product_card.css">
