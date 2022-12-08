@@ -47,7 +47,7 @@ a, a:hover {
 
 .wrap-width {
     width: var( --viewport-width );
-    padding-inline: var( --viewport-padding-inline );
+    margin-inline: var( --viewport-padding-inline );
     margin: auto;
 }
 
@@ -93,15 +93,16 @@ a, a:hover {
 }
 
 .search-bar-container {
-    margin-left: 38px;
+    flex-grow: 1;
+    padding-inline: 38px;
 }
 
 .search-bar-container .k-autocomplete {
     display: flex;
     align-items: center;
-    width: 634px;
-    height: 40px;
+    max-width: 634px;
     min-width: 120px;
+    height: 40px;
 }
 
 .k-i-search {
@@ -167,41 +168,6 @@ a, a:hover {
 
 .k-i-arrow-s::before {
     content: "\e015";
-}
-
-
-@media (max-width: 1300px) {
-    .header {
-        flex-wrap: wrap;
-    }
-
-    .logo {
-        width: auto;
-        height: 35px;
-        margin-top: 25%;
-        margin-left: 40%;
-    }
-
-    .search-bar-container {
-        width: 20vw;
-    }
-
-    .header-menu {
-        gap: 2px;
-    }
-}
-
-@media (max-width: 820px) {
-    .logo {
-        width: auto;
-        height: 20px;
-        margin-top: 50%;
-        margin-left: 20%;
-    }
-
-    .header {
-        height: 140px;
-    }
 }
 
 
@@ -281,6 +247,35 @@ a, a:hover {
 
 .contact-email {
     margin-top: 6vh;
+}
+
+
+@media (max-width: 1500px) {
+    :root {
+        --viewport-width: calc( 100% - 60px );
+    }
+
+    .logo {
+        width: auto;
+        height: 35px;
+    }
+
+    .header-menu {
+        gap: 2px;
+    }
+}
+
+@media (max-width: 820px) {
+    .logo {
+        width: auto;
+        height: 20px;
+        margin-top: 50%;
+        margin-left: 20%;
+    }
+
+    .header {
+        height: 140px;
+    }
 }
 
 @media (max-width: 1250px) {
