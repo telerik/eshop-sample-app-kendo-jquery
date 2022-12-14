@@ -12,11 +12,6 @@
     margin-bottom: 20%;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
 .inner-1 {
     display: flex;
     flex-direction: column;
@@ -42,7 +37,7 @@ a {
 }
 
 .k-breadcrumb-last-item {
-    color: #323130;
+    color: var( --voyago-dark-grey );
 }
 
 .sub-category-images {
@@ -51,27 +46,6 @@ a {
     gap: 3%
 }
 
-.category-heading-large {
-    color: #323130;
-    font-weight: 600;
-    font-size: 42px;
-    line-height: 58.8px;
-    letter-spacing: -0.9px;
-    margin-bottom: 2%;
-    margin-top: 2%;
-}
-
-.category-heading {
-    color: black;
-    margin-bottom: 5vh;
-    font-size: 28px;
-    line-height: 39.2px;
-    font-weight: 600;
-}
-
-    .category-heading.heading-tires {
-        margin-bottom: 3vh !important;
-    }
 
 @media (max-width: 1300px) {
 

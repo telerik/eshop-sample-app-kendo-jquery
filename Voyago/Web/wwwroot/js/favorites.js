@@ -44,6 +44,6 @@ function removeProductFromFavorites(e) {
 function getFavoritesCount() {
     var getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/GetFavoritesCount" : window.location.origin + "/Account/GetFavoritesCount";
     $.get(getUrl, function (data) {        
-        $("#favourites-btn .k-badge").data("kendoBadge").text(data);
+        $("#favourites-badge").data("kendoBadge").text(data);
     });
 }

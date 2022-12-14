@@ -8,12 +8,12 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/login-register.css")" />
 }
 
-<div class="register-form">
+<div class="login-register-wrapper">
     <img class="logo" src="~/images/logo.png" alt="Voyago">
 
     <span asp-validation-for="Email" class="text-danger"></span>
 
-    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm"></form>
+    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm" class="login-register-form"></form>
 
     <div class="login-prompt">
         <p>Already have an account?</p><a href="@Url.Action("Login","Account")" class="login-link">Login</a>

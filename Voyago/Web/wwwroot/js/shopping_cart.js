@@ -83,6 +83,6 @@ function addProductToShoppingCart(e) {
 function getShoppingCartItemsCount() {
 	let getUrl = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/GetShoppingCartItemsCount" : window.location.origin + "/Account/GetShoppingCartItemsCount";
 	$.get(getUrl, function (data) {
-		$('#shopping-cart .k-badge').data('kendoBadge').text(data);
+		$('#shopping-cart-badge').data('kendoBadge').text(data);
 	});
 }

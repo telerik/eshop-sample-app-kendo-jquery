@@ -22,7 +22,7 @@ namespace Models.ViewModels
 
         public string? Suffix { get; set; }
 
-        public string EmailAddress { get; set; } = null!;
+        public string? EmailAddress { get; set; } = null!;
 
         public int EmailPromotion { get; set; }
 

@@ -58,11 +58,11 @@
     font-weight: 600;
     font-size: 28px;
     line-height: 39.2px;
-    color: #323130;
+    color: var( --voyago-dark-grey );
     margin-left: 2vw;
 }
 
-.k-listview-content {
+.similar-products-list-view .k-listview-content {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -99,7 +99,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: #323130;
+    color: var( --voyago-dark-grey );
 }
 
 .k-picker {
@@ -145,7 +145,7 @@
     width: 16vw;
     height: 38px;
     background: var( --voyago-primary );
-    color: #FFFFFF !important;
+    color: var( --voyago-white ) !important;
     margin-bottom: 10px;
 }
 

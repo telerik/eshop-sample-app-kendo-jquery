@@ -5,7 +5,7 @@
 }
 
 .controls {
-    margin: 20px 40px 60px 40px;    
+    margin: 20px 20px 60px 40px;    
     padding: 30px;
     background: #F2F2F2;
     border-radius: 2px;
@@ -24,7 +24,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 28px;
-    color: #323130;
+    color: var( --voyago-dark-grey );
 }
 
 .control-label {

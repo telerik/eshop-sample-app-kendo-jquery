@@ -98,13 +98,13 @@
 .product-name {
     font-size: calc(28px + 0.390625vw);
     line-height: calc(39px + 0.390625vw);
-    color: #323130;
+    color: var( --voyago-dark-grey );
 }
 
 .currency, .sub-total-val {
     font-size: calc(20px + 0.390625vw);
     line-height: calc(28px + 0.390625vw);
-    color: #323130;
+    color: var( --voyago-dark-grey );
 }
 
 .k-spinner-increase {
@@ -155,10 +155,6 @@
 
 .empty-cart-description {
     text-align: center;
-}
-
-.k-i-arrow-n::before {
-    content: "\e013";
 }
 
 @media (max-width: 1000px) {

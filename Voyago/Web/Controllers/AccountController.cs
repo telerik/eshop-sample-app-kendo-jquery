@@ -102,13 +102,7 @@ namespace Web.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-        }
-
-        [HttpGet]
-        public IActionResult About()
-        {
-            return View();
-        }
+        }        
 
         [HttpGet]
         public IActionResult Invoice(int orderNumber)
@@ -281,8 +275,6 @@ namespace Web.Controllers
                 {
                     return RedirectToAction("Error", "Home");
                 }
-                userProfile.Password = input.Password;
-                userProfile.ConfimPassword = input.ConfimPassword;
             }
             return View("Profile", userProfile);
         }

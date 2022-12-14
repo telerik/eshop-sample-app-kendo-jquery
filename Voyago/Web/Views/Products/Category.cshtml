@@ -9,7 +9,7 @@
 		@await Html.PartialAsync("_MainControls.cshtml")
 		<div>
 			@await Html.PartialAsync("_ListViewHeader.cshtml", (string)ViewBag.SubCategory)
-			<div id="allProductsListView" name="allProductsListView"></div>
+			<div id="allProductsListView" class="all-prod-list-view" name="allProductsListView"></div>
 		</div>
 	</div>
 </div>
@@ -174,7 +174,3 @@
         });
 });
 </script>
-
-
-<link rel="stylesheet" href="~/css/category.css">
-<link rel="stylesheet" href="~/css/all_products_list_view.css">

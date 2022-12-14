@@ -53,6 +53,12 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Error()
         {
             return View();

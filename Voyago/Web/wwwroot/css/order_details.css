@@ -35,7 +35,7 @@
     font-size: 18px;
     line-height: 25px;
     text-align: left;
-    color: #000000;
+    color: var( --voyago-black );
 }
 
 .order-details-information .order-information-title {

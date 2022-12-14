@@ -24,7 +24,7 @@
 }
 
 .k-card-title {
-    color: #000000;
+    color: var( --voyago-black );
 }
 
 span.discount-pct {
@@ -33,7 +33,7 @@ span.discount-pct {
     right: 0;
     font-size: 1rem;
     line-height: 1.5rem;
-    color: #FFFFFF;
+    color: var( --voyago-white );
     background: var( --voyago-primary );
     padding: 2%;
     padding-right: 4%;

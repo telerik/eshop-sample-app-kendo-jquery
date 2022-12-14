@@ -3,7 +3,7 @@
 }
 <div class="home-content">
     <div class="scrollview-container">
-        <div id="scrollView" style="width:100vw; max-width: 100%; margin: auto; height: 31.3vw;">
+        <div id="scrollView">
             <div data-role="page"><img src="~/images/home_main_1.png" /></div>
             <div data-role="page"><img src="~/images/home_main_2.png" /></div>
             <div data-role="page"><img src="~/images/home_main_3.png" /></div>
@@ -16,7 +16,7 @@
         <div class="wrap-width">
             <h4 class="home-heading">Top picks</h4>
             <div class="top-picks-scrollview-container">
-                <div id="topPicks" style="width: 1440px; max-width: 100%; height: 318.72px; margin: auto; background: none;"></div>
+                <div id="topPicks"></div>
             </div>
         </div>
     </div>
@@ -31,23 +31,23 @@
             <div class="column">
                 <a href="@Url.Action("Accessories","Home")">
                     <div class="category-heading">Accessories</div>
-                    <img src="~/images/accessories.png" style="width:100%" class="category-image" />
+                    <img src="~/images/accessories.png" class="category-image" />
                 </a>
             </div>
             <div class="column">
                 <a href="@Url.Action("Bikes","Home")">
                     <div class="category-heading">Bikes</div>
-                    <img src="~/images/bikes.png" style="width:100%" class="category-image" />
+                    <img src="~/images/bikes.png" class="category-image category-img-small" />
                 </a>
                 <a href="@Url.Action("Components","Home")" class="components-header">
-                    <div class="category-heading" style="margin-top: 0.9em;">Components</div>
-                    <img src="~/images/components.png" style="width:100%" class="category-image" />
+                    <div class="category-heading components-header-second">Components</div>
+                    <img src="~/images/components.png" class="category-image category-img-small" />
                 </a>
             </div>
             <div class="column">
                 <a href="@Url.Action("Clothing","Home")">
                     <div class="category-heading">Clothing</div>
-                    <img src="~/images/clothes.png" style="width:100%" class="category-image" />
+                    <img src="~/images/clothes.png" class="category-image" />
                 </a>
             </div>
         </div>
@@ -83,6 +83,7 @@
 
 <script>
     $(document).ready(function() {
+        $('.recently-viewed').css('visibility', 'hidden');
         $("#scrollView").kendoScrollView({
             contentHeight: "100%"
         });
@@ -126,12 +127,12 @@
         dataSourceRecent.fetch(function() {
             let data = this.data();
             if (data.length > 0) {
-
+                $('.recently-viewed').css('visibility', 'visible');
                 $("#recentlyViewedListView").kendoListView({
-                    "tagName": "div",
-                    "dataSource": dataSourceRecent,
+                    tagName: "div",
+                    dataSource: dataSourceRecent,
                     bordered: false,
-                    "template": kendo.template($('#product-template').html()),
+                    template: kendo.template($('#product-template').html()),
                     dataBound: onRecentlyViewedDataBound
                 });
             }
@@ -198,5 +199,3 @@
         });
     })
 </script>
-
-<link rel="stylesheet" href="~/css/home.css">

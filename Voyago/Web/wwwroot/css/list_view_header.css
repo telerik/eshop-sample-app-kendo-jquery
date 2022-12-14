@@ -16,7 +16,7 @@
     font-weight: bold;
     line-height: 58px;
     letter-spacing: -0.9px;
-    color: #000000;
+    color: var( --voyago-black );
 }
 
 .list-view-header-controls {
@@ -45,8 +45,4 @@
     line-height: 58.8px;
     color: black;
     font-family: 'Segoe UI';
-}
-
-.k-i-arrow-s::before {
-    content: "\e015" !important;
 }

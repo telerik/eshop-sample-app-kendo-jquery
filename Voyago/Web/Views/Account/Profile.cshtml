@@ -5,6 +5,8 @@
         <h1>Profile</h1> 
     </div>
 
+    <input type="hidden" id="loggedUserEmail" value="@Model.EmailAddress" />
+
     <div id="tabstrip" class="profile-tabstrip" >
       <ul>
         <li><span class="k-icon k-i-user"></span>Personal Details</li>
@@ -28,8 +30,8 @@
      $(document).ready(function(e) {
          var tabStrip = $("#tabstrip").kendoTabStrip().data("kendoTabStrip");
          tabStrip.select(0);
-
-      $("#personalDetailsForm").kendoForm({        
+    
+     $("#personalDetailsForm").kendoForm({        
         layout:"grid",
         formData: {
           ID: 1,
@@ -224,7 +226,14 @@
                 }
             }
         });
+
+        if($("#loggedUserEmail").val() == "jaxons.danniels@company.com") {
+            debugger;
+            $("#Password").data("kendoTextBox").enable(false);
+            $("#confirmPassword").data("kendoTextBox").enable(false);
+
+            $("#passwordForm .k-button[type='submit']").prop('disabled', true);
+            $("#passwordForm .k-form-clear").prop('disabled', true);
+        }
     })
     </script>
-
-    <link rel="stylesheet" href="~/css/profile.css">

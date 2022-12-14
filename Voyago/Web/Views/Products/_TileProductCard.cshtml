@@ -1,5 +1,5 @@
 ﻿<div class="k-card">	
-	<a class="k-card-link" href="@Url.Action("Details", "Products")?productId=#:Id#">
+	<a class="k-card-link k-card-image-container" href="@Url.Action("Details", "Products")?productId=#:Id#">
 		<img class="k-card-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image" />
 		# if(DiscountPct != 0) { #
 			<span class="discount-pct">#:Number(DiscountPct) * 100#% off</span>

@@ -19,6 +19,15 @@
     width: 1500px;
 }
 
+    .summary-container .control {
+        padding: 16px;
+        border-radius: 2px;
+    }
+
+.summary-container .control p{
+    margin-bottom: 24px;
+}
+
 .k-listview-content {
     overflow: hidden;
 }
@@ -31,7 +40,7 @@
     font-weight: bold;
     line-height: 58px;
     letter-spacing: -0.9px;
-    color: #000000;
+    color: var( --voyago-black );
 }
 
 .sub-category-cards {

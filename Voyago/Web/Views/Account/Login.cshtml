@@ -8,12 +8,12 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/login-register.css")" />
 }
 
-<div class="login-form" style="visibility: hidden;">
+<div class="login-register-wrapper" style="visibility: hidden;">
     <img class="logo" src="~/images/logo.png" alt="Voyago">
 
     <span asp-validation-for="Email" class="text-danger"></span>
     
-    <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm"></form>   
+    <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm" class="login-register-form"></form>   
     
     <div class="register-prompt">
         <p>Don’t have an account?</p><a href="@Url.Action("Register","Account")" class="login-link">Register</a>
@@ -65,7 +65,7 @@
             "shouldRenderHidden": true
         }]
      });     
-    $(".login-form").css("visibility", "visible");
+    $(".login-register-wrapper").css("visibility", "visible");
  })
     
 </script>

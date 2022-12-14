@@ -39,27 +39,19 @@
     margin-bottom: 53px;
 }
 
-a {
-    text-decoration: none;
-}
-
-
 #favoritesListView {
     border: none;
     background: none;
 }
 
-.k-listview-content {
+.all-prod-list-view .k-listview-content {
     justify-content: center;
     width: 1118px;
     margin-bottom: 48px;
 }
 
 .favorite-product-container {
-    margin-top: 24px;
-    margin-bottom: 24px;
-    margin-left: 24px;
-    margin-right: 24px;
+    margin: 24px;
     padding: 24px;
     width: 1040px;
     height: 320px;
@@ -129,7 +121,7 @@ a {
     background: var( --voyago-primary );
     border-radius: 2px;
     margin-bottom: 16px;
-    color: #FFFFFF !important;
+    color: var( --voyago-white ) !important;
 }
 
 .card-cart-button:hover {

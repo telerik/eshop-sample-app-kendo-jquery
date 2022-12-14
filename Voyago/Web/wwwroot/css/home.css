@@ -11,6 +11,13 @@ h4 {
     width: inherit !important;
 }
 
+#scrollView {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    height: 31.3vw;
+}
+
 #scrollView .k-scrollview-wrap img {
     display: inline-block;
     background-size: cover;
@@ -27,6 +34,14 @@ h4 {
     background-color: #C7E0F4;
 }
 
+#topPicks {
+    width: 1440px;
+    max-width: 100%;
+    height: 318.72px;
+    margin: auto;
+    background: none;
+}
+
 #download-catalog{
     height: 38px;
 }
@@ -39,16 +54,21 @@ h4 {
     flex-wrap: wrap;
 }
 
+.categories-title{
+    margin-top: 80px;
+    margin-bottom: 36px;
+}
+
 .home-heading {
     font-weight: 600;
     font-size: 42px;
-    color: #000000;
+    color: var( --voyago-black );
 }
 
 .top-pick-heading {
     font-weight: 600;
     font-size: 1.75em;
-    color: #323130;
+    color: var( --voyago-dark-grey );
     border-radius: 0px;
     padding: 0.75em 1em 0.75em 1em;
     margin: 0;
@@ -76,9 +96,13 @@ h4 {
 
 .categories-title {
     font-weight: 600;
-    font-size: 2.187vw;
-    line-height: 3.06vw;
-    color: #000000;
+    font-size: 42px;
+    line-height: 59px;
+    color: var( --voyago-black );
+}
+
+.category-image{
+    width: 100%;
 }
 
 #productCatalogBtn {
@@ -100,10 +124,15 @@ h4 {
 
 .category-heading {
     font-weight: 600;
-    font-size: 1.458vw;
-    line-height: 2.04vw;
-    color: #323130;
-    padding-left: 4%;
+    font-size: 28px;
+    line-height: 39px;
+    color: var( --voyago-dark-grey );
+    padding-left: 10px;
+    margin-bottom: 12px;
+}
+
+.components-header-second{
+    margin-top:52px;
 }
 
 .column img {
@@ -111,11 +140,16 @@ h4 {
     vertical-align: middle;
 }
 
+.category-img-small{
+    height: 180px;
+    width: 454px;
+}
+
 .recently-viewed-title {
     font-weight: 600;
     font-size: 2.187vw;
     line-height: 3.06vw;
-    color: #000000;
+    color: var( --voyago-black );
     margin-bottom: 1.5rem;
 }
 
@@ -127,9 +161,14 @@ h4 {
     flex-wrap: wrap;
 }
 
+#recentlyViewedListView .k-card-image-container {
+    height: 268px;
+}
+
 .splitter {
     border: 1px solid #E5E5E5;
     height: 0px;
+    margin: 83px auto 0 auto;
 }
 
 .download-app {
@@ -139,6 +178,7 @@ h4 {
     border-top: 1px solid #EDEBE9;
     justify-content: center;
     align-items: center;
+    margin-top: 54px;
 }
 
 .download-text {
@@ -152,10 +192,62 @@ h4 {
     flex-direction: row;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
+    .wrap-width {
+        max-width: var( --viewport-width );
+        width: calc(100% - 80px);
+    }
 
-    .categories-container {
-        margin: 3em 5em 3em 5em;
+    #recentlyViewedListView .k-listview-content {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .top-pick-card {       
+        height: 290px;
+    }
+}
+
+@media (max-width: 800px) {
+    .wrap-width {
+        width: calc(100% - 60px);
+    }
+
+    .categories-inner {
+        justify-content: center;
+    }
+
+    .column {
+        flex: 100%;
+        max-width: 50%;
+    }
+
+    .category-heading-components {
+        padding: 12px 16px;
+    }
+
+    .recently-viewed {
+        margin-top: 40px;
+    }
+
+    .recently-viewed-title {
+        text-align: center;
+    }
+
+    .download-app {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .download-icon-2 {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 750px) {
+    .wrap-width {
+        width: calc(80% - 30px);
     }
 
     .categories-header {
@@ -166,51 +258,50 @@ h4 {
         align-self: center;
     }
 
+    .categories-inner {
+        margin-top: 40px;
+    }
+
     .column {
-        flex: 100%;
+        max-width: 80%;
+    }
+
+    #recentlyViewedListView .k-card {
         max-width: 100%;
+        height: auto;
+    }
+
+    #recentlyViewedListView .k-card-image-container {
+        height: auto;
     }
 }
 
-@media (max-width: 1230px) {
-    .recently-viewed {
-        margin: 0em 5em 3em 5em;
+@media (max-width: 530px) {
+    .wrap-width {
+        width: calc(90% - 30px);
     }
-
-    .recently-viewed-title {
-        text-align: center;
-    }
-
-    #recentlyViewedListView .k-listview-content {
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
-
-        #recentlyViewedListView .k-listview-content .k-card {
-            flex: 100%;
-            max-width: 100%;
-        }
-}
-
-@media (max-width: 900px) {
-    .recently-viewed {
-        margin: 0em 0em 3em 0em;
-    }
-
-    .download-app {
-        flex-direction: column;
-        margin: 0em 3em 3em 3em;
-    }
-
 
     .download-text {
-        margin: 1em;
+        text-align: center;
     }
 }
 
 @media (max-width: 460px) {
+    #topPicks .k-scrollview-elements {
+        display: none;
+    }
+
+    .column {
+        max-width: 100%;
+    }
+
     .download-app {
-        margin: 0em 1em 1em 1em;
+        margin: 54px auto 0 auto;
+    }
+
+    .downlaod-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 }

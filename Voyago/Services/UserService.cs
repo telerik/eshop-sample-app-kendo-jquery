@@ -258,8 +258,7 @@ namespace Services
             var userDetailsFromDb = await dbContext.Contacts.FirstAsync(sci => sci.EmailAddress == email);
 
             userDetailsFromDb.FirstName = input.FirstName;
-            userDetailsFromDb.LastName = input.LastName;
-            //userDetailsFromDb.EmailAddress = input.EmailAddress;
+            userDetailsFromDb.LastName = input.LastName;           
             userDetailsFromDb.Phone = input.Phone;
 
             dbContext.Update(userDetailsFromDb);
@@ -311,8 +310,6 @@ namespace Services
                     FirstName = currentUser.FirstName,
                     LastName = currentUser.LastName,
                     Phone = currentUser.Phone,
-                    Password = currentUser.PasswordHash,
-                    ConfimPassword = currentUser.PasswordHash,
                     City = currentUser.City,
                     Zipcode = currentUser.ZipCode,
                     Street = currentUser.Street,
