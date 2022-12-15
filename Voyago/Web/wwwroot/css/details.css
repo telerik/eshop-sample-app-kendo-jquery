@@ -9,11 +9,6 @@
     min-width: 350px;
 }
 
-#breadcrumb {
-    margin-top: 2%;
-    margin-bottom: 4%;
-}
-
 .model-details {
     display: flex;
     flex-direction: row;

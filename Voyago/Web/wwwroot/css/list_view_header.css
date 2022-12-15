@@ -25,11 +25,6 @@
     margin-bottom: 20px;
 }
 
-#excelExport {
-    background: none;
-    border-radius: 0;
-}
-
 [aria-controls="sortBy_listbox"] {
     background: none;
     border-radius: 0;

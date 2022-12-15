@@ -2,42 +2,42 @@
 	ViewData["Title"] = "Accessories";
 }
 
-<div class="sub-category-container">
+<div class="sub-category-container wrap-width">
 	<nav id="breadcrumb" name="breadcrumb"></nav>
-	<h4 class="category-heading-large">Accessories</h4>
-	<div class="sub-category-images">
-		<div>
+	<div class="category-heading-large">Accessories</div>
+	<div class="sub-category-images home-accessories wrap-width">
+		<div class="column">
 			<a href="@Url.Action("Category", "Products")?subCategory=Bottles and Cages">
 				<div class="category-heading">Bottles & Cages</div>
-				<img src="~/images/bottles_cages.png" class="category-image category-large-image" />
+				<img src="~/images/bottles_cages.png" class="category-large-image" />
 			</a>
 		</div>
-		<div class="inner-1">
+		<div class="inner-1 column">
 			<div class="inner-2">
 				<div>
 					<a href="@Url.Action("Category", "Products")?subCategory=Lights">
 						<div class="category-heading">Lights</div>
-						<img src="~/images/lights.png" class="category-image category-small-image" />
+						<img src="~/images/lights.png" class="category-small-image" />
 					</a>
 				</div>
 				<div>
 					<a href="@Url.Action("Category", "Products")?subCategory=Locks">
 						<div class="category-heading">Locks</div>
-						<img src="~/images/locks.png" class="category-image category-small-image" />
+						<img src="~/images/locks.png" class="category-small-image" />
 					</a>
 				</div>
 			</div>
 			<div>
 				<a href="@Url.Action("Category", "Products")?subCategory=Tires and Tubes">
 					<div class="category-heading heading-double">Tires and Tubes</div>
-					<img src="~/images/tires_tubes2.png" class="category-image category-bottom-image" />
+					<img src="~/images/tires_tubes2.png" class="category-bottom-image" />
 				</a>
 			</div>
 		</div>
-		<div>
+		<div class="column">
 			<a href="@Url.Action("Category", "Products")?subCategory=Pumps">
 				<div class="category-heading">Pumps</div>
-				<img src="~/images/pumps.png" class="category-large-image" class="category-image" />
+				<img src="~/images/pumps.png" class="category-large-image" />
 			</a>
 		</div>
 	</div>

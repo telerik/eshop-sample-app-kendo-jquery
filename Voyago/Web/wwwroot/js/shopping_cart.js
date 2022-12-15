@@ -1,10 +1,5 @@
 function getShoppingCartGrid() {
-
 	return $("#shoppingCartGrid").data("kendoGrid");
-}
-
-function shoppingCartGridOnDataBoundInitial(e) {
-
 }
 
 function shoppingCartGridOnDataBound(e) {

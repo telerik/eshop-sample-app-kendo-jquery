@@ -2,10 +2,10 @@
 	ViewData["Title"] = "Components";
 }
 
-<div class="sub-category-container">
+<div class="sub-category-container wrap-width">
 	<nav id="breadcrumb" name="breadcrumb"></nav>
-	<h4 class="category-heading-large">Components</h4>
-	<div class="sub-category-images">
+	<div class="category-heading-large">Components</div>
+	<div class="sub-category-images components-container wrap-width">
 		<div>
 			<a href="@Url.Action("Category", "Products")?subCategory=Chains">
 				<div class="category-heading">Chains</div>
@@ -30,7 +30,7 @@
 			<div>
 				<a href="@Url.Action("Category", "Products")?subCategory=Mountain Frames">
 					<div class="category-heading heading-double">Mountain Frames</div>
-					<img src="~/images/mountain_frames.png" class="category-image category-small-image" />
+					<img src="~/images/mountain_frames.png" class="category-image category-small-image-double" />
 				</a>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 
-	<div class="sub-category-images-bottom">
+	<div class="sub-category-images-bottom wrap-width">
 		<div class="edge-image-container">
 			<a href="@Url.Action("Category", "Products")?subCategory=Pedals">
 				<div class="category-heading">Pedals</div>
@@ -52,13 +52,13 @@
 		<div>
 			<a href="@Url.Action("Category", "Products")?subCategory=Saddles">
 				<div class="category-heading">Saddles</div>
-				<img src="~/images/saddles.png" class="category-image category-small-image" />
+				<img src="~/images/saddles.png" class="category-image category-image-double" />
 			</a>
 		</div>
 		<div>
 			<a href="@Url.Action("Category", "Products")?subCategory=Touring Frames">
 				<div class="category-heading">Touring Frames</div>
-				<img src="~/images/touring_frames.png" class="category-image category-small-image" />
+				<img src="~/images/touring_frames.png" class="category-image category-image-double" />
 			</a>
 		</div>
 		<div class="edge-image-container">

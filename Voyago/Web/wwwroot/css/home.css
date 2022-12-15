@@ -122,17 +122,9 @@ h4 {
     max-width: 40%;
 }
 
-.category-heading {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 39px;
-    color: var( --voyago-dark-grey );
-    padding-left: 10px;
-    margin-bottom: 12px;
-}
-
 .components-header-second{
     margin-top:52px;
+    margin-bottom: 0px;
 }
 
 .column img {
@@ -192,6 +184,20 @@ h4 {
     flex-direction: row;
 }
 
+.middle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.category-heading-components {
+    font-weight: 600;
+    font-size: 28px;
+    padding: 0 16px;
+}
+
+
+
 @media (max-width: 1500px) {
     .wrap-width {
         max-width: var( --viewport-width );
@@ -200,6 +206,10 @@ h4 {
 
     #recentlyViewedListView .k-listview-content {
         justify-content: center;
+    }
+
+    .components-header-second{
+        margin-top: 20px;
     }
 }
 
