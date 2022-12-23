@@ -74,24 +74,24 @@
 		});
 
 		$("#breadcrumb").kendoBreadcrumb({
-			"items": [{
-			    "href": '@Url.Action("Index", "Home")',
-			    "icon": "home",
-			    "showIcon": true,
-			    "showText": false,
-			    "type": "rootItem"
+			items: [{
+			    href: '@Url.Action("Index", "Home")',
+			    icon: "home",
+			    showIcon: true,
+			    showText: false,
+			    type: "rootItem"
 			}, {
-			    "href": "@categoryUrl",
-			    "text": "@ViewBag.Category",
-			    "showText": true,
-			    "type": "item"
+			    href: "@categoryUrl",
+			    text: "@ViewBag.Category",
+			    showText: true,
+			    type: "item"
 			}, {
-			    "href": '@Url.Action("Category", "Products")?subCategory=@ViewBag.SubCategory',
-			    "text": "@ViewBag.SubCategory",
-			    "showText": true,
-			    "type": "item"
+			    href: '@Url.Action("Category", "Products")?subCategory=@ViewBag.SubCategory',
+			    text: "@ViewBag.SubCategory",
+			    showText: true,
+			    type: "item"
 			}],
-        "navigational": true
+			navigational: true
 		});
 
 		var dataSourceProducts = new kendo.data.DataSource({
@@ -102,20 +102,20 @@
               }
           },
           pageSize: 12,
-		  "filter": [{
-               "logic": "and",
-               "filters": [{
-                   "field": "SubCategory",
-                   "operator": "eq",
-                   "value": "@ViewBag.SubCategory"
+		  filter: [{
+               logic: "and",
+               filters: [{
+                   field: "SubCategory",
+                   operator: "eq",
+                   value: "@ViewBag.SubCategory"
                }]
            }],
 		});
 
 		$("#allProductsListView").kendoListView({
-			"tagName": "div",
-			"dataSource": dataSourceProducts,
-			"template": kendo.template($('#product-template').html()),
+			tagName: "div",
+			dataSource: dataSourceProducts,
+			template: kendo.template($('#product-template').html()),
 			dataBound: onCategoryDataBound,
 			pageable: true,
 			layout: "grid",

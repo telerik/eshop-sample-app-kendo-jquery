@@ -4,14 +4,10 @@
 
 @model Models.InputModels.LoginUserInpuModel
 
-@section loginStyles {
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/login-register.css")" />
-}
-
 <div class="login-register-wrapper" style="visibility: hidden;">
     <img class="logo" src="~/images/logo.png" alt="Voyago">
 
-    <span asp-validation-for="Email" class="text-danger"></span>
+    <span asp-validation-for="Email" class="text-error"></span>
     
     <form action="Login" controller="Account" id="loginForm" method="POST" name="loginForm" class="login-register-form"></form>   
     
@@ -46,8 +42,11 @@
             "label": {
                 "text": "Email"
             },
-            "validation": {
-                "type": "text"
+           "validation": {
+                "required": {
+                    "message": "Please enter email"
+                },
+                "email": true
             },
             "shouldRenderHidden": true
         }, {
@@ -60,7 +59,10 @@
                 "type": "password"
             },
             "validation": {
-                "type": "text"
+                "type": "text",
+                "required": {
+                    "message": "Please enter password"
+                },
             },
             "shouldRenderHidden": true
         }]

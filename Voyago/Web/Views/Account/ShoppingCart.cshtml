@@ -122,7 +122,10 @@ $(document).ready(function(){
 	            "attributes": { "class": "templateCell" },
 	            "template": '<input class="quantity-editor" data-bind="value: #:Quantity#" id="quantityEditor_#=ShoppingCartItemId#" name="quantityEditor_#=ShoppingCartItemId#" value=""/ >',
 				"field": "Quantity",
-	            "encoded": true
+	            "encoded": true,
+				"editable": function() {
+	              return false;
+	            }
 	          },
 	          {
 	            "title": "Final Price",
@@ -141,7 +144,7 @@ $(document).ready(function(){
 	    "editable": {
 	      "mode": "incell"
 	    },
-		dataBound: shoppingCartGridOnDataBound
+		"dataBound": shoppingCartGridOnDataBound
 	})
 })
 </script>

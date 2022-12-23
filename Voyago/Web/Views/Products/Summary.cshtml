@@ -57,28 +57,28 @@
 		    }
 		  },
 		  group: { field: "SubCategory" },
-		  "filter": [{
-               "logic": "and",
-               "filters": [{
-                   "field": "Name",
-                   "operator": "contains",
-                   "value": "@ViewBag.SearchParam"
+		  filter: [{
+               logic: "and",
+               filters: [{
+                   field: "Name",
+                   operator: "contains",
+                   value: "@ViewBag.SearchParam"
                },{
-                   "field": "SubCategory",
-                   "operator": "isnotnull",				   
+                   field: "SubCategory",
+                   operator: "isnotnull",				   
 				   
                },{
-                   "field": "Price",
-                   "operator": "gte",
-                   "value": "0"
+                   field: "Price",
+                   operator: "gte",
+                   value: "0"
                }]
            }],
 		});	
 				
 		$("#allProductsListView").kendoListView({
-			"tagName": "div",				
-			"dataSource": dataSourceProducts,			
-			"template": kendo.template($('#product-template').html()),
+			tagName: "div",				
+			dataSource: dataSourceProducts,			
+			template: kendo.template($('#product-template').html()),
 			dataBound: onSummaryDataBound
 		}); 
 	});

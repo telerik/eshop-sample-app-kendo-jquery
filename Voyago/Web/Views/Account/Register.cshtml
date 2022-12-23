@@ -4,14 +4,11 @@
 
 @model Models.InputModels.RegisterUserInpuModel
 
-@section loginStyles {
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/login-register.css")" />
-}
-
+ъ
 <div class="login-register-wrapper">
     <img class="logo" src="~/images/logo.png" alt="Voyago">
 
-    <span asp-validation-for="Email" class="text-danger"></span>
+    <span asp-validation-for="Email" class="text-error"></span>
 
     <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm" class="login-register-form"></form>
 
