@@ -7,7 +7,7 @@
 	</a>
 	<div class="k-card-body">
 		<a href="@Url.Action("Details", "Products")?productId=#:Id#">
-			<h5 class="k-card-title">#:Name#</h5>
+			<div class="k-card-title">#:Name#</div>
 		</a>
 		@{
 			if (Context.Request.Path.ToString().Contains("Products"))
@@ -19,7 +19,7 @@
 			}
 		}
 		<div class="price-container">
-			<h5 class="card-price">#:kendo.toString(FinalPrice, "c")#</h5>
+			<div class="card-price">#:kendo.toString(FinalPrice, "c")#</div>
 		</div>
 		<div class="card-buttons">
 			<button class="card-cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			

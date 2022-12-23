@@ -2,15 +2,15 @@
 
 <div class="favorite-product-container">
 		<a href="@Url.Action("Details", "Products")?productId=#:Id#" class="favorite-product-image">
-			<img width="272" height="272" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
+			<img src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
 		</a>
 
 		<div class="favorite-product-info-container">
 			<a href="@Url.Action("Details", "Products")?productId=#:Id#">
-				<h4 class="favorite-product-name">#:Name#</h4>
+				<div class="favorite-product-name">#:Name#</div>
 			</a>
 			<div class="avg-rating">
-				<img width="16" height="16" style="align-self:center;" src="~/images/star.svg" alt="star icon"/>
+				<img style="align-self:center;" src="~/images/star.svg" alt="star icon"/>
 				<span class="rating-text">#:AverageRating#/5</span>
 			</div>
 			#if (Description != null && Description != undefined) { #
@@ -19,9 +19,10 @@
 		</div>
 
 		<div class="favorite-product-controls">
-			<h4 class="price">#:kendo.toString(Price, "c")#</h4>
-			<button class="cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
-			<button class="card-favorites-button add-to-favourites" id="addToFavoritesButton_#=Id#" name="addToFavoritesButton_#=Id#" type="button">Add To Favourites</button>
-
+			<div class="buttons-container">
+				<div class="price">#:kendo.toString(Price, "c")#</div>
+				<button class="cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
+				<button class="card-favorites-button add-to-favourites" id="addToFavoritesButton_#=Id#" name="addToFavoritesButton_#=Id#" type="button">Add To Favourites</button>
+			</div>		
 		</div>
 </div>

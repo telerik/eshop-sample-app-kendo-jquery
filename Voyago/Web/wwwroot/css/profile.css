@@ -1,9 +1,13 @@
 ﻿.content-container {
     min-height: 570px;
     width: 50%;
-    max-width: 600px;
+    max-width: 642px;
     margin: 0 auto;
     margin-bottom: 10vh;
+}
+
+.profile .k-input-inner{
+    height: 34px;
 }
 
 .k-tabstrip-items {
@@ -37,9 +41,12 @@
     margin: 7vh auto;
 }
 
+.k-form-buttons .k-button{
+    border-radius: 2px;
+}
+
 @media (max-width: 900px) {
-    .k-form-layout > .k-colspan-1,
-    .k-form-layout > .k-colspan-2 {
+    .k-form-layout > .k-colspan-1, .k-form-layout > .k-colspan-2 {
         grid-column: span 4/span 4 !important;
     }
 

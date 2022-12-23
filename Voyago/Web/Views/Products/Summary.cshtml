@@ -2,11 +2,11 @@
 	ViewData["Title"] = "Summary";
 }
 
-<div class="summary-container">
+<div class="summary-container wrap-width">
 	@await Html.PartialAsync("_MainControls.cshtml")
 
 	<div class="list-view">
-		<div>
+		<div class="summary-result-header">
 			<p class="search-result" id="searchResultCount"></p>
 			<hr class="splitter">
 		</div>
@@ -21,7 +21,7 @@
 	# var searchParam = $("\\#searchBar").data("kendoAutoComplete").value(); #
 
 	<a href="@Url.Action("Category", "Products")?subCategory=#=data.value#&searchParam=#=searchParam#">	
-		<h4 class="k-group-title">#= (data.value != null) ? data.value : "Other" # (#=data.items.length#)</h4>
+		<div class="k-group-title">#= (data.value != null) ? data.value : "Other" # (#=data.items.length#)</div>
 	</a>
 	<div class="sub-category-cards">
 		# for (var i = 0; i < data.items.length && i < 3; ++i) { #

@@ -5,11 +5,8 @@
 .k-card {
     box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
     border-radius: 2px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 315px;
+    width: 330px;
+    height: 428px;
 }
 
 .k-card-link {
@@ -25,18 +22,23 @@
 
 .k-card-title {
     color: var( --voyago-black );
+    font-size: 16px;
+    line-height: 22.4px;
+    font-weight: 600;
 }
 
 span.discount-pct {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 400;
     color: var( --voyago-white );
     background: var( --voyago-primary );
-    padding: 2%;
-    padding-right: 4%;
+    padding: 5px;
+    width:44px;
+    height:24px;
 }
 
 .price-container {
@@ -54,13 +56,9 @@ span.discount-pct {
 
 .card-price {
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 16px;
+    line-height: 22.4px;
     color: var( --voyago-primary );
-}
-
-.rating-text {
-    font-weight: 600;
-    font-size: 0.93rem;
 }
 
 .card-buttons {

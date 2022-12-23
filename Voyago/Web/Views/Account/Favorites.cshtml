@@ -3,7 +3,7 @@
 }
 
 <div class="favorites-container">
-	<h3 class="favorites-title">Favorites</h3>
+	<div class="favorites-title">Favorites</div>
 	<div class="favorites-header">
 		<a class="continue-shopping" href="~/Home/Index">Continue shopping</a>
 		<button id="export-pdf" class="fav-btn">Download PDF</button>
@@ -14,25 +14,29 @@
 
 <script id="favoriteProduct-template" type="text/html">
 	<div class="favorite-product-container">
-		<a href="@Url.Action("Details","Products")?productId=#:Id#">
+		<a href="@Url.Action("Details","Products")?productId=#:Id#" class="favorite-product-image">
 			<img src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
 		</a>
 
 		<div class="favorite-product-info-container">
-			<a href="@Url.Action("Details","Products")?productId=#:Id#">
-				<h4 class="favorite-product-name">#:Name#</h4>
-			</a>
-			<div class="avg-rating">
-				<span class="k-icon k-i-star"></span>				
-				<span class="rating-text">#:AverageRating#/5</span>
+			<div class="favorite-product-details">
+				<a href="@Url.Action("Details","Products")?productId=#:Id#">
+					<div class="favorite-product-name">#:Name#</div>
+				</a>
+				<div class="avg-rating">
+					<span class="k-icon k-i-star"></span>				
+					<span class="rating-text">#:AverageRating#/5</span>
+				</div>
+				<p class="favorite-product-description">#:Description#</p>
 			</div>
-			<p class="favorite-product-description">#:Description#</p>
 		</div>
 
 		<div class="favorite-product-controls">
-			<h4 class="price">#:kendo.toString(FinalPrice, "c")#</h4>
-			<button class="cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
-			<button class="favorites-button remove-from-cart" id="removeFromFavoritesButton_#=Id#" name="removeFromFavoritesButton_#=Id#" type="button">Added to Favorites</button>
+			<div class="price">#:kendo.toString(FinalPrice, "c")#</div>
+			<div class="buttons-container">
+				<button class="cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
+				<button class="favorites-button remove-from-cart" id="removeFromFavoritesButton_#=Id#" name="removeFromFavoritesButton_#=Id#" type="button">Added to Favorites</button>
+			</div>			
 		</div>
 	</div>
 </script>
@@ -49,15 +53,15 @@
 
 	dataSource.fetch(function() {
 		$("#favoritesListView").kendoListView({
-	        "tagName": "div",				
-	        "dataSource": dataSource,
+	        tagName: "div",				
+	        dataSource: dataSource,
 			dataBound: function(e){
 				 if (e.sender.dataSource.data().length == 0) {
 				    $("#export-pdf").data("kendoButton").enable(false);
 				} else $("#export-pdf").data("kendoButton").enable(true);
 				bindFavouritesAndCartButtones()
 			},
-	        "template": kendo.template($('#favoriteProduct-template').html())
+	        template: kendo.template($('#favoriteProduct-template').html())
 	    });    
 	});
 

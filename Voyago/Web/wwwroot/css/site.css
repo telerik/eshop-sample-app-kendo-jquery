@@ -30,6 +30,7 @@ body {
     font-size: 14px;
     color: var( --voyago-dark-grey );
     color: var(--voyago-dark-grey);
+    margin: 0 0 372px 0;
 }
 
 p {
@@ -98,6 +99,55 @@ a, a:hover {
     .category-heading.heading-tires {
         margin-bottom: 3vh !important;
     }
+
+.avg-rating {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    line-height: 16.8px;
+    font-weight: 600;
+    margin-bottom: 18.5px;
+}
+
+.k-slider {
+    width: 100%;
+}
+
+.k-button-text {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    text-align: center !important;
+}
+
+.price-container{
+    margin-bottom: 12px;
+}
+
+
+.price {
+    font-size: 32px;   
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 45px;
+    color: var( --voyago-primary );
+    align-self: end;
+}
+
+
+.k-listview-content {
+    overflow: inherit;
+    min-width:1040px;
+}
+
+.orders-container, .order-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 946px !important;
+    padding-inline: var( --viewport-padding-inline );
+    margin: auto;
+}
 
 
 /* Header */
@@ -209,6 +259,10 @@ a, a:hover {
 .footer {
     color: var( --voyago-white );
     background-color: var( --voyago-primary );
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-top: 80px;
 }
     .footer .wrap-width {
         padding-block: 40px;
@@ -327,58 +381,60 @@ a, a:hover {
     }
 }
 
-@media (max-width: 900px) {
-    .footer-payment-methods {
-        display: none;
-        font-size: 10px;
-        line-height: 10px;
-    }
-
-    .contact-email {
-        margin-top: -3vh;
-    }
-
-    img{
-        width: 100%;
-    }
-
-    .download-app img{
-        width: 180px;
-        height: 52px;
+@media (max-width: 1500px) {
+    .k-listview-content{
+        min-width: 350px;
     }
 }
 
-@media (max-width: 820px) {
-    .logo {
-        width: auto;
-        height: 20px;
-    }
-}
+    @media (max-width: 900px) {
+        .footer-payment-methods {
+            display: none;
+            font-size: 10px;
+            line-height: 10px;
+        }
 
-@media (max-width: 560px) {
-    .footer-socials-icons, .footer-socials .footer-heading, .footer-categories {
-        display: none;
-    }
+        .contact-email {
+            margin-top: -3vh;
+        }        
 
-    .footer-logo span {
-        display: flex;
-    }
-
-    .category-image{
-        max-width: 350px;
-    }
-}
-
-@media (max-width: 460px) {
-    
-    .footer-logo {
-        flex-direction: column;
+        .download-app img {
+            width: 180px;
+            height: 52px;
+        }
     }
 
-    .k-menu-horizontal {
-        flex-direction: column;
+    @media (max-width: 820px) {
+        .logo {
+            width: auto;
+            height: 20px;
+        }
     }
-}
+
+    @media (max-width: 560px) {
+        .footer-socials-icons, .footer-socials .footer-heading, .footer-categories {
+            display: none;
+        }
+
+        .footer-logo span {
+            display: flex;
+        }
+
+        .category-image {
+            max-width: 350px;
+        }
+    }
+
+    @media (max-width: 460px) {
+
+        .footer-logo {
+            flex-direction: column;
+        }
+
+        .k-menu-horizontal {
+            flex-direction: column;
+        }
+    }
 
 
 

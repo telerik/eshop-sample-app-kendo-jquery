@@ -3,15 +3,15 @@
 }
 @model Models.ViewModels.ProductAllViewModel;
 
-<div class="details-container">
+<div class="model-details-container wrap-width">
 	<nav id="breadcrumb" name="breadcrumb"></nav>
 	<div class="model-details">
-		<div class="model-image">
-			<img class="detail-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">
+		<div class="model-image-container">
+			<img class="model-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">
 		</div>
-		<div class="model-info">
-			<div class="info-top">
-				<h1 class="details-heading">
+		<div class="model-info-container">
+			<div class="model-heading">
+				<div class="model-title">
 					@{
 						if (Model.Model == null)
 						{
@@ -22,56 +22,59 @@
 							@Model.Model
 						}
 					}
-				</h1>
-				<input id="productRating" name="productRating" type="text" value="0" />
-				<hr class="splitter1">
+				</div>
 			</div>
-			<div class="info-bottom">
-				<div class="bottom-left">
-					<div class="info-row">
-						<p class="info-title">Product Name</p>
-						<p class="info-value">@Model.Name</p>
+			<input id="productRating" name="productRating" type="text" value="0" />
+			<hr class="splitter1">
+			
+			<div class="model-data">
+				<div class="model-data-left-container">
+					<div class="model-data-row">
+						<span class="title">Product Name</span>
+						<span class="value">@Model.Name</span>
 					</div>
-					<div class="info-row">
-						<p class="info-title">Product No</p>
-						<p>@Model.ProductNumber</p>
+					<div class="model-data-row">
+						<span class="title">Product No</span>
+						<span>@Model.ProductNumber</span>
 					</div>
-					<div class="info-row">
-						<p class="info-title">Size</p>
+					<div class="model-data-row">
+						<span class="title">Size</span>
+						<span class="value size">
 						@{
 							if (Model.Size != null)
 							{
 								<input id="sizePicker" name="sizePicker" type="text" />
 							}
 						}
+						</span>
 					</div>
-					<div class="info-row">
-						<p class="info-title">Weight</p>
+					<div class="model-data-row">
+						<p class="title">Weight</p>
 						<p>@Model.Weight</p>
 					</div>
-					<div class="info-row">
-						<p class="info-title">Color</p>
+					<div class="model-data-row">
+						<p class="title">Color</p>
 						<ul id="colorPicker"></ul>
 					</div>
-					<div class="info-row">
-						<p class="info-title">Description</p>
+					<div class="model-data-row">
+						<p class="title">Description</p>
 						<p class="description-text">@Model.Description</p>
 					</div>
 				</div>
-				<div class="bottom-right">
+				<div class="model-data-right-container">
 					@{
 						if (Model.DiscountPct > 0)
 						{
-							<label class="list-price"></label>
-							<label id="discount" class="discount"></label>
-							<label id="final-price" class="price"></label>
+							<div class="list-price"></div>
+							<div id="discount" class="discount"></div>
+							<div id="final-price" class="price"></div>
 						}
 						else
 						{
-							<label class="price"></label>
+							<label class="details-price"></label>
 						}
 					}
-					<div class="product-buttons">
+					<div class="buttons-container">
 						<button class="cart-button add-to-cart" id="addToCartButton_@Model.Id" type="button">Add to cart</button>
 						<button class="favorites-button add-to-favourites" id="addToFavoritesButton_@Model.Id" type="button">Add to Favorites</button>
 					</div>
@@ -86,7 +89,7 @@
 		if (Model.ModelId != null)
 		{
 			<div>
-				<h4 class="similar-products">Similar Products</h4>
+				<div class="similar-products-title">Similar Products</div>
 				<div id="similarProductsListView" name="similarProductsListView" class="similar-products-list-view"></div>
 			</div>
 		}

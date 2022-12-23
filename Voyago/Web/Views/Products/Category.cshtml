@@ -2,10 +2,10 @@
 	ViewData["Title"] = ViewBag.SubCategory;
 }
 
-<div class="category-page-container">
+<div class="category-page-container wrap-width">
 	<nav id="breadcrumb" name="breadcrumb"></nav>
 
-	<div class="category-content-container">
+	<div class="category-content-container wrap-width">
 		@await Html.PartialAsync("_MainControls.cshtml")
 		<div>
 			@await Html.PartialAsync("_ListViewHeader.cshtml", (string)ViewBag.SubCategory)

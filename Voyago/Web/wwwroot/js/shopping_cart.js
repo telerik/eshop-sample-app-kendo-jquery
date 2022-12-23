@@ -32,11 +32,7 @@ function removeItemFromShoppingCart(itemId) {
 	var refresh = grid.dataSource.data().length == 1;
 
 	grid.removeRow(rowToRemove);
-	grid.dataSource.sync();
-
-	if (refresh) {
-		location.href = window.location.href.indexOf('fluent-eshop-voyago') > 0 ? "/fluent-eshop-voyago/Account/ShoppingCart" : "/Account/ShoppingCart";
-    }
+	grid.dataSource.sync();	
 }
 
 function updateShoppingCartChanges(e) {

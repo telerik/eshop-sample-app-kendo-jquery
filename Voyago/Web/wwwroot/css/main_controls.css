@@ -4,20 +4,19 @@
     justify-content: space-between;
 }
 
-.controls {
-    margin: 20px 20px 60px 40px;    
-    padding: 30px;
+.controls {    
+    padding: 24px;
     background: #F2F2F2;
     border-radius: 2px;
 }
 
-.control {
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 30px;
+.control {    
     background: white;
     border-radius: 2px;
+    padding: 28px 16px;
+    width: 250px;
+    border-radius: 2px;
+    margin: 24px 0px;
 }
 
 .main-controls-filter {
@@ -35,7 +34,7 @@
 }
 
 .clear-all-text {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 18px;
     line-height: 25.2px;
     color: #201F1E;

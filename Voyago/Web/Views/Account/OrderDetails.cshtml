@@ -2,9 +2,9 @@
     var orderNumber = ViewData["OrderNumber"];
 }
 
-<div class="order-details-container">
-    <h4 class="order-details-title">Order # <span id="order-id-header"></span></h4>
-<div class="order-details-header">
+<div class="order-details-container test">
+    <div class="order-details-title">Order # <span id="order-id-header"></span></div>
+    <div class="order-details-header">
         <div class="order-details-information">
             <p>Order details</p>
             <div><span class="order-information-title">Number: #</span><span id="order-id"></span></div>
@@ -83,7 +83,7 @@
                   }
               }
             ],
-            scrollable: 'auto',
+            scrollable: false,
             pageable: false,
              dataSource: {
                transport: {

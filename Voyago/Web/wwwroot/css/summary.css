@@ -6,46 +6,68 @@
     letter-spacing: -0.9px;
 }
 
-.splitter {
+.summary-container .splitter {
     border: 1px solid #E5E5E5;
     margin: auto;
     margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.filters-title{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
 }
 
 .summary-container {
     margin: auto;
     display: flex;
     flex-direction: row;
-    width: 1500px;
 }
 
-    .summary-container .control {
-        padding: 16px;
-        border-radius: 2px;
+    .summary-container .list-view {
+        min-width: 1070px;;
+    }
+
+.summary-container .controls {
+        margin: 60px auto auto auto;
     }
 
 .summary-container .control p{
     margin-bottom: 24px;
 }
 
-.k-listview-content {
-    overflow: hidden;
+.summary-container .main-controls-filter {
+    margin-top: 48px;
+    margin-bottom: 40px;
+} 
+
+.summary-container .list-view {
+    margin-top: 60px;
 }
 
-.k-group-title {
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-bottom: -15px;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 58px;
-    letter-spacing: -0.9px;
-    color: var( --voyago-black );
+    .summary-container .k-listview .k-listview-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        flex-wrap: wrap;
+        border: none;
+        gap: 40px;
+        overflow: hidden;
+        padding: 1px;
+    }
+
+.summary-container .search-result, .summary-container .k-group-title {
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 59px;
+    color: var(--voyago-black );
 }
 
 .sub-category-cards {
     display: flex;
     flex-direction: row;
+    gap:40px;
 }
 
 .show-all {
@@ -56,6 +78,33 @@
     color: #272727;
 }
 
-.k-listview-content {
-    width: 1120px;
+.summary-result-header{
+    margin-left: 40px;
 }
+
+@media (max-width: 1350px) {
+    .summary-container .k-card{
+        width: 250px;
+        height: 350px;
+
+    }    
+    .sub-category-cards{
+        gap:5px;
+    }
+
+    .k-group-title, .search-result {
+        font-size: 18px !important;
+    }
+
+    .summary-container .list-view {        
+        min-width: 50vw;
+    }
+}
+
+@media (max-width: 980px) {   
+
+    .sub-category-cards {
+        flex-direction: column;
+    }
+}
+

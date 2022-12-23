@@ -1,51 +1,48 @@
 ﻿.orders-container {
     display: flex;
     flex-direction: column;
-    margin: 5em 10em 5em 10em;
-    width: 60%;
-    min-height: 62vh;
-    margin: 10vh auto;
+    align-items: center;
+    width: 946px;
+    padding-inline: var( --viewport-padding-inline );
+    margin: auto;
 }
 
 .orders-title {
     font-weight: 600;
-    font-size: calc(42px + 0.390625vw);
-    line-height: calc(59px + 0.390625vw);
-    text-align: center;
-    margin-bottom: 4vh;
-}
-
-#grid_orders .k-grid-header .k-header {
     font-weight: 600;
+    font-size: 42px;
+    line-height: 59px;
+    color: var(--voyago-black);
 }
 
-.order-details-link {
-    color: var( --voyago-primary ) !important;
-    text-decoration: underline !important;
-    border-color: transparent;
-    background: 0 0;
-    font-weight: 600 !important;
+.orders-container .k-grid {
+    margin-top: 24px;
 }
 
-.view-order-link {
-    color: var( --voyago-primary ) !important;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    text-decoration-line: underline !important;
-    font-family: 'Segoe UI';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 20px;
-}
+    .orders-container .k-grid .k-header {
+        font-weight: 600;
+        color: #201F1E;
+    }
 
-.k-pager-numbers-wrap .k-dropdown{
-    text-align:center;
-}
+    .orders-container .k-grid a.order-details-link {
+        color: var(--voyago-primary);
+        text-decoration: underline;
+        border-color: transparent;
+        background: 0 0;
+        font-weight: 600;
+    }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
     .orders-container {
-        margin: 2em 5em 5em 5em;
+        max-width: 946px;
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 480px) {
+    .orders-container {
+        max-width: 300px;
+        width: 100%;
+        padding-inline: 2px;
     }
 }
