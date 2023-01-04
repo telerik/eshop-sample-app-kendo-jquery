@@ -1,0 +1,97 @@
+﻿@{
+	ViewData["Title"] = "Index";
+}
+
+<div class="contacts-container wrap-width">
+    <div class="header-title">
+        <h1>Contacts</h1>
+    </div>
+    <div id="validation-success"></div>
+    <form class="contact-form"></form>
+
+
+    <div class="location">
+        <div class="location-message">
+
+            <label>United States<br>
+                932 Clousson Road Str<br>
+                Sergeant Bluff, Iowa<br>
+                712-923-1916<br>
+                51054United States<br>
+                932 Clousson Road Str<br>
+                Sergeant Bluff, Iowa<br>
+                712-923-1916<br>
+                51054</label>
+
+        </div>
+        <div class="map"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".contact-form").kendoForm({
+            formData: {
+                Name: "",
+                Email: "",
+                Message: ""
+            },
+            buttonsTemplate: "<button class='k-button contacts-button k-button-lg k-rounded-lg k-button-solid k-button-solid-primary k-form-submit'>Submit</button>",
+            items: [{
+                        field: "Name",
+                        label: "Name",
+                        validation: { required: true }
+                    },
+                    {
+                        field: "Email",
+                        label: "Email",
+                        validation: { required: true }
+                    },
+                    {
+                        field: "Message",
+                        label: "Message",
+                        editor: "TextArea",
+                        editorOptions:{
+                            rows: 10
+                        }
+                    },
+                    {
+                        field: "Captcha", label: "", validation: { required: true }, attributes: {style: "width: 190px" },
+                        hint: "Type the characters you see in the picture above.",
+                        editor: "Captcha",
+                        editorOptions: {
+                            validateOnBlur: true,
+                            handler: '@Url.Action("Reset", "Contacts")',
+                            audioButton: false,
+                            validationHandler: '@Url.Action("Validate", "Contacts")'
+                    }
+                }],
+                 submit: function (e) {
+                    e.preventDefault();
+                    $('#validation-success').html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+                },
+                clear: function(ev) {
+                    $('#validation-success').html("");
+                }
+        });
+
+        $(".map").kendoMap({
+            center: [42.37189476506107, -96.35231099817473],
+            zoom: 3,
+            layers: [{
+                type: "tile",
+                urlTemplate: "https://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png",
+                subdomains: ["a", "b", "c"],
+            }],
+            markers: [{
+                location: [42.37189476506107, -96.35231099817473],
+                shape: "pinTarget",
+                tooltip: {
+                    content: "Iowa"
+                }
+            }]
+        });
+    });
+</script>
+
+

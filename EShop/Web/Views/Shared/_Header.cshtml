@@ -1,0 +1,105 @@
+﻿<div class="header" style="visibility: hidden;">
+    <a href="@Url.Action("Index","Home")" class="navbar-brand">
+        <img class="logo" src="~/images/eshop_logo.svg" alt="EShop">
+    </a>
+    <div class="search-bar-container">
+        <input id="searchBar" name="searchBar" type="text" value="" />
+    </div>
+    <div class="header-menu">
+        <ul id="menu">
+            <li class="ddl-container">Categories
+                <ul>
+                    <li><a href="@Url.Action("Accessories", "Home")">Accessories</a></li>
+                    <li><a href="@Url.Action("Bikes", "Home")">Bikes</a></li>
+                    <li><a href="@Url.Action("Clothing", "Home")">Clothes</a></li>
+                    <li><a href="@Url.Action("Components", "Home")">Components</a></li>
+                </ul>
+            </li>
+            <li><a href="@Url.Action("Favorites", "Account")">Favourites<span id="favourites-badge"></span></a></li>
+            <li><a href="@Url.Action("Index", "Contacts")">Contacts</a></li>
+            <li><a href="@Url.Action("About", "Home")">About</a></li>
+            <li class="profile" id="profile-btn"><span class="k-icon k-i-user"></span>
+                <ul>
+                    <li><a href="@Url.Action("Profile", "Account")">Profile</a></li>
+                    <li><a href="@Url.Action("OrdersPage", "Account")">Orders</a></li>
+                    <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="@Url.Action("ShoppingCart", "Account")"><span class="k-icon k-i-cart"></span><span id="shopping-cart-badge"></span></a>
+            </li>           
+        </ul>        
+    </div>
+</div>
+
+<script id="searchBar-template" type="text/html">
+    <span class="k-state-default">
+        <span style="color: \\#849A8E;">
+            #:data.ProductName#
+        </span>
+        # if(data.SubCategory != null) { #
+            in #:data.SubCategory#
+        # } #
+    </span>
+</script>
+
+<script>
+    $(".logo").css("visibility", "hidden");
+    $(".search-bar-container").css("visibility", "hidden");
+    $('.header-menu button').css("visibility", "hidden");
+    $('#contacts').css("visibility", "hidden");
+    $(document).ready(function() {      
+
+        $("#menu").kendoMenu();  
+        
+        $('#favourites-badge').kendoBadge({
+             position: "edge",
+             rounded: "full",
+             align: "top end",
+             themeColor: "primary",
+             text: 0
+        });
+
+        $('#shopping-cart-badge').kendoBadge({
+             position: "edge",
+             rounded: "full",
+             align: "top end",
+             themeColor: "primary",
+             text: 0
+        });
+
+        getFavoritesCount();
+        getShoppingCartItemsCount();
+
+        $("#searchBar").kendoAutoComplete({
+            "clearButton": false,
+            "dataTextField": "ProductName",
+            "minLength": 2,
+            "placeholder": "Search",
+            "select": onSearchSelect,
+            "change": searchProducts,
+            "template": $('#searchBar-template').html(),
+            "filter": "contains",
+            "dataSource": {
+                "transport": {
+                    "read": {
+                        "url": '@Url.Action("GetSearchSuggestions", "Home")',
+                        "data": onAdditionalData
+                    }
+                },
+                "serverFiltering": true,
+            }
+        });
+
+        function goToCategoryPage(e) {
+            var category = e.sender.value();
+            if (category != "") {
+                location.href = window.location.href.indexOf('eshop') > 0 ? "/eshop/Home/" + category : "/Home/" + category;
+            }
+        }
+
+        $(".k-autocomplete").prepend("<span class='k-icon k-i-search'></span>")
+    })
+</script>
+
+

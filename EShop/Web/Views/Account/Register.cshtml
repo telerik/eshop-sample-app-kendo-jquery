@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Register Page";
+}
+
+@model Models.InputModels.RegisterUserInpuModel
+
+ъ
+<div class="login-register-wrapper">
+    <img class="logo" src="~/images/eshop_logo.svg" alt="EShop">
+
+    <span asp-validation-for="Email" class="text-error"></span>
+
+    <form action="Register" controller="Account" id="registerForm" method="POST" name="registerForm" class="login-register-form"></form>
+
+    <div class="login-prompt">
+        <p>Already have an account?</p><a href="@Url.Action("Login","Account")" class="login-link">Login</a>
+    </div>
+</div>
+
+
+
+<script id="formButtonsTmpl" type="text/html">
+    <button class="k-button k-form-submit" type="submit">
+        <span class="k-button-text">Register</span>
+    </button>
+</script>
+
+<script>
+    $("#registerForm").kendoForm({
+        "buttonsTemplate": $('#formButtonsTmpl').html(),
+        "validatable": {
+            "validateOnBlur": true,
+            "validationSummary": true,
+            "errorTemplate": "<span class='k-form-error'>#:message#</span>"
+        },
+        "formData": null,
+        "serverErrors": {},
+        "items": [{
+            "field": "FirstAndLastName",
+            "label": {
+                "text": "First and last name"
+            },
+            "validation": {
+                "type": "text",
+                "required": {
+                    "message": "Please enter First and Last name"
+                },
+                "pattern": {
+                    "value": "^[a-zA-Z]+\\s+[a-zA-Z]+$",
+                    "message": "Please enter First and Last name separated by a space"
+                },
+            }
+        }, {
+            "field": "Email",
+            "label": {
+                "text": "Email"
+            },
+            "validation": {
+                "required": true,
+                "email": true
+            }
+        }, {
+            "field": "Password",
+            "label": {
+                "text": "Password"
+            },
+            "hint": "Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers.",
+            "attributes": {
+                "type": "password"
+            },
+            "validation": {
+                "type": "text",
+                "required": {
+                    "message": "Please enter password"
+                },
+                "pattern": {
+                    "value": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",
+                    "message": "Your password must be at least 8 symbols and should include uppercase and lowercase letters and numbers."
+                },
+            }
+        }]
+    });
+</script>
