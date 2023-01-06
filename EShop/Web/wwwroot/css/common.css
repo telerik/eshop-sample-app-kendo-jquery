@@ -9,8 +9,7 @@ h2,
 h3,
 h4,
 h5,
-h6
-{
+h6 {
     margin: 0;
 }
 
@@ -74,7 +73,7 @@ a, a:hover {
 }
 
 .k-popup .k-item, .k-list-item, .k-list-optionlabel {
-    outline: none!important;
+    outline: none !important;
 }
 
 .category-heading-large {
@@ -120,13 +119,13 @@ a, a:hover {
     text-align: center !important;
 }
 
-.price-container{
+.price-container {
     margin-bottom: 12px;
 }
 
 
 .price {
-    font-size: 32px;   
+    font-size: 32px;
     font-weight: 400;
     font-size: 32px;
     line-height: 45px;
@@ -137,7 +136,7 @@ a, a:hover {
 
 .k-listview-content {
     overflow: inherit;
-    min-width:1040px;
+    min-width: 1040px;
 }
 
 .orders-container, .order-details-container {
@@ -156,7 +155,7 @@ a, a:hover {
     margin: 45px auto;
 }
 
-.header-title{
+.header-title {
     text-align: center;
 }
 
@@ -183,13 +182,13 @@ a, a:hover {
     padding-inline: 38px;
 }
 
-.search-bar-container .k-autocomplete {
-    display: flex;
-    align-items: center;
-    max-width: 634px;
-    min-width: 120px;
-    height: 40px;
-}
+    .search-bar-container .k-autocomplete {
+        display: flex;
+        align-items: center;
+        max-width: 634px;
+        min-width: 120px;
+        height: 40px;
+    }
 
 .k-i-search {
     margin-left: 18px;
@@ -260,7 +259,7 @@ a, a:hover {
     padding: 6px !important;
 }
 
-.socials{
+.socials {
     width: 12px;
     height: 21px;
 }
@@ -275,6 +274,7 @@ a, a:hover {
     bottom: 0;
     margin-top: 80px;
 }
+
     .footer .wrap-width {
         padding-block: 40px;
         display: flex;
@@ -302,24 +302,24 @@ a, a:hover {
         flex-direction: row;
     }
 
-    .socials {
-        gap: 25px;
-    }
+.socials {
+    gap: 25px;
+}
 
-    .footer-logo {
-        margin-top: auto;
-        align-items: center;
-    }
+.footer-logo {
+    margin-top: auto;
+    align-items: center;
+}
 
-    .progress-logo {
-        padding-right: 6px;
-    }
+.progress-logo {
+    padding-right: 6px;
+}
 
-    .rights {
-        line-height: 16px;
-        border-left: 1px solid;
-        padding-left: 6px;
-    }
+.rights {
+    line-height: 16px;
+    border-left: 1px solid;
+    padding-left: 6px;
+}
 
 .footer-heading {
     font-size: 14px;
@@ -350,7 +350,7 @@ a, a:hover {
 
 .footer-categories .footer-content:hover {
     font-weight: bold;
-    color: var( --eshop-white );    
+    color: var( --eshop-white );
 }
 /* Forms */
 .login-register-form .k-button.k-form-submit {
@@ -400,54 +400,51 @@ a, a:hover {
     }
 }
 
-    @media (max-width: 900px) {
-        .footer-payment-methods {
-            display: none;
-            font-size: 10px;
-            line-height: 10px;
-        }
-
-        .contact-email {
-            margin-top: -3vh;
-        }        
-
-        .download-app img {
-            width: 180px;
-            height: 52px;
-        }
+@media (max-width: 900px) {
+    .footer-payment-methods {
+        display: none;
+        font-size: 10px;
+        line-height: 10px;
     }
 
-    @media (max-width: 820px) {
-        .logo {
-            width: auto;
-            height: 20px;
-        }
+    .contact-email {
+        margin-top: -3vh;
     }
 
-    @media (max-width: 560px) {
-        .footer-socials-icons, .footer-socials .footer-heading, .footer-categories {
-            display: none;
-        }
+    .download-app img {
+        width: 180px;
+        height: 52px;
+    }
+}
 
-        .footer-logo span {
-            display: flex;
-        }
+@media (max-width: 820px) {
+    .logo {
+        width: auto;
+        height: 20px;
+    }
+}
 
-        .category-image {
-            max-width: 350px;
-        }
+@media (max-width: 560px) {
+    .footer-socials-icons, .footer-socials .footer-heading, .footer-categories {
+        display: none;
     }
 
-    @media (max-width: 460px) {
-
-        .footer-logo {
-            flex-direction: column;
-        }
-
-        .k-menu-horizontal {
-            flex-direction: column;
-        }
+    .footer-logo span {
+        display: flex;
     }
 
+    .category-image {
+        max-width: 350px;
+    }
+}
 
+@media (max-width: 460px) {
 
+    .footer-logo {
+        flex-direction: column;
+    }
+
+    .k-menu-horizontal {
+        flex-direction: column;
+    }
+}

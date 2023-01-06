@@ -65,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\bundles\" />
     <Folder Include="wwwroot\Contacts\Captcha\" />
   </ItemGroup>
 

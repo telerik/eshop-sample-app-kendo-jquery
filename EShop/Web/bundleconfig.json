@@ -2,7 +2,7 @@
   {
     "outputFileName": "wwwroot/bundles/styles.min.css",
     "inputFiles": [
-      "wwwroot/css/site.css",
+      "wwwroot/css/common.css",
       "wwwroot/css/about.css",
       "wwwroot/css/all_products_list_view.css",
       "wwwroot/css/category.css",
@@ -21,12 +21,6 @@
       "wwwroot/css/shopping_cart.css",
       "wwwroot/css/summary.css",
       "wwwroot/css/tile_product_card.css"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/bundles/site.min.js",
-    "inputFiles": [
-      "wwwroot/js/site.js"
     ]
   }
 ]
