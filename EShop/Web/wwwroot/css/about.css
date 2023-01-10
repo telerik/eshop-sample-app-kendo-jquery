@@ -16,11 +16,6 @@
     margin: 24px 0;
 }
 
-.section-components a {
-    text-decoration: none;
-    color: var( --eshop-primary );
-}
-
 .about-container .section-title {
     font-size: 32px;
     font-weight: 600;
@@ -40,6 +35,11 @@
     color: var(--eshop-black);
 }
 
-.about-container a:hover{
-    color: var(--eshop-white);
+.about-container a{
+    color: var(--eshop-primary);
 }
+
+.about-container a:hover {
+    color: var(--eshop-dark-grey);
+}
+
