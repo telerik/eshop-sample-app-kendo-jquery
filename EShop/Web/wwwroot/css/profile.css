@@ -10,6 +10,10 @@
     height: 34px;
 }
 
+.content-container .k-tabstrip {  
+    min-height: 500px;
+}
+
 .k-tabstrip-items {
     justify-content: center;
 }

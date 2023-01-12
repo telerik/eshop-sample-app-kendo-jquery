@@ -38,8 +38,8 @@ namespace Data
                 entity.ToTable("Contact");
 
                 entity.Property(e => e.ContactId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ContactID");
+                    .HasColumnName("ContactID")
+                    .HasComment("Primary key for Contact records."); 
 
                 entity.Property(e => e.City).HasMaxLength(30);
 
@@ -111,8 +111,7 @@ namespace Data
 
                 entity.ToTable("SalesOrder");
 
-                entity.Property(e => e.OrderId)
-                    //.ValueGeneratedNever()
+                entity.Property(e => e.OrderId)                 
                     .HasColumnName("OrderID")
                     .HasComment("Primary key.");
 

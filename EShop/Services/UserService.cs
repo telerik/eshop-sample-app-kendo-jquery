@@ -66,21 +66,19 @@ namespace Services
             {
                 return false;
             }
-            if (input.Password.Length < 4 || input.Password.Length > 24)
+            if (input.Password.Length < 8)
             {
                 return false;
             }
 
+
             var passwordSalt = GenerateSalt(8);
             var passwordWithSalt = input.Password + passwordSalt;
 
-            var hashedPassword = HashPassword(passwordWithSalt);
-
-            var newContactID = GetUsersCount() + 1;
+            var hashedPassword = HashPassword(passwordWithSalt);          
 
             var userForDb = new Contact
-            {
-                ContactId = newContactID,
+            {              
                 FirstName = firstName,
                 LastName = lastName,
                 EmailAddress = input.Email,

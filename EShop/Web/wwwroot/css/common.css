@@ -159,7 +159,9 @@ a, a:hover {
     text-align: center;
 }
 
-
+.text-error{
+    color: #d72b2b;
+}
 /* Header */
 .header {
     width: var( --viewport-width );
