@@ -29,7 +29,6 @@ function shoppingCartGridOnDataBound(e) {
 function removeItemFromShoppingCart(itemId) {
 	var rowToRemove = $("#remove_" + itemId).closest('tr') ;
 	var grid = getShoppingCartGrid();
-	var refresh = grid.dataSource.data().length == 1;
 
 	grid.removeRow(rowToRemove);
 	grid.dataSource.sync();	
@@ -47,7 +46,7 @@ function updateShoppingCartChanges(e) {
 
 function checkoutShoppingCart() {
 	kendo.ui.progress($("#checkoutButton"), true);
-	location.href = window.location.href.indexOf('eshop') > 0 ? "/eshop/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
+	location.href = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
 }
 
 function calculateShoppingCartTotal() {
@@ -64,7 +63,7 @@ function calculateShoppingCartTotal() {
 
 function addProductToShoppingCart(e) {
 	var productId = e.sender.element[0].id.split('_')[1];
-	let getUrl = window.location.href.indexOf('eshop') > 0 ? "/eshop/Account/AddProductToShoppingCart?productId=" : window.location.origin + "/Account/AddProductToShoppingCart?productId=";
+	let getUrl = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Account/AddProductToShoppingCart?productId=" : window.location.origin + "/Account/AddProductToShoppingCart?productId=";
 
 	$.post(getUrl + productId, function () {
 		getShoppingCartItemsCount();
@@ -72,7 +71,7 @@ function addProductToShoppingCart(e) {
 }
 
 function getShoppingCartItemsCount() {
-	let getUrl = window.location.href.indexOf('eshop') > 0 ? "/eshop/Account/GetShoppingCartItemsCount" : window.location.origin + "/Account/GetShoppingCartItemsCount";
+	let getUrl = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Account/GetShoppingCartItemsCount" : window.location.origin + "/Account/GetShoppingCartItemsCount";
 	$.get(getUrl, function (data) {
 		$('#shopping-cart-badge').data('kendoBadge').text(data);
 	});

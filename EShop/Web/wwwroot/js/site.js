@@ -27,7 +27,7 @@ function distinguishFavorites() {
 		var icon = currentButton.find(".k-icon");
 		var productId = this.id.split("_")[1];
 
-		var getUrl = window.location.href.indexOf('eshop') > 0 ? "/eshop/Account/ProductIsInFavorites?productId=" : "/Account/ProductIsInFavorites?productId=";
+		var getUrl = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Account/ProductIsInFavorites?productId=" : "/Account/ProductIsInFavorites?productId=";
 		$.get(getUrl + productId, function (data) {
 			if (data) {
 				if (currentButton.find(".k-button-text")) {
@@ -185,7 +185,7 @@ function showCategories(e) {
 		var value = groupCount[i].value;
 		var count = groupCount[i].items.length;
 		var categoriesElement = $("#availableCategories");
-		let getUrl = window.location.href.indexOf('eshop') > 0 ? "/eshop/Products/Category?subCategory=" : "/Products/Category?subCategory=";
+		let getUrl = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Products/Category?subCategory=" : "/Products/Category?subCategory=";
 		categoriesElement.append("<a href=' " + getUrl + value + "&searchParam=" + searchParam + "' ><p style='color: black;' ><strong>" + value + "</strong> (" + count + " results)</p></a>");
 	}
 }
@@ -200,7 +200,7 @@ function onSearchSelect(e) {
 	e.preventDefault();
 	var product = e.dataItem;
 	var productId = product.ProductId;
-	location.href = window.location.href.indexOf('eshop') > 0 ? "/eshop/Products/Details?productId=" + productId : "/Products/Details?productId=" + productId;
+	location.href = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Products/Details?productId=" + productId : "/Products/Details?productId=" + productId;
 
 }
 
@@ -216,7 +216,7 @@ function searchProducts(e) {
 
 function searchByNameAndCategory(name, subCategory) {
 	var productCategoryParam = "/Products/Category?searchParam=" + name + "&subCategory=" + subCategory;
-	location.href = window.location.href.indexOf('eshop') > 0 ? "/eshop" + productCategoryParam : productCategoryParam;
+	location.href = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop" + productCategoryParam : productCategoryParam;
 
 }
 
@@ -225,7 +225,7 @@ function searchByName(name) {
 		filterDataSource();
 	}
 	else {
-		location.href = window.location.href.indexOf('eshop') > 0 ? "/eshop/Products/Summary?searchParam=" + name : "/Products/Summary?searchParam=" + name;
+		location.href = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Products/Summary?searchParam=" + name : "/Products/Summary?searchParam=" + name;
 	}
 }
 

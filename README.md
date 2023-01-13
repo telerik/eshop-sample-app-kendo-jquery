@@ -55,7 +55,7 @@ The sample application showcases some of the most popular Kendo UI for jQuery wi
 1. [Add the Telerik Nuget feed as a Package Source](https://docs.telerik.com/kendo-ui/intro/installation/nuget-install).
 1. Copy the `.bak` file from the `DatabaseFiles` folder to your SQL Server backup location.
 1. Restore the sample database through any of the approaches below:
-  * Use SQL Server Management Studio(SSMS)—Follow the steps in [Restore to SQL Server article](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms#restore-to-sql-server). Note: You need to select the `EShopDatabase.bak` file. 
+  * Use SQL Server Management Studio(SSMS)—Follow the steps in [Restore to SQL Server article](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms#restore-to-sql-server). Note: You need to select the `KendoEShop.bak` file and the name of the database should be KendoEShop. 
   * Use the `Transact-SQL (T-SQL)`—Run the `RESTORE DATABASE` command as described in the article linked [here](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=tsql#restore-to-sql-server). 
 1. Open `EShop.sln` with Visual Studio.
 1. Open the terminal and enter the `Web` directory (`...\fluent-eshop-jquery\EShop\Web`).
