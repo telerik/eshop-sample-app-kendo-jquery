@@ -1,0 +1,52 @@
+﻿.contacts-container {
+    min-height: 570px;
+    width: 948px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+.map {
+    width: 700px;
+    height: 336px;
+}
+
+.contacts-button {
+    width: 207px;
+}
+
+.location {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.location-message {
+    font: 'Red Hat Text';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    width: 206px;
+    height: 336px;
+}
+
+@media (max-width: 900px) {
+    .contacts-container {
+        width: 85%;
+        margin: 0 auto;
+        margin-bottom: 5%;
+    }
+
+    .location-message{
+        height: 280px;
+    }
+
+    .location {
+        margin-top: 40px;
+        flex-direction: column;
+    }
+
+    .map {
+        width: 80vw;
+    }
+}

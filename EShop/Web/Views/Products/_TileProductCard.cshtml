@@ -1,0 +1,30 @@
+﻿<div class="k-card">	
+	<a class="k-card-link k-card-image-container" href="@Url.Action("Details", "Products")?productId=#:Id#">
+		<img class="k-card-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image" />
+		# if(DiscountPct != 0) { #
+			<span class="discount-pct">#:Number(DiscountPct) * 100#% off</span>
+		# } #
+	</a>
+	<div class="k-card-body">
+		<a href="@Url.Action("Details", "Products")?productId=#:Id#">
+			<div class="k-card-title">#:Name#</div>
+		</a>
+		@{
+			if (Context.Request.Path.ToString().Contains("Products"))
+			{
+				<div class="avg-rating">
+					<img class="rating-icon" src="~/images/star.svg" alt="star icon" />
+					<span class="rating-text">#:AverageRating#/5</span> 
+				</div>
+			}
+		}
+		<div class="price-container">
+			<div class="card-price">#:kendo.toString(FinalPrice, "c")#</div>
+		</div>
+		<div class="card-buttons">
+			<button class="card-cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
+			<button class="card-favorites-button add-to-favourites" id="addToFavoritesButton_#=Id#" name="addToFavoritesButton_#=Id#" type="button"></button>
+
+		</div>
+	</div>
+</div>

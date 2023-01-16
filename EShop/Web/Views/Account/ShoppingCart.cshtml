@@ -1,0 +1,151 @@
+﻿@{
+	ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="shopping-cart-container wrap-width">
+	<div class="shopping-cart-title">Your cart items</div>
+
+	@{
+		if (ViewBag.ItemsCount == 0)
+		{
+			<div class="empty-shopping-cart-container">
+            <img class="empty-cart-image" src="~/images/shopping_cart_empty.svg" alt="Your shopping cart is empty">
+            <p class="empty-cart-heading">Unfortunately, your cart is empty...</p>
+            <div class="empty-cart-description">
+                <p>Looks like you have not added anything to your cart. Go ahead and <a href="@Url.Action("Index", "Home")#top-picks">explore our top-picks.</a>
+                </p>
+            </div>
+            </div>
+		}
+		else
+		{
+			<a class="continue-shopping" href="@Url.Action("Index","Home")">Continue shopping</a>
+			<div id="shoppingCartGrid" name="shoppingCartGrid"></div>
+
+			<div class="sub-total-container">
+				<div class="sub-total-details">
+					<div class="sub-total">
+						<div class="sub-total-val">Sub-total:</div>
+						<div class="sub-total-val" id="subTotalValue"></div>
+					</div>
+					<span class="tax-and-shipping">Tax and shipping cost will be calculated later</span>
+				</div>
+				<button id="checkoutButton">Check-Out</button>
+			</div>
+		}
+	}
+</div>
+
+<script id="shoppingCartProduct-template" type="text/html">
+    <div class="product-column">
+        <a class="product-image-container" href="@Url.Action("Details", "Products")?productId=#:ProductId#">
+            <img class="product-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:ProductPhotoId#" alt="#:ProductName# image">
+        </a>
+
+       <div class="product-details">
+            <a href="@Url.Action("Details", "Products")?productId=#:ProductId#">
+                <p class="product-name">#:ProductName#</p>
+            </a>
+            <p id="remove_#:ShoppingCartItemId#" class="remove-product" onclick="removeItemFromShoppingCart(#:ShoppingCartItemId#)" style="cursor:pointer">Remove</p>
+        </div>
+    </div>
+</script>
+
+
+<script>
+$(document).ready(function(){
+	$('#checkoutButton').kendoButton({
+		click: checkoutShoppingCart,
+		themeColor: "primary"
+	})
+
+	var dataSourceT = new kendo.data.DataSource({
+		
+	  transport: {
+	    read: {
+	      url: '@Url.Action("GetUserShoppingCartItems", "Account")',
+	      dataType: "json"
+	    },
+		update: {
+	      url: '@Url.Action("UpdateUserShoppingCartItem", "Account")',
+	      dataType: "json" ,
+		  type: 'POST'
+	    },
+		 destroy: {
+	      url:  '@Url.Action("RemoverUserShoppingCartItem", "Account")',
+	      dataType: "json",
+		  type: "POST"
+	    },
+	  },
+	   sync: function(e) {
+		if(e.sender.data().length == 0){
+			location.href = '@Url.Action("ShoppingCart", "Account")';
+		}
+	  },
+	  schema: {
+		   model: {
+		     id: "ShoppingCartItemId",
+		     fields: {
+		       ShoppingCartItemId: {
+				 type: "number",
+		         editable: false
+		       }
+		     }
+		   }
+}
+	});
+
+	$("#shoppingCartGrid").kendoGrid({
+		dataSource: dataSourceT,
+		columns: [
+			{
+	            "title": "Product",
+	            "template": kendo.template($('#shoppingCartProduct-template').html()),
+	            "field": "ProductName",
+				"editable": function (dataItem) {
+				  return false
+				}
+	        },
+			{
+	           "title": "Price",
+	           "attributes": {
+	             "class": "currency"
+	           },
+	           "field": "ProductPrice",
+	           "format": "{0:C}",
+			   "editable": function (dataItem) {
+				  return false
+				}
+	        },
+			{
+	            "title": "Quantity",
+	            "attributes": { "class": "templateCell" },
+	            "template": '<input class="quantity-editor" data-bind="value: #:Quantity#" id="quantityEditor_#=ShoppingCartItemId#" name="quantityEditor_#=ShoppingCartItemId#" value=""/ >',
+				"field": "Quantity",
+	            "encoded": true,
+				"editable": function() {
+	              return false;
+	            }
+	          },
+	          {
+	            "title": "Final Price",
+				"headerAttributes": { "class": "header-right" }, "attributes": { "style": "text-align: right" },
+	            "attributes": {
+	              "class": "currency final-price"
+	            },
+	            "field": "Total",
+	            "format": "{0:C}",
+				"editable": function (dataItem) {
+				  return false
+				}
+	          }
+		],
+		"scrollable": false,
+	    "editable": {
+	      "mode": "incell"
+	    },
+		"dataBound": shoppingCartGridOnDataBound
+	})
+})
+</script>
+
