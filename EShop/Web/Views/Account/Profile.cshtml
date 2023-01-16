@@ -35,8 +35,8 @@
         layout:"grid",
         formData: {
           ID: 1,
-          FirstName: '@Model.FirstName',
-          LastName: '@Model.LastName',
+          FirstName: "@Html.Raw(Model.FirstName)",
+          LastName: "@Html.Raw(Model.LastName)",
           Phone: '@Model.Phone'
         },
         items: [
@@ -118,8 +118,8 @@
         },
         layout:"grid",
         formData: {          
-          Street: '@Model.Street',
-          City: '@Model.City',
+          Street: "@Html.Raw(Model.Street)",
+          City: "@Html.Raw(Model.City)",
           State: '@Model.State',
           Zipcode: '@Model.Zipcode',
           Country: '@Model.Country',
