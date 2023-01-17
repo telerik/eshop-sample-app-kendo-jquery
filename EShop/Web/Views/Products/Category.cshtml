@@ -97,19 +97,17 @@
 		var dataSourceProducts = new kendo.data.DataSource({
 		transport: {
               read: {
-                  url: '@Url.Action("ReadAllProducts", "Products")',
-                  dataType: "json"
-              }
+                  url: '@Url.Action("ReadAllProductsCategory", "Products")',
+                  dataType: "json",
+				  data: function() {
+				    return {
+				        subCategory: "@ViewBag.SubCategory"
+				    };
+			      }
+              },
+			 
           },
-          pageSize: 12,
-		  filter: [{
-               logic: "and",
-               filters: [{
-                   field: "SubCategory",
-                   operator: "eq",
-                   value: "@ViewBag.SubCategory"
-               }]
-           }],
+          pageSize: 12
 		});
 
 		$("#allProductsListView").kendoListView({

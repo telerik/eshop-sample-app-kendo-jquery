@@ -42,6 +42,16 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public JsonResult ReadAllProductsCategory(string subCategory)
+        {
+            var result = productService.GetAllProducts()
+                .Where(p => p.SubCategory == subCategory && p.SubCategory != "Other" && p.SubCategory != null)
+                .ToList();
+
+            return Json(result);
+        }
+
+        [HttpGet]
         public IActionResult Summary(string? searchParam)
         {
             ViewBag.SearchParam = searchParam ?? String.Empty;

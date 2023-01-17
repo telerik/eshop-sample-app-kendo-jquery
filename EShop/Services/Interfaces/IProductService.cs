@@ -29,13 +29,7 @@ namespace Services.Interfaces
 
         Task<byte[]?> GetProductLargePhotoById(int photoId);
 
-        //IEnumerable<SortParmeterViewModel> GetAllSortParameters();
-
         IEnumerable<string> GetAllCategoryNames();
-
-        //IEnumerable<string> GetAllSubCategoryNames();
-
-        //IQueryable<string> GetAllModels();
 
         IQueryable<string> GetAllModelsInSubCategory(string subCategory);
 
