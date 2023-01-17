@@ -21,9 +21,29 @@ namespace Services
 
         public IEnumerable<ProductAllViewModel> GetAllProducts()
         {
-            var products = dbContext.Products.ToList();
+            var products = dbContext.Products
+                .Select(p => new ProductAllViewModel
+                {
+                    Id = p.ProductId,
+                    Name = p.ProductName,
+                    ModelId = p.ProductModelId,
+                    Model = p.ProductModel,
+                    Price = p.ListPrice,
+                    SubCategory = p.ProductSubCategoryName,
+                    SubCategoryId = p.ProductSubcategoryId,
+                    Description = p.Description,
+                    AverageRating = p.Rating ?? 0,
+                    Quantity = p.Quantity,
+                    DiscountPct = p.DiscountPct,
+                    ProductCategoryName = p.ProductCategoryName,
+                    Color = p.Color,
+                    Size = p.Size,
+                    PhotoId = p.PhotoId,
+                    Weight = p.Weight ?? 0
+                })
+                .ToList();
 
-            return MapProductsToProductAllViewModel(products);
+            return products;
         }
 
         public IEnumerable<ProductAllViewModel> GetListOfProducts(IEnumerable<int> productIds)
@@ -60,8 +80,6 @@ namespace Services
                 Color = p.Color,
                 Size = p.Size,
                 PhotoId = p.PhotoId,
-                LargePhoto = p.LargePhoto,
-                ThumbNailPhoto = p.ThumbNailPhoto,
                 Weight = p.Weight ?? 0
             });
 
