@@ -151,6 +151,7 @@ h4 {
     justify-content: start;
     border: none;
     flex-wrap: wrap;
+    gap: 40px;
 }
 
 #recentlyViewedListView .k-card-image-container {

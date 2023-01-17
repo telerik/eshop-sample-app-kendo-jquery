@@ -100,8 +100,9 @@
 .model-details-container .k-listview-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
+    gap: 40px;
 }
 
 .model-data-right-container {
