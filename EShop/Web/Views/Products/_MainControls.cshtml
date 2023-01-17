@@ -1,0 +1,78 @@
+﻿<div class="controls">
+
+	@{
+		if (Context.Request.Path.ToString().Contains("Summary"))
+		{
+			@await Html.PartialAsync("_SummaryControls.cshtml")
+		}
+	}
+
+	<div class="main-controls-filter">Filters</div>
+
+	@{
+		if (Context.Request.Path.ToString().Contains("Category"))
+		{
+			<div class="control">
+				<a href="@Url.Action("Category", "Products")?subCategory=@ViewBag.SubCategory">
+					<div class="clear-all">
+						<div class="clear-all-text">Clear All</div>
+						<img class="close-button" src="~/images/close_button.svg" alt="Clear All">
+					</div>
+				</a>
+			</div>
+		}
+		else if (Context.Request.Path.ToString().Contains("Summary"))
+		{
+			<div class="control">
+				<a href="@Url.Action("Summary", "Products")">
+					<div class="clear-all">
+						<div class="clear-all-text">Clear All</div>
+						<img class="close-button" src="~/images/close_button.svg" alt="Clear All">
+					</div>
+				</a>
+			</div>
+		}
+	}
+
+	<div class="control">
+		<div class="control-label">Discount</div>
+		<ul id="discountPicker" name="discountPicker" type="text"></ul>	
+	</div>
+
+	@{
+		if (Context.Request.Path.ToString().Contains("Category"))
+		{
+			@await Html.PartialAsync("_CategoryControls.cshtml")
+		}
+	}
+
+	<div class="control">
+		<div class="control-label">Rating</div>
+		<ul data-role="checkboxgroup" id="ratingPicker" name="ratingPicker" type="text"></ul>		
+	</div>
+
+	<div class="control">
+		<div class="control-label">Price</div>
+		<div class="price-slider" id="priceSlider" name="priceSlider">
+			<input class="price-slider" name="priceSlider" value="0" />
+			<input class="price-slider" name="priceSlider" value="1000" />
+			<input class="price-slider" name="priceSlider" value="2000" />
+			<input class="price-slider" name="priceSlider" value="4000" />
+		</div>
+	</div>
+
+	<div class="control">
+		<div class="control-label">Weight</div>		
+
+		<div class="weight-slider" id="weightSlider" name="weightSlider">
+			<input class="weight-slider" value="0" />
+			<input class="weight-slider" value="1500" />
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		addFilterCheckBoxes();
+	});
+</script>

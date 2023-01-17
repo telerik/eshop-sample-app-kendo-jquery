@@ -1,0 +1,28 @@
+﻿
+
+<div class="favorite-product-container">
+		<a href="@Url.Action("Details", "Products")?productId=#:Id#" class="favorite-product-image">
+			<img src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=#:PhotoId#" alt="#:Name# image">
+		</a>
+
+		<div class="favorite-product-info-container">
+			<a href="@Url.Action("Details", "Products")?productId=#:Id#">
+				<div class="favorite-product-name">#:Name#</div>
+			</a>
+			<div class="avg-rating">
+				<img style="align-self:center;" src="~/images/star.svg" alt="star icon"/>
+				<span class="rating-text">#:AverageRating#/5</span>
+			</div>
+			#if (Description != null && Description != undefined) { #
+				<p class="favorite-product-description">#:Description#</p>
+			#}#			
+		</div>
+
+		<div class="favorite-product-controls">
+			<div class="buttons-container">
+				<div class="price">#:kendo.toString(Price, "c")#</div>
+				<button class="cart-button add-to-cart" id="addToCartButton_#=Id#" name="addToCartButton_#=Id#" type="button">Add to cart</button>			
+				<button class="card-favorites-button add-to-favourites" id="addToFavoritesButton_#=Id#" name="addToFavoritesButton_#=Id#" type="button">Add To Favourites</button>
+			</div>		
+		</div>
+</div>

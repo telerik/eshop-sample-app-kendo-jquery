@@ -1,0 +1,40 @@
+﻿@{
+	ViewData["Title"] = "Clothing";
+}
+
+<div class="sub-category-container wrap-width">
+	<nav id="breadcrumb" name="breadcrumb"></nav>
+	<div class="category-heading-large wrap-width">Clothes</div>
+	<div class="sub-category-images clothing-container">
+		<div>
+			<a href="@Url.Action("Category", "Products")?subCategory=Jerseys">
+				<div class="category-heading">Jerseys</div>
+				<img src="~/images/jerseys.png" class="category-image category-large-image" />
+			</a>
+		</div>
+		<div>
+			<a href="@Url.Action("Category", "Products")?subCategory=Shorts">
+				<div class="category-heading">Shorts</div>
+				<img src="~/images/shorts.png" class="category-image category-large-image" />
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	 $("#breadcrumb").kendoBreadcrumb({
+        "items": [{
+            "href": "Index",
+            "icon": "home",
+            "showIcon": true,
+            "showText": false,
+            "type": "rootItem"
+        }, {
+            "href": "Clothing",
+            "text": "Clothing",
+            "showText": true,
+            "type": "item"
+        }],
+        "navigational": true
+    });
+</script>

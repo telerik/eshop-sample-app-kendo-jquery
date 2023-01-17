@@ -1,0 +1,193 @@
+﻿@{
+	ViewData["Title"] = "Product Details";
+}
+@model Models.ViewModels.ProductAllViewModel;
+
+<div class="model-details-container wrap-width">
+	<nav id="breadcrumb" name="breadcrumb"></nav>
+	<div class="model-details">
+		<div class="model-image-container">
+			<img class="model-image" src="@Url.Action("GetProductLargePhotoById", "Products")?photoId=@Model.PhotoId">
+		</div>
+		<div class="model-info-container">
+			<div class="model-heading">
+				<div class="model-title">
+					@{
+						if (Model.Model == null)
+						{
+							@Model.Name
+						}
+						else
+						{
+							@Model.Model
+						}
+					}
+				</div>
+			</div>
+			<input id="productRating" name="productRating" type="text" value="0" />
+			<hr class="splitter1">
+			
+			<div class="model-data">
+				<div class="model-data-left-container">
+					<div class="model-data-row">
+						<span class="title">Product Name</span>
+						<span class="value">@Model.Name</span>
+					</div>
+					<div class="model-data-row">
+						<span class="title">Product No</span>
+						<span>@Model.ProductNumber</span>
+					</div>
+					<div class="model-data-row">
+						<span class="title">Size</span>
+						<span class="value size">
+						@{
+							if (Model.Size != null)
+							{
+								<input id="sizePicker" name="sizePicker" type="text" />
+							}
+						}
+						</span>
+					</div>
+					<div class="model-data-row">
+						<p class="title">Weight</p>
+						<p>@Model.Weight</p>
+					</div>
+					<div class="model-data-row">
+						<p class="title">Color</p>
+						<ul id="colorPicker"></ul>
+					</div>
+					<div class="model-data-row">
+						<p class="title">Description</p>
+						<p class="description-text">@Model.Description</p>
+					</div>
+				</div>
+				<div class="model-data-right-container">
+					@{
+						if (Model.DiscountPct > 0)
+						{
+							<div class="list-price"></div>
+							<div id="discount" class="discount"></div>
+							<div id="final-price" class="price"></div>
+						}
+						else
+						{
+							<label class="details-price"></label>
+						}
+					}
+					<div class="buttons-container">
+						<button class="cart-button add-to-cart" id="addToCartButton_@Model.Id" type="button">Add to cart</button>
+						<button class="favorites-button add-to-favourites" id="addToFavoritesButton_@Model.Id" type="button">Add to Favorites</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class="splitter2">
+
+	@{
+		if (Model.ModelId != null)
+		{
+			<div>
+				<div class="similar-products-title">Similar Products</div>
+				<div id="similarProductsListView" name="similarProductsListView" class="similar-products-list-view"></div>
+			</div>
+		}
+	}
+</div>
+
+<script type="text/html" id="product-template">
+	@await Html.PartialAsync("_TileProductCard.cshtml")
+</script>
+
+<script>
+	$(document).ready(function () {
+		var productId = "@Model.Id";
+		var modelId = "@Model.ModelId";
+		var discount = "@Model.DiscountPct";
+		var price = "@Model.Price"
+		var finalPrice = "@Model.FinalPrice"
+
+		$('.price').text(kendo.toString(Number(price), 'c'))
+		$('.list-price').text(kendo.toString(Number(price), 'c'))
+		$('#discount').text(kendo.toString(Number(discount), 'p0'))
+		$('#final-price').text(kendo.toString(Number(finalPrice), 'c2'))
+
+		$.get('@Url.Action("GetAvailableColors","Products")?productId=' + productId, function (data) {
+			$("#colorPicker").kendoRadioGroup({
+				items: data,
+
+				layout: "horizontal",
+				value: "@Model.Color",
+				change: function () { selectAlternateProductVersion(modelId); }
+			});
+		});
+
+		$("#breadcrumb").kendoBreadcrumb({
+			"items": [{
+			    "href": "/Home/Index",
+			    "icon": "home",
+			    "showIcon": true,
+			    "showText": false,
+			    "type": "rootItem"
+			}, {
+			    "href": "/Home/" + "@Model.ProductCategoryName", 
+			    "text": "@Model.ProductCategoryName",
+			    "showText": true,
+			    "type": "item"
+			}, {
+			    "href": '@Url.Action("Category", "Products")?subCategory=@Model.SubCategory&subCategoryId=@Model.SubCategoryId&count=4',
+			    "text": "@Model.SubCategory",
+			    "showText": true,
+			    "type": "item"
+			},{
+				"href": "@Url.Action("Details", "Products")?productId=@Model.Name",
+				"text": "@Model.Name",
+				"showText": true,
+				"type": "item"
+			}],
+			"navigational": true
+		});
+
+
+		 $("#productRating").kendoRating({
+		    "min": 1,
+		    "max": 5,
+		    "label": false,
+		    "readonly": true,
+		    "value": '@Model.AverageRating'
+		});
+
+		$("#sizePicker").kendoDropDownList({
+			"change": function() {
+			    selectAlternateProductVersion(@Model.ModelId);
+			},
+			"value": "@Model.Size",
+			"rounded": "none",
+			"fillMode": "none",
+			"dataSource": {
+			    "transport": {
+			        "read": {
+			            "url": '@Url.Action("GetAvailableSizes", "Products")?productId=@Model.Id'
+			        }
+			    }
+			}
+		});
+
+		var dataSource = new kendo.data.DataSource({
+			  transport: {
+			    read: {
+			      url: '@Url.Action("ReadSimilarProducts", "Products")?productId=@Model.Id&count=4',
+			      dataType: "json"
+			    }
+			  }
+			});
+
+		$("#similarProductsListView").kendoListView({
+		    "tagName": "div",
+		    "dataSource": dataSource,
+			"dataBound": onSimilarDataBound,
+		    "template": kendo.template($('#product-template').html())
+		});
+	});
+</script>

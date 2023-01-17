@@ -1,0 +1,114 @@
+﻿.home-accessories, .sub-category-container {
+    margin-bottom: 80px;
+}
+
+.home-accessories .category-large-image,
+.bikes-container .category-large-image {
+    width: 453px;
+}
+
+.heading-double {
+    margin-bottom: 4px !important;
+    margin-top: 21px !important;
+}
+
+.clothing-container .category-large-image {
+    width: 700px;
+}
+
+.components-container .category-large-image{
+    width: 457px;
+}
+
+.category-small-image-double {
+    width: 458px;
+    margin-top: 8px;
+}
+
+.category-image-double{
+    width: 451px;
+}
+
+.category-small-image {
+    width: 207px;
+}
+
+.sub-category-images-bottom .category-small-image{
+    width: 209px;
+}
+
+.clothing-container .category-small-image{
+    width: 211px;
+}
+
+.inner-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-2 {
+    display: flex;
+    flex-direction: row;
+    gap: 9%
+}
+
+.sub-category-images, .sub-category-images-bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 3%
+}
+
+.sub-category-images-bottom {
+    margin-top: 40px;
+    justify-content: space-between
+}
+
+
+
+@media (max-width: 1500px) {
+    .clothing-container .category-large-image, .bikes-container .category-large-image {
+        width: 100%;
+    }
+
+    .components-container .category-large-image {
+        width: 100% !important;
+        max-width: 350px;
+    }
+
+
+}
+
+@media (max-width: 1300px) {
+    .home-accessories, .sub-category-images-bottom{
+        flex-flow: wrap !important;
+        gap: 15% !important;
+    }
+
+    .components-container {
+        flex-flow: wrap !important;
+        gap: 5% !important;
+    }   
+}
+
+@media (max-width: 1000px) {
+    .home-accessories {
+        gap: 25% !important;
+        width: calc(80% - 30px) !important;
+    }      
+}
+
+@media (max-width: 815px) {
+    .inner-2, .bikes-container .sub-category-images, .clothing-container {
+        flex-direction: column;
+    }
+
+    .inner-2 img {
+        width: 100% !important;
+    }
+
+    .components-container .category-image,
+    .sub-category-images-bottom .category-large-image {
+        width: 100% !important;
+        max-width: 350px;
+    }
+}

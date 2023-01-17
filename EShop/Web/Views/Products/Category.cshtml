@@ -1,0 +1,176 @@
+﻿@{
+	ViewData["Title"] = ViewBag.SubCategory;
+}
+
+<div class="category-page-container wrap-width">
+	<nav id="breadcrumb" name="breadcrumb"></nav>
+
+	<div class="category-content-container wrap-width">
+		@await Html.PartialAsync("_MainControls.cshtml")
+		<div>
+			@await Html.PartialAsync("_ListViewHeader.cshtml", (string)ViewBag.SubCategory)
+			<div id="allProductsListView" class="all-prod-list-view" name="allProductsListView"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/html" id="product-template">
+	@await Html.PartialAsync("_TileProductCard.cshtml")
+</script>
+
+<script type="text/html" id="product-template-list">
+	@await Html.PartialAsync("_TileProductCardList.cshtml")
+</script>
+
+<span hidden id="subCategory">@ViewBag.SubCategory</span>
+
+    <!-- Breadcrumb -->
+    @{
+        var url = Context.Request.PathBase.Value ?? "";
+        var categoryUrl = url.TrimEnd('/') + "/Home/" +@ViewBag.Category;
+    }
+
+<script>
+	$(document).ready(function () {
+		var searchParam = '@ViewBag.SearchParam';
+		if (searchParam != null) {
+			$("#searchBar").data("kendoAutoComplete").value(searchParam);
+		}
+
+		$.get('@Url.Action("GetAllModelsInSubCategory","Products")?subCategory=@ViewBag.SubCategory', function (data) {
+			if (data.length == 0) {
+				$("#modelPicker").parent().hide();
+			}
+			else {
+				$("#modelPicker").kendoCheckBoxGroup({
+					items: data,
+					change: function (e) { filterDataSource(); }
+				});
+			}
+		});
+
+		$.get('@Url.Action("GetAllSizesInSubCategory","Products")?subCategory=@ViewBag.SubCategory', function (data) {
+			if(data.length == 0) {
+				$("#sizePicker").parent().hide();
+			}
+			else {
+				$("#sizePicker").kendoCheckBoxGroup({
+					items: data,
+					change: function (e) { filterDataSource(); }
+				});
+			}
+		});
+
+		$.get('@Url.Action("GetAllColorsInSubCategory","Products")?subCategory=@ViewBag.SubCategory', function (data) {
+			if (data.length == 0) {
+				$("#colorPicker").parent().hide();
+			}
+			else {
+				$("#colorPicker").kendoCheckBoxGroup({
+					items: data,
+					change: function (e) { filterDataSource(); }
+				});
+			}
+		});
+
+		$("#breadcrumb").kendoBreadcrumb({
+			items: [{
+			    href: '@Url.Action("Index", "Home")',
+			    icon: "home",
+			    showIcon: true,
+			    showText: false,
+			    type: "rootItem"
+			}, {
+			    href: "@categoryUrl",
+			    text: "@ViewBag.Category",
+			    showText: true,
+			    type: "item"
+			}, {
+			    href: '@Url.Action("Category", "Products")?subCategory=@ViewBag.SubCategory',
+			    text: "@ViewBag.SubCategory",
+			    showText: true,
+			    type: "item"
+			}],
+			navigational: true
+		});
+
+		var dataSourceProducts = new kendo.data.DataSource({
+		transport: {
+              read: {
+                  url: '@Url.Action("ReadAllProducts", "Products")',
+                  dataType: "json"
+              }
+          },
+          pageSize: 12,
+		  filter: [{
+               logic: "and",
+               filters: [{
+                   field: "SubCategory",
+                   operator: "eq",
+                   value: "@ViewBag.SubCategory"
+               }]
+           }],
+		});
+
+		$("#allProductsListView").kendoListView({
+			tagName: "div",
+			dataSource: dataSourceProducts,
+			template: kendo.template($('#product-template').html()),
+			dataBound: onCategoryDataBound,
+			pageable: true,
+			layout: "grid",
+            grid: {
+                rows: 4,
+                cols: 3
+            }
+		});
+
+		 $('.toggle-view').kendoButtonGroup({
+            items: [
+                { icon: 'group' },
+                { icon: 'list-bulleted' }
+            ],
+        });
+
+		 let toggleButton = $('.toggle-view').kendoButtonGroup().data("kendoButtonGroup");
+
+        toggleButton.select(0);
+
+        toggleButton.bind("select", function(e) {
+            let index = this.current().index();
+
+            if(index === 0){
+                let productsListView = $("#allProductsListView").data("kendoListView");
+
+                productsListView.setOptions({
+                    dataSource: {
+                        pageSize: 12
+                    },
+                    template: kendo.template($("#product-template").html()),
+                    layout: "grid",
+                    grid: {
+                        rows: 4,
+                        cols: 3
+                    },
+                });
+
+                productsListView.dataSource.pageSize(12);
+            }
+            else{
+                let productsListView = $("#allProductsListView").data("kendoListView");
+                productsListView.setOptions({
+                    template: kendo.template($("#product-template-list").html()),
+                    layout: "grid",
+					dataSource: {
+                        pageSize: 10
+                    },
+                    grid: {
+                        rows: 5,
+                        cols: 1
+                    }
+                });
+                productsListView.dataSource.pageSize(5);
+            }
+        });
+});
+</script>

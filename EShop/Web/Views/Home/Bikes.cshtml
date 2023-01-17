@@ -1,0 +1,46 @@
+﻿@{
+	ViewData["Title"] = "Bikes";
+}
+
+<div class="sub-category-container bikes-container wrap-width">
+	<nav id="breadcrumb" name="breadcrumb"></nav>
+	<div class="category-heading-large wrap-width">Bikes</div>
+	<div class="sub-category-images">
+		<div>
+			<a href="@Url.Action("Category", "Products")?subCategory=Mountain Bikes">
+				<div class="category-heading">Mountain Bikes</div>
+				<img src="~/images/mountain_bikes.png" class="category-image category-large-image" />
+			</a>
+		</div>
+		<div>
+			<a href="@Url.Action("Category", "Products")?subCategory=Road Bikes">
+				<div class="category-heading">Road Bikes</div>
+				<img src="~/images/road_bikes.png" class="category-image category-large-image" />
+			</a>
+		</div>
+		<div>
+			<a href="@Url.Action("Category", "Products")?subCategory=Touring Bikes">
+				<div class="category-heading">Touring Bikes</div>
+				<img src="~/images/touring_bikes.png" class="category-image category-large-image" />
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	 $("#breadcrumb").kendoBreadcrumb({
+        "items": [{
+            "href": "Index",
+            "icon": "home",
+            "showIcon": true,
+            "showText": false,
+            "type": "rootItem"
+        }, {
+            "href": "bikes",
+            "text": "Bikes",
+            "showText": true,
+            "type": "item"
+        }],
+        "navigational": true
+    });
+</script>
