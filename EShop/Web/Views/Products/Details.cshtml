@@ -131,7 +131,7 @@
 			    "showText": false,
 			    "type": "rootItem"
 			}, {
-			    "href": "/Home/" + "@Model.ProductCategoryName", 
+			    "href": window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Home/" + "@Model.ProductCategoryName" : "/Home/" + "@Model.ProductCategoryName",
 			    "text": "@Model.ProductCategoryName",
 			    "showText": true,
 			    "type": "item"
@@ -142,7 +142,7 @@
 			    "type": "item"
 			},{
 				"href": "@Url.Action("Details", "Products")?productId=@Model.Name",
-				"text": "@Model.Name",
+				"text": "@Html.Raw(Model.Name)",
 				"showText": true,
 				"type": "item"
 			}],

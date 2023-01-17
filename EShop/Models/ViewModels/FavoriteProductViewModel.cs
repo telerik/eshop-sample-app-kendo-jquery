@@ -8,9 +8,7 @@
 
         public decimal Price { get; set; }
 
-        public decimal? DiscountPct { get; set; }
-
-        //public decimal FinalPrice { get; set; }
+        public decimal? DiscountPct { get; set; }       
 
         public decimal? FinalPrice => Price * (1 - (decimal)DiscountPct);
 
