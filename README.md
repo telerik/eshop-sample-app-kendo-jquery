@@ -58,6 +58,6 @@ The sample application showcases some of the most popular Kendo UI for jQuery wi
   * Use SQL Server Management Studio(SSMS)—Follow the steps in [Restore to SQL Server article](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms#restore-to-sql-server). Note: You need to select the `KendoEShop.bak` file and the name of the database should be KendoEShop. 
   * Use the `Transact-SQL (T-SQL)`—Run the `RESTORE DATABASE` command as described in the article linked [here](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=tsql#restore-to-sql-server). 
 1. Open `EShop.sln` with Visual Studio.
-1. Open the terminal and enter the `Web` directory (`...\fluent-eshop-jquery\EShop\Web`).
+1. Open the terminal and enter the `Web` directory (`...\eshop-sample-app-kendo-jquery\EShop\Web`).
 1. Run `npm install` to install the dependencies from the `package.json` file. This step is required to activate the `gulp tasks` defined in the `gulpfile.js` when running the app. 
 1. Run the application (Hit `Ctrl` + `F5`).
