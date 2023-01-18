@@ -9,6 +9,7 @@
 		@await Html.PartialAsync("_MainControls.cshtml")
 		<div>
 			@await Html.PartialAsync("_ListViewHeader.cshtml", (string)ViewBag.SubCategory)
+			<div class='no-product-msg' style="display: none">This category is out of stock at the moment.</div>
 			<div id="allProductsListView" class="all-prod-list-view" name="allProductsListView"></div>
 		</div>
 	</div>

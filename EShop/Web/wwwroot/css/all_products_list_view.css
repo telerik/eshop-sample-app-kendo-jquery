@@ -34,7 +34,8 @@
 
 .no-product-msg {
     text-align: center;
-    padding: 2%;
+    padding: 5%;
+    font-size: 20px;
 }
 
 .products-listView-container {
