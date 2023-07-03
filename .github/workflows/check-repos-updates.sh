@@ -41,7 +41,7 @@ do
 done
 
 echo "Stage2 Commit the change"
-reviewers="Dimitar-Goshev,MilenaCh"
+reviewers="Dimitar-Goshev"
 echo $reviewers
 BRANCH_NAME="update-dependencies"
 PRs=$(gh pr list | grep "$BRANCH_NAME" || true)
