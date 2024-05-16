@@ -7,6 +7,7 @@ using Services.Interfaces;
 using Services;
 using Data;
 using BundlerMinifier.TagHelpers;
+using Microsoft.AspNetCore.Hosting;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,8 +25,10 @@ builder.Services.TryAddSingleton<IReportServiceConfiguration>(sp => new ReportSe
 
 builder.Services.AddDbContext<EShopDatabaseContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDatabase"));
-    options.UseLazyLoadingProxies();
+  
+    var dataDirectory = Path.GetFullPath("wwwroot");
+
+    options.UseSqlite(@"Data Source=" + dataDirectory + System.IO.Path.DirectorySeparatorChar + @"demos.db;");
 });
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver());
