@@ -38,7 +38,6 @@
 
   <ItemGroup>
     <Content Remove="package.json" />
-    <Content Remove="wwwroot\demos.db" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,7 +46,6 @@
 
   <ItemGroup>
     <None Include="package.json" />
-    <None Include="wwwroot\demos.db" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>
