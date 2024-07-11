@@ -28,7 +28,7 @@ builder.Services.AddDbContext<EShopDatabaseContext>(options =>
   
     var dataDirectory = Path.GetFullPath("wwwroot");
 
-    options.UseSqlite(@"Data Source=" + dataDirectory + System.IO.Path.DirectorySeparatorChar + @"demos.db;");
+    options.UseSqlite(@"Data Source=demos.db;");
 });
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver());
