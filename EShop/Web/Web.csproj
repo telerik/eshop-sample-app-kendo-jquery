@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+	<PackageReference Include="System.Data.SQLite" Version="1.0.118" />
 	<PackageReference Include="Telerik.Reporting.OpenXmlRendering" Version="18.1.24.514" />
     <PackageReference Include="Telerik.Reporting.Services.AspNetCore" Version="18.1.24.514" />
     <PackageReference Include="Telerik.Reporting.WebServiceDataSource" Version="18.1.24.514" />
