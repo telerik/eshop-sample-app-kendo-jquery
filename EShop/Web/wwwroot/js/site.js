@@ -1,3 +1,5 @@
+
+kendo.setDefaults("iconType", 'font')
 function onRecentlyViewedDataBound(e) {
 	hideRecentlyViewedIfEmpty(e);
 	bindFavouritesAndCartButtones();
@@ -77,7 +79,7 @@ function addFilterCheckBoxes() {
 			"value": "1"
 		}]
 	});
-
+	$(".k-checkbox-wrap").css("align-self", "auto");
 	//add rating component
 	for (i = 1; i <= 5; ++i) {
 		$(".rating-" + i).append("<input id='rating" + i + "'></input>");
