@@ -2,15 +2,17 @@ function getShoppingCartGrid() {
 	return $("#shoppingCartGrid").data("kendoGrid");
 }
 
-function shoppingCartGridOnDataBound(e) {
-
+function shoppingCartGridOnDataBound(e) { 
 	var grid = e.sender;
 	var items = e.sender.items();
 
 	items.each(function (e) {
 		var dataItem = grid.dataItem(this);
 		var ntb = $(this).find('.quantity-editor');
-
+		var ntbComponent = $(this).find('.quantity-editor[data-role="numerictextbox"]') 
+		if (ntbComponent.data("kendoNumericTextBox")) {
+			return;		 
+		}
 		$(ntb).kendoNumericTextBox({
 			change: updateShoppingCartChanges,
 			value: dataItem.Quantity,
