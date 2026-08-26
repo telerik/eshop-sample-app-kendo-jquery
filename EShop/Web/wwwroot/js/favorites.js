@@ -14,8 +14,7 @@ function addProductToFavorites(e) {
                 if ($(element[0]).find(".k-button-text")) {
                     $(element[0]).find(".k-button-text").text("Added to favorites");
                 }
-                icon.removeClass("k-i-heart-outline");
-                icon.addClass("k-i-heart");
+                kendo.ui.icon(icon, { icon: "heart" });
             });
         }
         else {
@@ -24,8 +23,7 @@ function addProductToFavorites(e) {
                 if ($(element[0]).find(".k-button-text")) {
                     $(element[0]).find(".k-button-text").text("Add to favorites");
                 }
-                icon.removeClass("k-i-heart");
-                icon.addClass("k-i-heart-outline");
+                kendo.ui.icon(icon, { icon: "heart-outline" });
             });
         }
     });
