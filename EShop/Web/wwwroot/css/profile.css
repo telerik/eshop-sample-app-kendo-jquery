@@ -38,7 +38,7 @@
     border-radius: var(--kendo-border-radius-md);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
     .k-form-layout > .k-colspan-1, .k-form-layout > .k-colspan-2 {
         grid-column: span 4/span 4 !important;
     }

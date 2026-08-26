@@ -62,7 +62,16 @@ namespace Web.Controllers
         public IActionResult Error()
         {
             return View();
-        }       
+        }
+
+        [HttpGet]
+        [Route("404")]
+        [AllowAnonymous]
+        public IActionResult NotFound()
+        {
+            Response.StatusCode = StatusCodes.Status404NotFound;
+            return View();
+        }
 
         public IActionResult ProductCatalog()
         {

@@ -80,6 +80,7 @@ app.UseEndpoints(endpoints =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapFallbackToController("NotFound", "Home");
 
 app.Run();
 

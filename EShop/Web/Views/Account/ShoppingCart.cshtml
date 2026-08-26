@@ -30,7 +30,7 @@
 					</div>
 					<span class="tax-and-shipping">Tax and shipping cost will be calculated later</span>
 				</div>
-				<button id="checkoutButton">Check-Out</button>
+				<button id="checkoutButton">Proceed to checkout</button>
 			</div>
 		}
 	}
@@ -46,7 +46,7 @@
             <a href="@Url.Action("Details", "Products")?productId=#:ProductId#">
                 <p class="product-name">#:ProductName#</p>
             </a>
-            <p id="remove_#:ShoppingCartItemId#" class="remove-product" onclick="removeItemFromShoppingCart(#:ShoppingCartItemId#)" style="cursor:pointer">Remove</p>
+            <button id="remove_#:ShoppingCartItemId#" class="remove-product" type="button" onclick="removeItemFromShoppingCart(#:ShoppingCartItemId#)">Remove</button>
         </div>
     </div>
 </script>
@@ -154,4 +154,3 @@ $(document).ready(function(){
 		justify-content: end;
 	}
 </style>
-

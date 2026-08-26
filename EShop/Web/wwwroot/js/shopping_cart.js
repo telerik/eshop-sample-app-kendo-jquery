@@ -48,7 +48,7 @@ function updateShoppingCartChanges(e) {
 
 function checkoutShoppingCart() {
 	kendo.ui.progress($("#checkoutButton"), true);
-	location.href = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Account/CheckoutShoppingCart" : "/Account/CheckoutShoppingCart";
+	location.href = window.location.href.indexOf('eshop') > 0 ? "/kendo-ui/eshop/Account/Checkout" : "/Account/Checkout";
 }
 
 function calculateShoppingCartTotal() {
