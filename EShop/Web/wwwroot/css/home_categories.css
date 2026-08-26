@@ -65,7 +65,7 @@
 
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .clothing-container .category-large-image, .bikes-container .category-large-image {
         width: 100%;
     }
@@ -78,7 +78,7 @@
 
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
     .home-accessories, .sub-category-images-bottom{
         flex-flow: wrap !important;
         gap: 15% !important;
@@ -90,14 +90,14 @@
     }   
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 991px) {
     .home-accessories {
         gap: 25% !important;
         width: calc(80% - 30px) !important;
     }      
 }
 
-@media (max-width: 815px) {
+@media (max-width: 767px) {
     .inner-2, .bikes-container .sub-category-images, .clothing-container {
         flex-direction: column;
     }

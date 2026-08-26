@@ -162,13 +162,13 @@
     height: 38px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
     .favorites-container, .favorite-product-container.k-listview-item {
         width: 90vw;
     }
 }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 991px) {
         .favorite-product-container.k-listview-item,
         .favorites-header,
         .favorites-title {
