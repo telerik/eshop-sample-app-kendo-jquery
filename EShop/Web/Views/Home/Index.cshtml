@@ -4,11 +4,11 @@
 <div class="home-content">
     <div class="scrollview-container">
         <div id="scrollView">
-            <div data-role="page"><img src="~/images/home_main_1.png" /></div>
-            <div data-role="page"><img src="~/images/home_main_2.png" /></div>
-            <div data-role="page"><img src="~/images/home_main_3.png" /></div>
-            <div data-role="page"><img src="~/images/home_main_4.png" /></div>
-            <div data-role="page"><img src="~/images/home_main_5.png" /></div>
+            <div data-role="page"><img src="~/images/home_main_1.png" alt="Explore performance bikes and gear" /></div>
+            <div data-role="page"><img src="~/images/home_main_2.png" alt="Discover new arrivals for every ride" /></div>
+            <div data-role="page"><img src="~/images/home_main_3.png" alt="Shop reliable cycling components" /></div>
+            <div data-role="page"><img src="~/images/home_main_4.png" alt="Find accessories for your next adventure" /></div>
+            <div data-role="page"><img src="~/images/home_main_5.png" alt="Get ready for the road ahead" /></div>
         </div>
     </div>
 
@@ -31,23 +31,23 @@
             <div class="column">
                 <a href="@Url.Action("Accessories","Home")">
                     <div class="category-heading">Accessories</div>
-                    <img src="~/images/accessories.png" class="category-image" />
+                    <img src="~/images/accessories.png" class="category-image" alt="Cycling accessories" />
                 </a>
             </div>
             <div class="column middle-container">
                 <a href="@Url.Action("Bikes","Home")">
                     <div class="category-heading">Bikes</div>
-                    <img src="~/images/bikes.png" class="category-image category-img-small" />
+                    <img src="~/images/bikes.png" class="category-image category-img-small" alt="Bikes" />
                 </a>
                 <a href="@Url.Action("Components","Home")" class="components-header">
                     <div class="category-heading components-header-second">Components</div>
-                    <img src="~/images/components.png" class="category-image category-img-small" />
+                    <img src="~/images/components.png" class="category-image category-img-small" alt="Bike components" />
                 </a>
             </div>
             <div class="column">
                 <a href="@Url.Action("Clothing","Home")">
                     <div class="category-heading">Clothes</div>
-                    <img src="~/images/clothes.png" class="category-image" />
+                    <img src="~/images/clothes.png" class="category-image" alt="Cycling clothing" />
                 </a>
             </div>
         </div>
@@ -59,8 +59,8 @@
     </div>
     <div class="download-app wrap-width">
         <span class="download-text">Download E-Shop application</span>
-        <img src="~/images/gplay.svg" width="180" />
-        <img src="~/images/appstore.svg" width="180" />
+        <img src="~/images/gplay.svg" width="180" alt="Get E-Shop on Google Play" />
+        <img src="~/images/appstore.svg" width="180" alt="Download E-Shop on the App Store" />
     </div>
 </div>
 
@@ -70,7 +70,7 @@
         <div class="top-pick-card">
             <a href="@Url.Action("Category", "Products")?subCategory=#=data[i].Name#">
             <h4 class="top-pick-heading" style="color: black">#= data[i].Name #</h4>
-            <img src="~/images/#=data[i].ImageName#" class="top-pick-image"/>
+            <img src="~/images/#=data[i].ImageName#" class="top-pick-image" alt="#: data[i].Name #" />
             </a>
         </div>
         # } #
@@ -144,7 +144,7 @@
             $("#scrollView").data("kendoScrollView").resize(true);
             $("#topPicks").data("kendoScrollView").resize(true);
 
-            if (window.matchMedia("screen and (max-width: 960px)").matches) {
+            if (window.matchMedia("screen and (max-width: 991px)").matches) {
                 topPicksSV.setDataSource(
                     new kendo.data.DataSource({
                         "transport": {
@@ -161,7 +161,7 @@
                         }
                     })
                 );
-            } else if (window.matchMedia("screen and (max-width: 1370px)").matches) {
+            } else if (window.matchMedia("screen and (max-width: 1400px)").matches) {
                 topPicksSV.setDataSource(
                     new kendo.data.DataSource({
                         "transport": {

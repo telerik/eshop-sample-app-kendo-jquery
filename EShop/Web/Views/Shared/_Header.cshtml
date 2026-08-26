@@ -16,17 +16,19 @@
                 </ul>
             </li>
             <li><a href="@Url.Action("Favorites", "Account")">Favourites<span id="favourites-badge"></span></a></li>
-            <li><a href="@Url.Action("Index", "Contacts")">Contacts</a></li>
+            <li><a href="@Url.Action("Notifications", "Account")">Notifications</a></li>
+            <li><a href="@Url.Action("Index", "Contacts")">Help</a></li>
             <li><a href="@Url.Action("About", "Home")">About</a></li>
-            <li class="profile" id="profile-btn"><span class="k-icon" data-kendo-icon="user" aria-hidden="true"></span>
+            <li class="profile" id="profile-btn"><span class="k-icon" data-kendo-icon="user" aria-hidden="true"></span><span class="sr-only">Account menu</span>
                 <ul>
                     <li><a href="@Url.Action("Profile", "Account")">Profile</a></li>
                     <li><a href="@Url.Action("OrdersPage", "Account")">Orders</a></li>
+                    <li><a href="@Url.Action("Settings", "Account")">Settings</a></li>
                     <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
                 </ul>
             </li>
             <li>
-                <a href="@Url.Action("ShoppingCart", "Account")"><span class="k-icon" data-kendo-icon="cart" aria-hidden="true"></span><span id="shopping-cart-badge"></span></a>
+                <a href="@Url.Action("ShoppingCart", "Account")" aria-label="Shopping cart"><span class="k-icon" data-kendo-icon="cart" aria-hidden="true"></span><span id="shopping-cart-badge"></span></a>
             </li>           
         </ul>        
     </div>
@@ -107,4 +109,3 @@
         $(".k-autocomplete").prepend(searchIcon);
     })
 </script>
-

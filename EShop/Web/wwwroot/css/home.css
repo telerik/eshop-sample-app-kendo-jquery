@@ -199,7 +199,7 @@ h4 {
 
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .wrap-width {
         max-width: var( --viewport-width );
         width: calc(100% - 80px);
@@ -214,13 +214,13 @@ h4 {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 991px) {
     .top-pick-card {       
         height: 290px;
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
     .wrap-width {
         width: calc(100% - 60px);
     }
@@ -256,7 +256,7 @@ h4 {
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 767px) {
     .wrap-width {
         width: calc(80% - 30px);
     }
@@ -287,7 +287,7 @@ h4 {
     }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 575px) {
     .wrap-width {
         width: calc(90% - 30px);
     }
@@ -297,7 +297,7 @@ h4 {
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 575px) {
     #topPicks .k-scrollview-elements {
         display: none;
     }

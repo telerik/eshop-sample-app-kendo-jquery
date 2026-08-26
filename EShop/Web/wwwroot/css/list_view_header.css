@@ -39,7 +39,7 @@
     font-family: 'Segoe UI';
 }
 
-@media (max-width: 1024px) {  
+@media (max-width: 991px) {
     .category-name-header {
         font-size: 20px;
     }

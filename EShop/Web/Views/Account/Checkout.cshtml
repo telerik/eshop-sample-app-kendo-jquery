@@ -1,0 +1,71 @@
+@model Models.ViewModels.UserProfileViewModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<section class="checkout-page wrap-width" aria-labelledby="checkout-title">
+    <h1 id="checkout-title">Secure checkout</h1>
+    <div id="checkoutStepper" aria-label="Checkout progress"></div>
+    <div class="checkout-layout">
+        <div class="checkout-form-panel">
+            <form id="checkoutForm"></form>
+        </div>
+        <aside class="checkout-summary" aria-labelledby="checkout-summary-title">
+            <h2 id="checkout-summary-title">Order summary</h2>
+            <div id="checkoutItems"></div>
+            <div class="checkout-total"><span>Total</span><strong id="checkoutTotal"></strong></div>
+        </aside>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        var items = [];
+        $("#checkoutStepper").kendoStepper({
+            steps: [{ label: "Shipping" }, { label: "Payment" }, { label: "Review" }],
+            linear: true
+        });
+
+        $("#checkoutForm").kendoForm({
+            orientation: "vertical",
+            validatable: { validateOnBlur: true },
+            formData: {
+                FirstName: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.FirstName ?? "")),
+                LastName: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.LastName ?? "")),
+                Street: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.Street ?? "")),
+                City: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.City ?? "")),
+                Zipcode: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.Zipcode ?? "")),
+                CardNumber: "",
+                Expiry: "",
+                Cvv: ""
+            },
+            items: [
+                { field: "FirstName", label: "First name", validation: { required: { message: "First name is required." } } },
+                { field: "LastName", label: "Last name", validation: { required: { message: "Last name is required." } } },
+                { field: "Street", label: "Address", validation: { required: { message: "Address is required." } } },
+                { field: "City", label: "City", validation: { required: { message: "City is required." } } },
+                { field: "Zipcode", label: "Postal code", validation: { required: { message: "Postal code is required." } } },
+                { field: "CardNumber", label: "Card number", validation: { required: { message: "Card number is required." } }, attributes: { autocomplete: "cc-number", inputmode: "numeric" } },
+                { field: "Expiry", label: "Expiry date", validation: { required: { message: "Expiry date is required." } }, attributes: { autocomplete: "cc-exp" } },
+                { field: "Cvv", label: "Security code", validation: { required: { message: "Security code is required." } }, attributes: { autocomplete: "cc-csc", inputmode: "numeric" } }
+            ],
+            buttonsTemplate: "<button class='k-button k-button-solid k-button-solid-primary k-form-submit' type='submit'>Place order</button>",
+            submit: function (event) {
+                event.preventDefault();
+                if ($("#checkoutForm").data("kendoForm").validate()) {
+                    window.location.href = "@Url.Action("CheckoutShoppingCart", "Account")";
+                }
+            }
+        });
+
+        $.get("@Url.Action("GetUserShoppingCartItems", "Account")", function (data) {
+            items = data;
+            $("#checkoutItems").kendoListView({
+                dataSource: items,
+                template: "<div class='checkout-item'><span>#: ProductName # × #: Quantity #</span><strong>#: kendo.toString(Total, 'c') #</strong></div>"
+            });
+            var total = items.reduce(function (sum, item) { return sum + item.Total; }, 0);
+            $("#checkoutTotal").text(kendo.toString(total, "c"));
+        });
+    });
+</script>
