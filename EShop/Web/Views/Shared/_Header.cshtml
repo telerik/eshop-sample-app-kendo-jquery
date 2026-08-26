@@ -18,7 +18,7 @@
             <li><a href="@Url.Action("Favorites", "Account")">Favourites<span id="favourites-badge"></span></a></li>
             <li><a href="@Url.Action("Index", "Contacts")">Contacts</a></li>
             <li><a href="@Url.Action("About", "Home")">About</a></li>
-            <li class="profile" id="profile-btn"><span class="k-icon k-font-icon k-i-user"></span>
+            <li class="profile" id="profile-btn"><span class="k-icon" data-kendo-icon="user" aria-hidden="true"></span>
                 <ul>
                     <li><a href="@Url.Action("Profile", "Account")">Profile</a></li>
                     <li><a href="@Url.Action("OrdersPage", "Account")">Orders</a></li>
@@ -26,7 +26,7 @@
                 </ul>
             </li>
             <li>
-                <a href="@Url.Action("ShoppingCart", "Account")"><span class="k-icon k-font-icon k-i-cart"></span><span id="shopping-cart-badge"></span></a>
+                <a href="@Url.Action("ShoppingCart", "Account")"><span class="k-icon" data-kendo-icon="cart" aria-hidden="true"></span><span id="shopping-cart-badge"></span></a>
             </li>           
         </ul>        
     </div>
@@ -49,6 +49,7 @@
     $('.header-menu button').css("visibility", "hidden");
     $('#contacts').css("visibility", "hidden");
     $(document).ready(function() {      
+        renderKendoSvgIcons(document);
 
         $("#menu").kendoMenu();  
         
@@ -98,8 +99,12 @@
             }
         }
 
-        $(".k-autocomplete").prepend("<span class='k-icon k-font-icon k-i-search'></span>")
+        var searchIcon = $("<span>", {
+            "class": "k-icon",
+            "aria-hidden": "true"
+        });
+        kendo.ui.icon(searchIcon, { icon: "search" });
+        $(".k-autocomplete").prepend(searchIcon);
     })
 </script>
-
 
