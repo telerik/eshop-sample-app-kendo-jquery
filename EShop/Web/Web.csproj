@@ -19,7 +19,7 @@
 	<PackageReference Include="Telerik.Reporting.OpenXmlRendering" Version="18.1.24.514" />
     <PackageReference Include="Telerik.Reporting.Services.AspNetCore" Version="18.1.24.514" />
     <PackageReference Include="Telerik.Reporting.WebServiceDataSource" Version="18.1.24.514" />
-    <PackageReference Include="Telerik.Web.Captcha.Trial" Version="1.1.0" />
+    <PackageReference Include="Telerik.Web.Captcha" Version="2.0.4" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -72,6 +72,10 @@
     <Folder Include="wwwroot\bundles\" />
     <Folder Include="wwwroot\Contacts\Captcha\" />
   </ItemGroup>
+
+  <Target Name="BuildCssBundle" BeforeTargets="Build">
+    <Exec Command="npm run build:css" WorkingDirectory="$(ProjectDir)" />
+  </Target>
 
   <ProjectExtensions><VisualStudio><UserProperties UseCdnSupport="" /></VisualStudio></ProjectExtensions>
 
