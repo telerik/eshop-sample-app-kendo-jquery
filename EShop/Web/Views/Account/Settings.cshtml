@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Settings";
+}
+
+<section class="account-page settings-page wrap-width" aria-labelledby="settings-title">
+    <h1 id="settings-title">Settings</h1>
+    <p>Choose how E-Shop keeps you informed.</p>
+    <div id="settingsNotification"></div>
+    <form id="settingsForm"></form>
+</section>
+
+<script>
+    $(function () {
+        var savedPreferences = JSON.parse(localStorage.getItem("eshop-notification-preferences") || "null");
+        $("#settingsNotification").kendoNotification({
+            autoHideAfter: 3000,
+            position: { pinned: true, top: 24, right: 24 }
+        });
+        $("#settingsForm").kendoForm({
+            formData: savedPreferences || { OrderUpdates: true, ProductNews: false, WeeklyRiderTips: true },
+            items: [
+                { field: "OrderUpdates", label: "Order updates", editor: "Switch", hint: "Delivery, receipt, and return updates." },
+                { field: "ProductNews", label: "Product news", editor: "Switch", hint: "New bikes, components, and seasonal collections." },
+                { field: "WeeklyRiderTips", label: "Weekly rider tips", editor: "Switch", hint: "Maintenance and route-ready advice." }
+            ],
+            buttonsTemplate: "<button class='k-button k-button-solid k-button-solid-primary k-form-submit' type='submit'>Save preferences</button>",
+            submit: function (event) {
+                event.preventDefault();
+                localStorage.setItem("eshop-notification-preferences", JSON.stringify($("#settingsForm").data("kendoForm").formData()));
+                $("#settingsNotification").data("kendoNotification").show("Settings saved.", "success");
+            }
+        });
+    });
+</script>

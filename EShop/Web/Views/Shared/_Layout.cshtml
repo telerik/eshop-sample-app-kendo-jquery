@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>@ViewData["Title"] - Web</title>
 	
-	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/13.0.1/fluent/fluent-main.css" />
+	<link rel="stylesheet" href="https://unpkg.com/%40progress/kendo-theme-meridian%4014.5.0/dist/all.css" />
 	<environment names="Development">
 		<bundle name="wwwroot/bundles/styles.min.css" />
 	</environment>
@@ -13,9 +13,23 @@
 		<link rel="stylesheet" href="~/bundles/styles.min.css" asp-append-version="true" />
 	</environment>
 	@RenderSection("loginStyles", false)
-	<link rel="stylesheet" href="https://unpkg.com/@@progress/kendo-font-icons/dist/index.css" />
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://kendo.cdn.telerik.com/2026.1.212/js/kendo.all.min.js"></script>
+	<script>
+		kendo.setDefaults("iconType", "svg");
+
+		window.renderKendoSvgIcons = function (root) {
+			var $root = $(root || document);
+
+			$root.find("[data-kendo-icon]").addBack("[data-kendo-icon]").each(function () {
+				var $icon = $(this);
+				kendo.ui.icon($icon, {
+					icon: $icon.attr("data-kendo-icon"),
+					size: $icon.attr("data-kendo-icon-size")
+				});
+			});
+		};
+	</script>
 	<script src="~/js/product_details.js"></script>
 	<script src="~/js/shopping_cart.js"></script>
 	<script src="~/js/datasource.js"></script>
@@ -67,9 +81,9 @@
 
 	.k-breadcrumb-link {
 		font-weight: 600;
-		font-size: 18px;
+		font-size: var(--kendo-font-size-lg);
 		line-height: 25.2px;
-		color: #605E5C;
+		color: var(--kendo-color-subtle);
 	}
 
 	.k-breadcrumb-last-item{

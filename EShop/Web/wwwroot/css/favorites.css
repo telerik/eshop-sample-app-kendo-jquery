@@ -6,8 +6,8 @@
 
 .favorite-product-container {
     padding: 1%;
-    box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
-    border-radius: 2px;
+    box-shadow: var(--kendo-elevation-1);
+    border-radius: var(--kendo-border-radius-md);
     gap: 2%;
     display: flex;
     flex-direction: row;
@@ -17,9 +17,9 @@
     .favorite-product-container.k-listview-item {
         width: 1070px;
         height: 312px;
-        padding: 12px;
+        padding: var(--kendo-spacing-3);
         gap: 25px;
-        border-radius: 2px;
+        border-radius: var(--kendo-border-radius-md);
         display: flex;
         flex-direction: row;
 
@@ -46,7 +46,7 @@
 
 .favorites-container .continue-shopping {
     font-weight: 600;
-    font-size: 14px;
+    font-size: var(--kendo-font-size-sm);
     line-height: 20px;
     color: var( --eshop-primary );
 }
@@ -81,7 +81,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 16px;
+    gap: var(--kendo-spacing-4);
     margin-left: auto;
     margin-right: 52px;
 }
@@ -94,7 +94,7 @@
 
 .favorite-product-info-container .avg-rating .rating-text {
     font-weight: 600;
-    font-size: 16px;
+    font-size: var(--kendo-font-size-md);
     line-height: 22.4px;
 }
 
@@ -102,23 +102,21 @@
     
     align-items: baseline;
     justify-content: start;
-    gap: 4px;
+    gap: var(--kendo-spacing-1);
     font-weight: 600;
-    font-size: 16px;
+    font-size: var(--kendo-font-size-md);
     line-height: 22.4px;
     margin-top: 6.5px;
 }
 
     .favorite-product-info-container .avg-rating .k-icon {
-        width: 20px;
-        height: 20px;
-        padding: 8px 2px;
+        padding: var(--kendo-spacing-2) calc(var(--kendo-spacing-1) / 2);
     }
 
 .favorite-product-description {
     width: 249px;
     text-align: left;
-    font-size: 14px;
+    font-size: var(--kendo-font-size-sm);
     font-weight: 400;
     line-height: 20px;
 
@@ -144,7 +142,7 @@
 .favorite-product-controls .buttons-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--kendo-spacing-4);
 }
 
     .favorite-product-controls .buttons-container .k-button {
@@ -164,13 +162,13 @@
     height: 38px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
     .favorites-container, .favorite-product-container.k-listview-item {
         width: 90vw;
     }
 }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 991px) {
         .favorite-product-container.k-listview-item,
         .favorites-header,
         .favorites-title {

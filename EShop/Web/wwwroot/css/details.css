@@ -140,7 +140,7 @@
 }
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .similar-products .k-listview .k-listview-content {
         justify-content: center;
     }
@@ -150,14 +150,14 @@
     }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1400px) {
     .model-image-container, .model-image {
         width: 300px !important;
         min-width: 300px !important;
     }
 }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 991px) {
         .model-details {
             flex-direction: column;
         }

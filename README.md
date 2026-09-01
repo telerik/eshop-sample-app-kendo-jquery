@@ -54,5 +54,5 @@ The sample application showcases some of the most popular Kendo UI for jQuery wi
 
 1. Open `EShop.sln` with Visual Studio.
 1. Open the terminal and enter the `Web` directory (`...\eshop-sample-app-kendo-jquery\EShop\Web`).
-1. Run `npm install` to install the dependencies from the `package.json` file. This step is required to activate the `gulp tasks` defined in the `gulpfile.js` when running the app. 
+1. Run `npm install` to install the dependencies from the `package.json` file. The CSS bundle is generated automatically as part of the .NET build by the `gulp` task defined in `gulpfile.js`.
 1. Run the application (Hit `Ctrl` + `F5`).

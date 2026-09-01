@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Notifications";
+}
+
+<section class="account-page wrap-width" aria-labelledby="notifications-title">
+    <h1 id="notifications-title">Notifications</h1>
+    <div id="notificationList"></div>
+</section>
+
+<script>
+    $(function () {
+        $("#notificationList").kendoListView({
+            dataSource: [
+                { title: "Order updates", message: "Track delivery status and view receipts from your order history.", date: "Today" },
+                { title: "Saved favourites", message: "Your saved bikes and accessories are ready whenever you are.", date: "This week" },
+                { title: "Rider tips", message: "Learn how to prepare your bike for changing road conditions.", date: "Earlier" }
+            ],
+            template: "<article class='notification-item'><div><h2>#: title #</h2><p>#: message #</p></div><time>#: date #</time></article>"
+        });
+    });
+</script>

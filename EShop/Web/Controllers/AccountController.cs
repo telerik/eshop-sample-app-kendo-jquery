@@ -221,6 +221,15 @@ namespace Web.Controllers
 
         [HttpGet]
         [Authorize]
+        public async Task<IActionResult> Checkout()
+        {
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            var profile = await userService.GetUserPersonalDetails(userEmail);
+            return View(profile);
+        }
+
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Profile()
         {
             if (HttpContext.User.Identity.IsAuthenticated)
@@ -375,7 +384,28 @@ namespace Web.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            return RedirectToAction("OrdersPage", "Account");
+            return RedirectToAction("OrderConfirmation", "Account");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult OrderConfirmation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Notifications()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Settings()
+        {
+            return View();
         }
 
         [HttpGet]

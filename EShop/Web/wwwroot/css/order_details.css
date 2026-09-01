@@ -59,14 +59,14 @@
         height: 38px;
     }
 
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
     .order-details-container {
         max-width: 946px;
         width: calc(100% - 80px);
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 575px) {
     .order-details-header {
         flex-direction: column;
         gap: 20px;

@@ -147,14 +147,14 @@
         height: 38px;
     }
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .shopping-cart-container {
         max-width: 1194px;
         width: calc(100% - 80px);
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
     .shopping-cart-container .k-grid .product-column {
         flex-direction: column;
         align-items: center;
