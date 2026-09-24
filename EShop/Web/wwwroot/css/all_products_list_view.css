@@ -8,7 +8,7 @@
     margin-bottom: 48px;
 }
 
-.k-pager-wrap {
+.k-pager {
     border: none;
     background: none;
     color: none;
@@ -46,15 +46,13 @@
         margin: 24px auto auto auto;
     }
 
-        
-
-    .products-listView-container .k-pager-wrap {
+    .products-listView-container .k-pager {
         margin-top: 48px;
         border: none;
         background: none;
     }
 
-        .products-listView-container .k-pager-wrap .k-pager-sizes > .k-picker {
+        .products-listView-container .k-pager .k-pager-sizes > .k-picker {
             border: 1px solid #605E5C;
             border-radius: 2px;
         }

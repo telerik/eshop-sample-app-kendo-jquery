@@ -18,15 +18,15 @@
     justify-content: center;
 }
 
-    .k-tabstrip-items .k-item {
+    .k-tabstrip-items .k-tabstrip-item {
         min-width: 27%;
     }
 
-        .k-tabstrip-items .k-item .k-link {
+        .k-tabstrip-items .k-tabstrip-item .k-link {
             justify-content: center;
         }
 
-        .k-tabstrip-items .k-item .k-icon {
+        .k-tabstrip-items .k-tabstrip-item .k-icon {
             margin: 3px;
         }
 
