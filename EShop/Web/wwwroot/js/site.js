@@ -1,5 +1,5 @@
 
-kendo.setDefaults("iconType", 'font')
+kendo.setDefaults("iconType", "svg");
 function onRecentlyViewedDataBound(e) {
 	hideRecentlyViewedIfEmpty(e);
 	bindFavouritesAndCartButtones();
@@ -35,8 +35,7 @@ function distinguishFavorites() {
 				if (currentButton.find(".k-button-text")) {
 					currentButton.find(".k-button-text").text("Added to favorites");
 				}
-				icon.removeClass("k-i-heart-outline");
-				icon.addClass("k-i-heart");
+				kendo.ui.icon(icon, { icon: "heart" });
 			}
 		});
 	});

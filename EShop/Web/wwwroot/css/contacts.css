@@ -30,7 +30,7 @@
     height: 336px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
     .contacts-container {
         width: 85%;
         margin: 0 auto;

@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Page not found";
+}
+
+<section class="status-page wrap-width" aria-labelledby="not-found-title">
+    <span class="k-icon status-page-icon" data-kendo-icon="file-error" aria-hidden="true"></span>
+    <h1 id="not-found-title">Page not found</h1>
+    <p>The page you requested is unavailable or may have moved.</p>
+    <div class="status-page-actions">
+        <a class="k-button k-button-solid k-button-solid-primary" href="@Url.Action("Index", "Home")">Return to home</a>
+        <a class="k-button k-button-outline k-button-outline-primary" href="@Url.Action("Bikes", "Home")">Browse bikes</a>
+    </div>
+</section>
+
+<script>$(function () { renderKendoSvgIcons(document); });</script>

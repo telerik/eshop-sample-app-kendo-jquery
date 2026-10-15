@@ -20,7 +20,8 @@
       "wwwroot/css/profile.css",
       "wwwroot/css/shopping_cart.css",
       "wwwroot/css/summary.css",
-      "wwwroot/css/tile_product_card.css"
+      "wwwroot/css/tile_product_card.css",
+      "wwwroot/css/modernization.css"
     ]
   }
 ]

@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Order confirmed";
+}
+
+<section class="status-page wrap-width" aria-labelledby="confirmation-title">
+    <span class="k-icon status-page-icon status-success" data-kendo-icon="check-circle" aria-hidden="true"></span>
+    <h1 id="confirmation-title">Order confirmed</h1>
+    <p>Thank you for your purchase. Your order is being prepared and will appear in your order history shortly.</p>
+    <div class="status-page-actions">
+        <a class="k-button k-button-solid k-button-solid-primary" href="@Url.Action("OrdersPage", "Account")">Track your order</a>
+        <a class="k-button k-button-outline k-button-outline-primary" href="@Url.Action("Index", "Home")">Continue shopping</a>
+    </div>
+</section>
+
+<script>$(function () { renderKendoSvgIcons(document); });</script>

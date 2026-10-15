@@ -24,7 +24,7 @@
 					<div class="favorite-product-name">#:Name#</div>
 				</a>
 				<div class="avg-rating">
-					<span class="k-icon k-font-icon k-i-star"></span>				
+					<span class="k-icon" data-kendo-icon="star" data-kendo-icon-size="large" aria-hidden="true"></span>
 					<span class="rating-text">#:AverageRating#/5</span>
 				</div>
 				<p class="favorite-product-description">#:Description#</p>
@@ -59,6 +59,7 @@
 				 if (e.sender.dataSource.data().length == 0) {
 				    $("#export-pdf").data("kendoButton").enable(false);
 				} else $("#export-pdf").data("kendoButton").enable(true);
+				renderKendoSvgIcons(e.sender.element);
 				bindFavouritesAndCartButtones()
 			},
 	        template: kendo.template($('#favoriteProduct-template').html())

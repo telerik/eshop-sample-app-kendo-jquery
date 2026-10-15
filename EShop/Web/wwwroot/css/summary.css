@@ -82,7 +82,7 @@
     margin-left: 40px;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1200px) {
     .summary-container .k-card{
         width: 250px;
         height: 350px;
@@ -101,10 +101,9 @@
     }
 }
 
-@media (max-width: 980px) {   
+@media (max-width: 991px) {
 
     .sub-category-cards {
         flex-direction: column;
     }
 }
-
